@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <title>NYU Press: Book details</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
+  <link rel="stylesheet" href="../css/style-min.css">
+  <script src="http://yui.yahooapis.com/3.15.0/build/yui/yui-min.js"></script>  
+  <script id="list-template" type="text/x-handlebars-template">
+    {{#items}}
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <a href="../book/{{identifier}}"><img class="img-responsive" src="http://localhost:8080/{{coverHref}}" alt="" title="{{title}}"/></a>
+        </div>
+        <div class="pure-u-2-3 body">
+          <div class="container">
+            <h4><a href="../book/{{identifier}}">{{title}}</a></h4>
+            <div>Author: {{author}}</div>
+            <div>Date: {{date}}</div>
+            <div>Language: {{language}}</div>
+            <div>Coverage: {{coverage}}</div>
+            <div>Rights: {{rights}}</div>
+            <div>Publisher: {{publisher}}</div>          
+            <div><p>{{description}}</p></div>
+            <div class="caption buttons">
+              <a class="pure-button" href="../book/{{identifier}}">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/items}}
+  </script>    
+</head>
+<body class="details-page page">
+
+<div>
+
+  <div class="pure-g header">
+    <div class="pure-u-1">    
+      <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="../">Open Access Books</a>
+        <ul>
+          <li class="pure-menu-selected"><a href="../">Home</a></li>
+          <li><a href="../about">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pure-g breadcrumb">
+    <div class="pure-u-1">
+      <span class="page-title"><a href="../">Home</a> &gt; Book details</span>
+    </div>
+  </div>
+  
+  <div class="pure-g content-wrapper">
+    <div class="pure-u-1 data-container"></div>
+  </div>
+  
+  <div class="pure-g container bottom">
+    <div class="pure-u-1">
+      <h2>Contact Us</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
+      <h2>More Information</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
+    </div>
+  </div>
+
+</div>
+  
+<script src="../js/details.js"></script>
+</body>
+</html>

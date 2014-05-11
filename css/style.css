@@ -1,0 +1,430 @@
+/*
+ * -- BASE STYLES --
+ */
+body {
+    line-height: 1.7em;
+    color: #7f8c8d;
+    font-size: 13px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+    color: #34495e;
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/*
+ * -- PURE BUTTON STYLES --
+ * I want my pure-button elements to look a little different
+ */
+.pure-button {
+    background-color: #1f8dd6;
+    color: white;
+    padding: 0.5em 2em;
+}
+
+/*
+ * -- MENU STYLES --
+ */
+
+.home-menu {
+    padding: 0.5em;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+.home-menu.pure-menu-open {
+    background: #2d3e50;
+}
+
+.pure-menu.pure-menu-open.pure-menu-fixed {
+    /* Fixed menus normally have a border at the bottom. */
+    border-bottom: none;
+    /* I need a higher z-index here because of the scroll-over effect. */
+    z-index: 4;
+}
+
+.home-menu .pure-menu-heading {
+    color: white;
+    font-weight: 400;
+    font-size: 120%;
+}
+
+.home-menu .pure-menu-selected a {
+    color: white;
+}
+
+.home-menu a {
+    color: #6FBEF3;
+}
+.home-menu li a:hover,
+.home-menu li a:focus {
+    background: none;
+    border: none;
+    color: #AECFE5;
+}
+
+/*
+ * -- CONTENT STYLES --
+ * This represents the content area (everything below the blue section)
+ */
+
+/* This is the class used for the main content headers (<h2>) */
+.content-head {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 2em 0 1em;
+}
+
+/* This is a modifier class used when the content-head is inside a ribbon */
+.content-head-ribbon {
+    color: white;
+}
+
+/* This is the class used for the content sub-headers (<h3>) */
+.content-subhead {
+    color: #1f8dd6;
+}
+    .content-subhead i {
+        margin-right: 7px;
+    }
+
+/* This is the class used for the dark-background areas. */
+.ribbon {
+    background: #2d3e50;
+    color: #aaa;
+}
+
+/* This is the class used for the footer */
+.footer {
+    background: #111;
+}
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ * On tablets and other medium-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 48em) {
+
+    /* We increase the body font size */
+    body {
+        font-size: 16px;
+    }
+    /* We want to give the content area some more padding */
+    .content {
+        padding: 1em;
+    }
+
+    /* We can align the menu header to the left, but float the
+    menu items to the right. */
+    .home-menu {
+        text-align: left;
+    }
+    /* We decrease the width of the .splash, since we have more width
+    to work with */
+    .splash {
+        width: 50%;
+        height: 50%;
+    }
+
+    .splash-head {
+        font-size: 250%;
+    }
+
+    /* We remove the border-separator assigned to .l-box-lrg */
+    .l-box-lrg {
+        border: none;
+    }
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+.library-container {
+    margin: 0px auto 0px;
+    width: auto;
+    position: static;
+    max-width: 800px;
+}
+
+.library-container h2.page-title {
+    padding: 3rem 10px 0;
+    /*  margin: 0 0 4rem 0;*/
+    font: normal 16px/1 Helvetica, sans-serif;
+    border-bottom: 1px solid #999;
+    color: #434343;
+}
+
+/* list view */
+ .library-items.row, .library-items {
+    display: table;
+    margin: 0;
+}
+.library-items {
+    margin-top: 20px;
+}
+.library-items .title, .library-items .author {
+    white-space: normal;
+}
+body.list-view #app-container .library-item {
+    height: auto;
+    display: table-row;
+    vertical-align: top;
+    float: none;
+    clear: both;
+    padding: 0;
+}
+body.list-view #app-container .library-item:nth-child(odd) {
+    background: #f6f6f6;
+}
+body.list-view .img_hold {
+    display: table-cell;
+    vertical-align: top;
+    width: 110px;
+    padding: 10px 10px 10px 0;
+}
+body.list-view #app-container .library-item img {
+    margin: 0px;
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.details-body {
+    height: auto;
+}
+.details-body-page {
+    margin-top: 3rem;
+    height: auto;
+}
+.details-body-page .book-title {
+    line-height: 1.2;
+    padding-bottom: 5px;
+}
+.details-body-page .img-hold {
+    float: left;
+    margin-right: 15px;
+    width: 25%;
+    max-width: 200px;
+    height: auto;
+}
+.details-body-page .img-hold img {
+    width: 100%;
+    height: auto;
+}
+.details-body-page .infolabel {
+    color: #999;
+}
+.details-body-page .item-link {
+    float: right;
+    margin: 20px;
+}
+.no-cover-nyup {
+    background-color: #61777D;
+}
+#app-container {
+    padding: 0px 10px;
+    -webkit-overflow-scrolling: touch;
+}
+body.list-view #app-container .library-item .buttons {
+    float: right;
+    position: static;
+    width: auto;
+    padding-top: 20px;
+}
+body.list-view #app-container .library-item .book-info .title, h4 {
+    margin: 0;
+    color: #6FA64D;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.2;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body.list-view #app-container .library-item a.details {
+    margin-right: 30px;
+    margin-top: 0;
+}
+body.list-view #app-container .library-item .buttons a.btn {
+    display: inline-block;
+}
+body.list-view #app-container .library-item .book-info {
+    margin: 0px;
+    max-height: 290px;
+    height: auto;
+    position: static;
+    vertical-align: top;
+    padding: 10px;
+    display: table-cell;
+    float: none;
+}
+body.list-view .author {
+    margin-top: 0px;
+    padding-bottom: 5px;
+    line-height: 1.8;
+    font-size: 16px;
+    color: #555;
+}
+
+body.list-view .description {
+    font: 14px/1.4 Arial;
+    color: #333;
+}
+.item-link {
+    display: block;
+}
+.item-link:hover, .item-link:hover .description {
+    text-decoration: none;
+    color: #333;
+}
+.item-link:hover .title {
+    text-decoration: underline;
+}
+  
+.img_hold {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0 10px 10px 0;
+}
+
+.home .img_hold {
+  width: 170px;
+}
+
+.img-responsive {
+  display: block;
+  vertical-align: top;
+  height: auto;
+  max-width: 100%;
+}
+
+.body {
+  max-width: 80%;
+}
+
+.loading-more {
+  display: none;
+  visibility: hidden;
+}
+
+.home .content-wrapper {
+  position: absolute;
+  top: initial;
+  width: 100%;
+  min-height: 12%;
+  z-index: 2;
+  background: white;
+}
+
+.ribbon {
+  background: #2c4985;
+  padding: 2em;
+}
+
+.ribbon h3 {
+  padding: 1em 0 1em
+}
+
+a:link, a:visited {
+  color: #777;
+}
+
+.buttons a:link, .buttons a:visited, a.button-more:link, a.button-more:visited {
+  color: #fff;
+}
+
+h4 a:link, h4 a:visited {
+  color: #6FA64D;
+}
+
+.caption.buttons {
+  float: right;
+}
+
+.caption.buttons a {
+  margin-right: .5em;
+}
+
+h3 {
+  margin-top: 1em;
+  color: white;
+  margin-bottom: .5em;
+}
+
+.pure-form input[type] {
+  width: 70%;
+}
+
+.data-container {
+  padding: 1em 2em 0 2em;
+}
+
+.breadcrumb {
+  font-size: small;
+  padding: 1em 2em 0 2em;
+  position: relative;
+  top: 50px;  
+}
+
+.details-page .img-hold {
+  float: left;
+  margin-right: 15px;
+  width: 25%;
+  max-width: 200px;
+  height: auto;
+}
+
+iframe {
+  width: 100%;
+}
+
+.details-page .content-wrapper {
+  position: relative;
+  top: 50px;
+}
+
+.home .content-wrapper .ribbon p {
+  padding-right: 1em;
+}
+
+.search .content-wrapper {
+  position: relative;
+  top: 50px;
+}
+
+.page.book {
+  position: fixed;
+  border: none;
+}
+
+.container {
+  padding-right: 2em;
+  padding-left: 2em;
+}
+
+.bottom {
+  margin-top: 1em; 
+  position: relative; 
+  top: 50px; 
+  background: #2d3e50;
+}
+
+.bottom h2 {
+  color: #fff;
+  margin-top: 1em;
+}
