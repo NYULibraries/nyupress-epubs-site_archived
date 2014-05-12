@@ -428,3 +428,11 @@ iframe {
   color: #fff;
   margin-top: 1em;
 }
+
+.footer {
+  background: #fff;
+  position: relative; 
+  top: 50px; 
+  padding: .5em 2em;
+  font-size: small;
+}
