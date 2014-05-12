@@ -11,12 +11,13 @@ YUI().use(
   , function (Y) {
 
     'use strict'
-
-    var datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&q='
+    
+    var datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref&q='
       , body = Y.one('body')
       , container = Y.one('#a')
       , query = Y.one('.query')
-      , totalFound = Y.one('.total-found')
+      , loadMoreButton = Y.one('.pure-button.loading')
+      , totalFound = Y.one('.total-found')      
       , searchString = '*:*'
       , transactions = []
       , href
@@ -26,27 +27,16 @@ YUI().use(
       , match = location.pathname.match(patt)      
       , source   = Y.one('#list-template').getHTML()
       , template = Y.Handlebars.compile(source)
-      
-      // Extract the template string and compile it into a reusable function.
-      , source   = Y.one('#list-template').getHTML()
-      , template = Y.Handlebars.compile(source)
 
     function onFailure() {
-        Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
+        Y.log('onFailure')
+        // Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
     }
     
     function onTimeout() {
-      onFailure()
+        onFailure()
     }
 
-    function onStart(id, response) {
-        body.addClass('io-loading')
-    }
-    
-    function onEnd(id, response) {
-        body.removeClass('io-loading')
-    }
-    
     function onClick(e) {
         e.preventDefault()
         onScroll()
@@ -55,18 +45,30 @@ YUI().use(
     function onPaginatorAvailable() {
         if (this.get('region').top - fold < body.get('winHeight')) onScroll()
     }
+
+    function onSubmit(e) {
+        
+        e.preventDefault()
+        
+        var currentTarget = e.currentTarget
+          , value = Y.one('.pure-input')
+        
+        location.href = currentTarget.get('action') + '/' + value.get('value')
+    }    
     
     function onScroll(e) {
+    
+        if (body.hasClass('io-done')) return
         
         var numfound = parseInt(container.getAttribute("data-numfound"), 10)
           , start = parseInt(container.getAttribute("data-start"), 10)
           , docslength = parseInt(container.getAttribute("data-docslength"), 10)
 
         if (
-          start + docslength < numfound
+          start + docslength <= numfound
         ) {
             
-            href = datasourceURL + encodeURIComponent( searchString  ) + '&start=' + ( start + docslength + 1 )
+            href = datasourceURL + searchString + '&start=' + ( start + docslength )
             
 	        if (Y.Array.indexOf(transactions, href) < 0 && !body.hasClass('io-loading')) {
                 
@@ -76,13 +78,15 @@ YUI().use(
                         Y.IdleTimer.isIdle() && pager.get('region').top - fold < body.get('winHeight')
                     )
                 ) {
-
+                  
+                  body.addClass('io-loading')
+                  
+                  loadMoreButton.addClass('pure-button-disabled')
+                  
                   Y.jsonp(href, {
                     on: {
                       success: onSuccess,
                       failure: onFailure,
-                      start: onStart,
-                      end: onEnd,         
                       timeout: onTimeout
                     },
                     timeout: 3000
@@ -92,20 +96,25 @@ YUI().use(
             }
 
         }
+        
     }
 
     function onSuccess(response) {
-
+    
         try {
         
+            var numfound = parseInt(response.response.numFound, 10)
+              , start = parseInt(response.response.start, 10)
+              , docslength = parseInt(response.response.docs.length, 10)        
+        
              // store called to avoid making the request multiple times
-             transactions.push(href)
+             transactions.push(this.url)
 
-             container.setAttribute("data-numFound", response.response.numFound)
+             container.setAttribute("data-numFound", numfound)
 
-             container.setAttribute("data-start", response.response.start)
+             container.setAttribute("data-start", start)
 
-             container.setAttribute("data-docsLength", response.response.docs.length)
+             container.setAttribute("data-docsLength", docslength)
              
              // set the number of items found
              totalFound.set('text', response.response.numFound)
@@ -125,13 +134,19 @@ YUI().use(
                }
                
              })
-            
+             
             // render HTML and append to container
             container.append(
               template({
                 items: response.response.docs
               })
             )
+            
+            if (start + docslength === numfound) body.addClass('io-done')
+                        
+            body.removeClass('io-loading')
+            
+            loadMoreButton.removeClass('pure-button-disabled')
 
         }
         catch (e) {
@@ -151,18 +166,6 @@ YUI().use(
 
     Y.on('available', onPaginatorAvailable, 'ul.pure-paginator')
 
-    // Subscribe to "io:start".
-    Y.on('io:start', onStart)
-
-    // Subscribe to "io.success".
-    Y.on('io:success', onSuccess)
-
-    // Subscribe to "io.failure".
-    Y.on('io:failure', onFailure)
-
-    // Subscribe to "io.end".
-    Y.on('io:end', onEnd)
-
     // test for query string
     if (match && match[1]) {
     
@@ -177,19 +180,21 @@ YUI().use(
          query.set('text', 'All titles')
      }
      
-     // set the request URL
-     href = datasourceURL + encodeURIComponent(searchString)
-     
-     // make the first request
-     Y.jsonp(href, {
-       on: {
-         success: onSuccess,
-         failure: onFailure,
-         start: onStart,
-         end: onEnd,         
-         timeout: onTimeout
-       },
-       timeout: 3000
-     })
+    // set the request URL
+    href = datasourceURL + encodeURIComponent(searchString)
+    
+    // make the first request
+    Y.jsonp(href, {
+        on: {
+            success: onSuccess,
+            failure: onFailure,
+            timeout: onTimeout
+        },
+        timeout: 3000
+    })
+    
+    loadMoreButton.on('click', onClick)
+    
+    body.delegate('submit', onSubmit, 'form')     
 
 })
