@@ -315,6 +315,7 @@ body.list-view .description {
 
 .body {
   max-width: 80%;
+  min-width: 80%;  
 }
 
 .loading-more {
