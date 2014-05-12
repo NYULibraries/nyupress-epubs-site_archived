@@ -12,7 +12,7 @@ YUI().use(
 
     'use strict'
 
-    var datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text'
+    var datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref'
       , body = Y.one('body')
       , container = Y.one('#a')
       , query = Y.one('.query')
