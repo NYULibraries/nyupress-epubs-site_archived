@@ -448,3 +448,19 @@ iframe {
     text-decoration: none;
     color: #6fbef3;
 }
+
+.pure-button.loading {
+  background-color: #E6E6E6;
+}
+
+.more-books {
+  display: none;
+  visibility: hidden;
+  text-align: center;
+  text-align: center;
+}
+
+.io-loading .more-books {
+  display: block;
+  visibility: visible;
+}
