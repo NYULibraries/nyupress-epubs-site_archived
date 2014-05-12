@@ -1,6 +1,7 @@
 YUI().use(
     'node'
   , 'event'
+  , 'io'
   , 'node-scroll-info'
   , 'handlebars'
   , 'json-parse'
@@ -32,6 +33,10 @@ YUI().use(
 
     function onFailure() {
         Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
+    }
+    
+    function onTimeout() {
+      onFailure()
     }
 
     function onStart(id, response) {
@@ -72,7 +77,16 @@ YUI().use(
                     )
                 ) {
 
-                    Y.jsonp(href, onSuccess)
+                  Y.jsonp(href, {
+                    on: {
+                      success: onSuccess,
+                      failure: onFailure,
+                      start: onStart,
+                      end: onEnd,         
+                      timeout: onTimeout
+                    },
+                    timeout: 3000
+                  })
 
                 }
             }
@@ -138,16 +152,16 @@ YUI().use(
     Y.on('available', onPaginatorAvailable, 'ul.pure-paginator')
 
     // Subscribe to "io:start".
-    Y.on('io:start', onStart, Y, transactions)
+    Y.on('io:start', onStart)
 
     // Subscribe to "io.success".
-    Y.on('io:success', onSuccess, Y, transactions)
+    Y.on('io:success', onSuccess)
 
     // Subscribe to "io.failure".
-    Y.on('io:failure', onFailure, Y, transactions)
+    Y.on('io:failure', onFailure)
 
     // Subscribe to "io.end".
-    Y.on('io:end', onEnd, Y, transactions)
+    Y.on('io:end', onEnd)
 
     body.delegate('click', onClick, '.pager-next a')
     
@@ -169,6 +183,15 @@ YUI().use(
      href = datasourceURL + encodeURIComponent(searchString)
      
      // make the first request
-     Y.jsonp(href, onSuccess)
+     Y.jsonp(href, {
+       on: {
+         success: onSuccess,
+         failure: onFailure,
+         start: onStart,
+         end: onEnd,         
+         timeout: onTimeout
+       },
+       timeout: 3000
+     })
 
 })
