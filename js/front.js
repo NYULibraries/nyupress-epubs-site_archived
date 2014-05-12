@@ -1,28 +1,42 @@
 YUI().use(
     'node'
   , 'event'
+  , 'io'
   , 'node-scroll-info'
-  , 'io-queue'
   , 'handlebars'
   , 'json-parse'
+  , 'jsonp'
+  , 'jsonp-url'  
   , 'gallery-idletimer'
   , function (Y) {
 
     'use strict'
 
-    var datasourceURL = 'http://localhost:3000?page='
+    var datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text'
       , body = Y.one('body')
       , container = Y.one('#a')
-      , form = Y.one('pure-form')
+      , query = Y.one('.query')
+      , searchString = '*:*'
       , transactions = []
-      , href = datasourceURL + '1'
+      , href
       , pager = Y.one('ul.pure-paginator')
       , fold = 200
-
+      , patt = /\/search\/(.*)/
+      , match = location.pathname.match(patt)      
+      , source   = Y.one('#list-template').getHTML()
+      , template = Y.Handlebars.compile(source)
       
       // Extract the template string and compile it into a reusable function.
       , source   = Y.one('#list-template').getHTML()
       , template = Y.Handlebars.compile(source)
+
+    function onFailure() {
+        Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
+    }
+    
+    function onTimeout() {
+      onFailure()
+    }
 
     function onStart(id, response) {
         body.addClass('io-loading')
@@ -30,16 +44,6 @@ YUI().use(
     
     function onEnd(id, response) {
         body.removeClass('io-loading')
-    }
-    
-    function onSubmit(e) {
-        
-        e.preventDefault()
-        
-        var currentTarget = e.currentTarget
-          , value = Y.one('.pure-input')
-        
-        location.href = currentTarget.get('action') + '/' + value.get('value')
     }
     
     function onClick(e) {
@@ -51,62 +55,86 @@ YUI().use(
         if (this.get('region').top - fold < body.get('winHeight')) onScroll()
     }
 
+    function onSubmit(e) {
+        
+        e.preventDefault()
+        
+        var currentTarget = e.currentTarget
+          , value = Y.one('.pure-input')
+        
+        location.href = currentTarget.get('action') + '/' + value.get('value')
+    }    
+    
     function onScroll(e) {
         
-        var page = container.getAttribute("data-page")
-          , pages = container.getAttribute("data-pages")
-          , next = (page <= pages) ? (page + 1) : 0
-          
-          
-        href = datasourceURL + page
+        var numfound = parseInt(container.getAttribute("data-numfound"), 10)
+          , start = parseInt(container.getAttribute("data-start"), 10)
+          , docslength = parseInt(container.getAttribute("data-docslength"), 10)
 
-        if (next) {
-	  
+        if (
+          start + docslength < numfound
+        ) {
+            
+            href = datasourceURL + '&start=' + ( start + docslength )
+            
 	        if (Y.Array.indexOf(transactions, href) < 0 && !body.hasClass('io-loading')) {
+                
                 if (
                     body.scrollInfo.getScrollInfo().atBottom ||
                     (
                         Y.IdleTimer.isIdle() && pager.get('region').top - fold < body.get('winHeight')
                     )
                 ) {
-                    Y.io.queue(href)
+
+                  Y.jsonp(href, {
+                    on: {
+                      success: onSuccess,
+                      failure: onFailure,
+                      start: onStart,
+                      end: onEnd,         
+                      timeout: onTimeout
+                    },
+                    timeout: 3000
+                  })
+
                 }
             }
 
         }
     }
 
-    function onSuccess(transactionid, response) {
-
-        var parsedResponse
-
-        // store called to avoid making the request multiple times
-        transactions.push(href)     
+    function onSuccess(response) {
 
         try {
+        
+             // store called to avoid making the request multiple times
+             transactions.push(href)
 
-            parsedResponse = Y.JSON.parse(response.responseText)
+             container.setAttribute("data-numFound", response.response.numFound)
 
-            container.setAttribute("data-pages", parsedResponse.pages)
+             container.setAttribute("data-start", response.response.start)
 
-            container.setAttribute("data-page", parsedResponse.page + 1)
+             container.setAttribute("data-docsLength", response.response.docs.length)
+             
+             // highlighting object in Solr is not part of the document; find the document
+             // and add the highlight slash
+             Y.each(response.response.docs, function(item, index) {
+             
+                 response.response.docs[index].slash = response.response.docs[index].description
 
+             })
+            
+            // render HTML and append to container
             container.append(
-              template({ 
-                items: parsedResponse.articles
+              template({
+                items: response.response.docs
               })
             )
 
         }
         catch (e) {
-          
+            Y.log('error')
         }
-    }
-
-    function onFailure() {
-        
-        Y.io('./404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
-        
     }
 
     Y.IdleTimer.subscribe('idle', onScroll)
@@ -122,19 +150,32 @@ YUI().use(
     Y.on('available', onPaginatorAvailable, 'ul.pure-paginator')
 
     // Subscribe to "io:start".
-    Y.on('io:start', onStart, Y, transactions)
+    Y.on('io:start', onStart)
 
     // Subscribe to "io.success".
-    Y.on('io:success', onSuccess, Y, transactions)
+    Y.on('io:success', onSuccess)
 
     // Subscribe to "io.failure".
-    Y.on('io:failure', onFailure, Y, transactions)
+    Y.on('io:failure', onFailure)
 
     // Subscribe to "io.end".
-    Y.on('io:end', onEnd, Y, transactions)
+    Y.on('io:end', onEnd)
 
-    body.delegate('click', onClick, '.pager-next a')
+    // set the request URL
+    href = datasourceURL
+     
+    // make the first request
+    Y.jsonp(href, {
+        on: {
+            success: onSuccess,
+            failure: onFailure,
+            start: onStart,
+            end: onEnd,         
+            timeout: onTimeout
+        },
+        timeout: 3000
+    })
     
-    body.delegate('submit', onSubmit, 'form')    
+    body.delegate('submit', onSubmit, 'form')     
 
 })

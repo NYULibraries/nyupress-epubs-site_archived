@@ -163,8 +163,6 @@ YUI().use(
     // Subscribe to "io.end".
     Y.on('io:end', onEnd)
 
-    body.delegate('click', onClick, '.pager-next a')
-    
     // test for query string
     if (match && match[1]) {
     

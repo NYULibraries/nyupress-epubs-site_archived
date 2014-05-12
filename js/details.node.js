@@ -2,14 +2,11 @@ YUI().use(
     'node'
   , 'event'
   , 'io'
-  , 'jsonp'
-  , 'jsonp-url'  
   , 'json-parse'
   , 'handlebars'
   , function (Y) {
   
     var datasourceURL = 'http://localhost:3000/book/'
-      , datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:'
       , body = Y.one('body')
       , container = Y.one('.data-container')
       , transactions = []
@@ -21,10 +18,6 @@ YUI().use(
     function onFailure() {
         Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
     }
-    
-    function onTimeout() {
-      onFailure()
-    }    
 
     function onStart(id, response) {
         body.addClass('io-loading')
@@ -34,13 +27,17 @@ YUI().use(
         body.removeClass('io-loading')
     }
 
-    function onSuccess(response) {
+    function onSuccess(transactionid, response) {
+
+        var parsedResponse
 
         try {
+
+            parsedResponse = Y.JSON.parse(response.responseText)
             
             container.append(
               template({
-                items: response.response.docs
+                items: parsedResponse.article
               })
             )
 
@@ -63,16 +60,7 @@ YUI().use(
     Y.on('io:end', onEnd)
     
     if (match && match[1]) { 
-        Y.jsonp(datasourceURL + encodeURIComponent( match[1] ), {
-            on: {
-                success: onSuccess,
-                failure: onFailure,
-                start: onStart,
-                end: onEnd,         
-                timeout: onTimeout
-             },
-             timeout: 3000
-         })    
+        Y.io(datasourceURL + encodeURIComponent( match[1] ) )
      }
      else {
          onFailure()
