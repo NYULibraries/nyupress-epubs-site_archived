@@ -295,7 +295,7 @@ body.list-view .description {
 .item-link:hover .title {
     text-decoration: underline;
 }
-  
+
 .img_hold {
   display: table-cell;
   vertical-align: top;
@@ -376,7 +376,7 @@ h3 {
 
 .breadcrumb {
   font-size: small;
-  padding: 1em 2em 0 2em;
+  padding: 1em 2em;
   position: relative;
   top: 50px;  
 }
@@ -435,4 +435,16 @@ iframe {
   top: 50px; 
   padding: .5em 2em;
   font-size: small;
+}
+
+.main {
+  background: #fff;
+  position: relative; 
+  top: 50px;
+}
+
+
+.pure-menu-selected a, .pure-menu-selected a:visited, .pure-menu-selected a:active {
+    text-decoration: none;
+    color: #6fbef3;
 }
