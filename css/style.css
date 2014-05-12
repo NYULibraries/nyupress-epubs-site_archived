@@ -461,3 +461,9 @@ iframe {
   display: none;
   visibility: hidden;
 }
+
+
+.details-page .body {
+    max-width: 80%;
+    min-width: initial;
+}
