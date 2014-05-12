@@ -444,7 +444,6 @@ iframe {
   top: 50px;
 }
 
-
 .pure-menu-selected a, .pure-menu-selected a:visited, .pure-menu-selected a:active {
     text-decoration: none;
     color: #6fbef3;
@@ -455,13 +454,10 @@ iframe {
 }
 
 .more-books {
-  display: none;
-  visibility: hidden;
-  text-align: center;
   text-align: center;
 }
 
-.io-loading .more-books {
-  display: block;
-  visibility: visible;
+.io-loading .more-books, .io-done .more-books {
+  display: none;
+  visibility: hidden;
 }

@@ -101,6 +101,13 @@ YUI().use(
             }
 
         }
+        
+        else {
+
+            body.addClass('io-done')
+
+        }        
+        
     }
 
     function onSuccess(response) {
