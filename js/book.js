@@ -13,7 +13,8 @@ YUI().use(
     
     if (match && match[1]) {
 
-        bookURL = 'http://localhost:8080/?epub=epub_content/' + encodeURIComponent(match[1]) + '&embedded=true'
+        // bookURL = 'http://localhost:8080/?epub=epub_content/' + encodeURIComponent(match[1]) + '&embedded=true'
+        bookURL = 'http://dev-dl-pa.home.nyu.edu/NYUPressOA/?epub=epub_content/' + encodeURIComponent(match[1]) + '&embedded=true'
 
         iframe.set('src', bookURL)
 
