@@ -19,14 +19,13 @@ YUI().use(
       , loadMoreButton = Y.one('.pure-button.loading')
       , searchString = '*:*'
       , transactions = []
-      , href
       , pager = Y.one('ul.pure-paginator')
       , fold = 200
       , source   = Y.one('#list-template').getHTML()
       , template = Y.Handlebars.compile(source)
       
     function onFailure() {
-        Y.log('onFailure')
+        Y.log('onFailure') // leave here for now
         // Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
     }
     
@@ -53,19 +52,29 @@ YUI().use(
         location.href = currentTarget.get('action') + '/' + value.get('value')
     }    
     
-    function onScroll(e) {
+    function onScroll() {
     
+        var numfound = 0
+          , start = 0
+          , docslength = 0
+          , next = 0
+          , href          
+
         if (body.hasClass('io-done')) return
+          
+        numfound = parseInt(container.getAttribute("data-numfound"), 10)
+
+        start = parseInt(container.getAttribute("data-start"), 10)
+
+        docslength = parseInt(container.getAttribute("data-docslength"), 10)
         
-        var numfound = parseInt(container.getAttribute("data-numfound"), 10)
-          , start = parseInt(container.getAttribute("data-start"), 10)
-          , docslength = parseInt(container.getAttribute("data-docslength"), 10)
+        next = ( start + docslength )
 
         if (
-          start + docslength <= numfound
+          next <= numfound
         ) {
-            
-            href = datasourceURL + '&start=' + ( start + docslength )
+        
+            href = datasourceURL + '&start=' + next
             
 	        if (Y.Array.indexOf(transactions, href) < 0 && !body.hasClass('io-loading')) {
                 
@@ -75,10 +84,8 @@ YUI().use(
                         Y.IdleTimer.isIdle() && pager.get('region').top - fold < body.get('winHeight')
                     )
                 ) {
-                  
+             
                   body.addClass('io-loading')
-                  
-                  loadMoreButton.addClass('pure-button-disabled')
                   
                   Y.jsonp(href, {
                     on: {
@@ -122,16 +129,13 @@ YUI().use(
             
             if (start + docslength === numfound) body.addClass('io-done')
 
-
-            Y.log(response.response.start + response.response.docs.length)
-                        
             body.removeClass('io-loading')
             
             loadMoreButton.removeClass('pure-button-disabled')
 
         }
         catch (e) {
-            Y.log('error')
+            Y.log('error') // leave here for now
         }
     }
 
@@ -145,13 +149,8 @@ YUI().use(
 
     body.scrollInfo.on({ scroll: onScroll })
 
-    Y.on('available', onPaginatorAvailable, 'ul.pure-paginator')
-
-    // set the request URL
-    href = datasourceURL
-     
     // make the first request
-    Y.jsonp(href, {
+    Y.jsonp(datasourceURL, {
         on: {
             success: onSuccess,
             failure: onFailure,
@@ -163,5 +162,7 @@ YUI().use(
     loadMoreButton.on('click', onClick)
     
     body.delegate('submit', onSubmit, 'form')     
+    
+    pager.on('available', onPaginatorAvailable)    
 
 })

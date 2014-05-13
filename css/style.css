@@ -392,6 +392,8 @@ h3 {
 
 iframe {
   width: 100%;
+  position: fixed;
+  border: none;
 }
 
 .details-page .content-wrapper {

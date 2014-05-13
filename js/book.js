@@ -1,33 +1,33 @@
 YUI().use(
     'node'
-  , 'event'
   , function (Y) {
+  
+    'use strict'  
 
-    var body = Y.one('body')
+    var topOffsetHeight = Y.one('.home-menu').get('offsetHeight')
       , iframe = Y.one('iframe')
-      , transactions = []
-      , patt = /\/book\/(.*)/
-      , match = location.pathname.match(patt)
+      , match = location.pathname.match(/\/book\/(.*)/)
       , viewport = Y.DOM.viewportRegion()
-      , bookURL
+      , src
     
-    if (match && match[1]) {
+    iframe.setStyles({
+      top: topOffsetHeight,
+      height: viewport.height - topOffsetHeight
+    })
 
-        // bookURL = 'http://localhost:8080/?epub=epub_content/' + encodeURIComponent(match[1]) + '&embedded=true'
-        bookURL = 'http://dev-dl-pa.home.nyu.edu/NYUPressOA/simpleviewer.html?epub=epub_content/' + encodeURIComponent(match[1]) + '&embedded=true'
+    if (
+        match 
+        && 
+        match[1]
+    ) {
 
-        iframe.set('src', bookURL)
-
-        iframe.setStyles({
-            top: Y.one('.home-menu').get('offsetHeight'),
-            position: "fixed",
-            border: "none",      
-            height: viewport.height - Y.one('.home-menu').get('offsetHeight')
-        })
+        src = 'http://dev-dl-pa.home.nyu.edu/NYUPressOA/simpleviewer.html?epub=epub_content/' + encodeURIComponent(match[1]) + '&embedded=true'
 
     }
     else {
-        Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
+        src = '../404.html'
     }
+    
+    iframe.set('src', src)
 
 })

@@ -11,7 +11,7 @@ YUI().use(
   , function (Y) {
 
     'use strict'
-    
+
     var datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref&q='
       , body = Y.one('body')
       , container = Y.one('#a')
@@ -23,8 +23,7 @@ YUI().use(
       , href
       , pager = Y.one('ul.pure-paginator')
       , fold = 200
-      , patt = /\/search\/(.*)/
-      , match = location.pathname.match(patt)      
+      , match = location.pathname.match(/\/search\/(.*)/)      
       , source   = Y.one('#list-template').getHTML()
       , template = Y.Handlebars.compile(source)
 
@@ -46,16 +45,6 @@ YUI().use(
         if (this.get('region').top - fold < body.get('winHeight')) onScroll()
     }
 
-    function onSubmit(e) {
-        
-        e.preventDefault()
-        
-        var currentTarget = e.currentTarget
-          , value = Y.one('.pure-input')
-        
-        location.href = currentTarget.get('action') + '/' + value.get('value')
-    }    
-    
     function onScroll(e) {
     
         if (body.hasClass('io-done')) return
@@ -107,7 +96,7 @@ YUI().use(
               , start = parseInt(response.response.start, 10)
               , docslength = parseInt(response.response.docs.length, 10)        
         
-             // store called to avoid making the request multiple times
+             // store response url to avoid making multiple request to the same source
              transactions.push(this.url)
 
              container.setAttribute("data-numFound", numfound)
@@ -117,7 +106,7 @@ YUI().use(
              container.setAttribute("data-docsLength", docslength)
              
              // set the number of items found
-             totalFound.set('text', response.response.numFound)
+             totalFound.set('text', numfound)
              
              // show the number of items found
              totalFound.removeClass('hidden')
@@ -164,8 +153,6 @@ YUI().use(
 
     body.scrollInfo.on({ scroll: onScroll })
 
-    Y.on('available', onPaginatorAvailable, 'ul.pure-paginator')
-
     // test for query string
     if (match && match[1]) {
     
@@ -180,11 +167,8 @@ YUI().use(
          query.set('text', 'All titles')
      }
      
-    // set the request URL
-    href = datasourceURL + encodeURIComponent(searchString)
-    
     // make the first request
-    Y.jsonp(href, {
+    Y.jsonp(datasourceURL + encodeURIComponent(searchString), {
         on: {
             success: onSuccess,
             failure: onFailure,
@@ -195,6 +179,6 @@ YUI().use(
     
     loadMoreButton.on('click', onClick)
     
-    body.delegate('submit', onSubmit, 'form')     
+    pager.on('available', onPaginatorAvailable)
 
 })
