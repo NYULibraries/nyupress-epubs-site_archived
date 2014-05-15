@@ -157,7 +157,7 @@ YUI().use(
     if (match && match[1]) {
     
          // query string found
-         searchString = match[1].toLowerCase()
+         searchString = decodeURIComponent(match[1].toLowerCase())
          
          // update the title of the page
          query.set('text', searchString)
@@ -168,7 +168,7 @@ YUI().use(
      }
      
     // make the first request
-    Y.jsonp(datasourceURL + encodeURIComponent(searchString), {
+    Y.jsonp(datasourceURL + searchString, {
         on: {
             success: onSuccess,
             failure: onFailure,
