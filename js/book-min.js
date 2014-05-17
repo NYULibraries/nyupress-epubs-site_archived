@@ -1,1 +1,0 @@
-YUI().use("node",function(e){"use strict";var t=e.one(".home-menu").get("offsetHeight"),n=e.one("iframe"),r=location.pathname.match(/\/book\/(.*)/),i=e.DOM.viewportRegion(),s;n.setStyles({top:t,height:i.height-t}),r&&r[1]?s="http://dev-dl-pa.home.nyu.edu/NYUPressOA/simpleviewer.html?epub=epub_content/"+encodeURIComponent(r[1])+"&embedded=true":s="../404.html",n.set("src",s)});

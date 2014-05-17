@@ -7,23 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
-  <link rel="stylesheet" href="../css/style-min.css">
-  <script src="http://yui.yahooapis.com/3.15.0/build/yui/yui-min.js"></script>  
-  <script id="list-template" type="text/x-handlebars-template">
+  <style>body{line-height:1.7em;color:#7f8c8d;font-size:13px}h1,h2,h3,h4,h5,h6,label{color:#34495e}.pure-img-responsive{max-width:100%;height:auto}.pure-button{background-color:#1f8dd6;color:white;padding:.5em 2em}.home-menu{padding:.5em;text-align:center;box-shadow:0 1px 1px rgba(0,0,0,0.10)}.home-menu.pure-menu-open{background:#2d3e50}.pure-menu.pure-menu-open.pure-menu-fixed{border-bottom:0;z-index:4}.home-menu .pure-menu-heading{color:white;font-weight:400;font-size:120%}.home-menu .pure-menu-selected a{color:white}.home-menu a{color:#6fbef3}.home-menu li a:hover,.home-menu li a:focus{background:0;border:0;color:#aecfe5}.content-head{font-weight:400;text-transform:uppercase;letter-spacing:.1em;margin:2em 0 1em}.content-head-ribbon{color:white}.content-subhead{color:#1f8dd6}.content-subhead i{margin-right:7px}.ribbon{background:#2d3e50;color:#aaa}.footer{background:#111}@media(min-width:48em){body{font-size:16px}.content{padding:1em}.home-menu{text-align:left}.splash{width:50%;height:50%}.splash-head{font-size:250%}.l-box-lrg{border:0}}h1,h2,h3,h4,h5,h6{margin:0;padding:0;font-weight:normal}.library-container{margin:0 auto 0;width:auto;position:static;max-width:800px}.library-container h2.page-title{padding:3rem 10px 0;font:normal 16px/1 Helvetica,sans-serif;border-bottom:1px solid #999;color:#434343}.library-items.row,.library-items{display:table;margin:0}.library-items{margin-top:20px}.library-items .title,.library-items .author{white-space:normal}body.list-view #app-container .library-item{height:auto;display:table-row;vertical-align:top;float:none;clear:both;padding:0}body.list-view #app-container .library-item:nth-child(odd){background:#f6f6f6}body.list-view .img_hold{display:table-cell;vertical-align:top;width:110px;padding:10px 10px 10px 0}body.list-view #app-container .library-item img{margin:0;position:static;width:100%;max-width:100%;height:auto;display:block}.details-body{height:auto}.details-body-page{margin-top:3rem;height:auto}.details-body-page .book-title{line-height:1.2;padding-bottom:5px}.details-body-page .img-hold{float:left;margin-right:15px;width:25%;max-width:200px;height:auto}.details-body-page .img-hold img{width:100%;height:auto}.details-body-page .infolabel{color:#999}.details-body-page .item-link{float:right;margin:20px}.no-cover-nyup{background-color:#61777d}#app-container{padding:0 10px;-webkit-overflow-scrolling:touch}body.list-view #app-container .library-item .buttons{float:right;position:static;width:auto;padding-top:20px}body.list-view #app-container .library-item .book-info .title,h4{margin:0;color:#6fa64d;font-weight:300;font-size:20px;line-height:1.2;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}body.list-view #app-container .library-item a.details{margin-right:30px;margin-top:0}body.list-view #app-container .library-item .buttons a.btn{display:inline-block}body.list-view #app-container .library-item .book-info{margin:0;max-height:290px;height:auto;position:static;vertical-align:top;padding:10px;display:table-cell;float:none}body.list-view .author{margin-top:0;padding-bottom:5px;line-height:1.8;font-size:16px;color:#555}body.list-view .description{font:14px/1.4 Arial;color:#333}.item-link{display:block}.item-link:hover,.item-link:hover .description{text-decoration:none;color:#333}.item-link:hover .title{text-decoration:underline}.img_hold{display:table-cell;vertical-align:top;padding:0 10px 10px 0}.home .img_hold{width:170px}.img-responsive{display:block;vertical-align:top;height:auto;max-width:100%}.body{max-width:80%;min-width:80%}.loading-more{display:none;visibility:hidden}.home .content-wrapper{position:absolute;top:initial;width:100%;min-height:12%;z-index:2;background:white}.ribbon{background:#2c4985;padding:2em}.ribbon h3{padding:1em 0 1em}a:link,a:visited{color:#777}.buttons a:link,.buttons a:visited,a.button-more:link,a.button-more:visited{color:#fff}h4 a:link,h4 a:visited{color:#6fa64d}.caption.buttons{float:right}.caption.buttons a{margin-right:.5em}h3{margin-top:1em;color:white;margin-bottom:.5em}.pure-form input[type]{width:70%}.data-container{padding:1em 2em 0 2em}.breadcrumb{font-size:small;padding:1em 2em;position:relative;top:50px}.details-page .img-hold{float:left;margin-right:15px;width:25%;max-width:200px;height:auto}iframe{width:100%;position:fixed;border:0}.details-page .content-wrapper{position:relative;top:50px}.home .content-wrapper .ribbon p{padding-right:1em}.search .content-wrapper{position:relative;top:50px}.page.book{position:fixed;border:0}.container{padding-right:2em;padding-left:2em}.bottom{margin-top:1em;position:relative;top:50px;background:#2d3e50}.bottom h2{color:#fff;margin-top:1em}.footer{background:#fff;position:relative;top:50px;padding:.5em 2em;font-size:small}.main{background:#fff;position:relative;top:50px}.pure-menu-selected a,.pure-menu-selected a:visited,.pure-menu-selected a:active{text-decoration:none;color:#6fbef3}.pure-button.loading{background-color:#e6e6e6}.more-books{text-align:center}.io-loading .more-books,.io-done .more-books{display:none;visibility:hidden}.details-page .body{max-width:80%;min-width:initial}</style>
+  <script src="http://yui.yahooapis.com/3.15.0/build/yui/yui-min.js"></script>  <script id="list-template" type="text/x-handlebars-template">
     {{#items}}
       <div class="pure-g library-item">
         <div class="pure-u">
           <div class="img_hold">
-            <a href="../book/{{identifier}}"><img class="img-responsive" src="http://dev-dl-pa.home.nyu.edu/NYUPressOA/{{coverHref}}" alt="" title="{{title}}"/></a>
+            <a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/book/{{identifier}}"><img class="img-responsive" src="http://dev-dl-pa.home.nyu.edu/NYUPressOA/{{coverHref}}" alt="" title="{{title}}"/></a>
           </div>
         </div>
         <div class="pure-u body">
-          <h4><a href="../book/{{identifier}}">{{title}}</a></h4>
+          <h4><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/book/{{identifier}}">{{title}}</a></h4>
           <div>by {{author}}</div>
-         <p>{{{slash}}}</p>
+          <p>{{{slash}}}</p>
           <div class="caption buttons">
-            <a class="pure-button" href="../book/{{identifier}}">Read</a>
-            <a class="pure-button" href="../details/{{identifier}}">View Details</a>
+            <a class="pure-button" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/book/{{identifier}}">Read</a>
+            <a class="pure-button" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}">View Details</a>
           </div>
         </div>
       </div>
@@ -32,19 +31,17 @@
 </head>
 <body class="home search">
   
-  <div class="header">
-    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-      <a class="pure-menu-heading" href="../">Open Access Books</a>
-      <ul>
-        <li class="pure-menu-selected"><a href="../">Home</a></li>
-        <li><a href="../about">About</a></li>
-      </ul>
-    </div>
-  </div>
+  <div class="header"><div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+  <a class="pure-menu-heading" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Open Access Books</a>
+  <ul>
+    <li class="pure-menu-selected"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Home</a></li>
+    <li><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/about">About</a></li>
+  </ul>
+</div></div>
 
   <div class="pure-g">
     <div class="pure-u-1 breadcrumb">
-      <span class="page-title"><a href="../">Home</a> &gt; Search &gt; <span class="query"></span></span>
+      <span class="page-title"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Home</a> &gt; Search &gt; <span class="query"></span></span>
     </div>
   </div>
 
@@ -77,14 +74,13 @@
     </div>
   </div>  
 
-  <div class="pure-g container footer">
-    <div class="pure-u-1">
-      <p>Powered by <a href="http://dlib.nyu.edu/dlts/">NYU Digital Library Technology Services</a></p>
-    </div>
-  </div>  
+  <div class="pure-g container footer"><div class="pure-u-1">
+  <p>Powered by <a href="http://dlib.nyu.edu/dlts/">NYU Digital Library Technology Services</a></p>
+</div></div>
 
 </div>
 
-<script src="../js/search-min.js"></script>
+<script>YUI().use("node","event","io","node-scroll-info","handlebars","json-parse","jsonp","jsonp-url","gallery-idletimer",function(Y){"use strict";var datasourceURL="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref&q=",body=Y.one("body"),container=Y.one("#a"),query=Y.one(".query"),loadMoreButton=Y.one(".pure-button.loading"),totalFound=Y.one(".total-found"),searchString="*:*",transactions=[],href,pager=Y.one("ul.pure-paginator"),fold=200,match=location.pathname.match(/\/search\/(.*)/),source=Y.one("#list-template").getHTML(),template=Y.Handlebars.compile(source);function onFailure(){Y.log("onFailure")}function onTimeout(){onFailure()}function onClick(e){e.preventDefault();onScroll()}function onPaginatorAvailable(){if(this.get("region").top-fold<body.get("winHeight"))onScroll()}function onScroll(e){if(body.hasClass("io-done"))return;var numfound=parseInt(container.getAttribute("data-numfound"),10),start=parseInt(container.getAttribute("data-start"),10),docslength=parseInt(container.getAttribute("data-docslength"),10);if(start+docslength<=numfound){href=datasourceURL+searchString+"&start="+(start+docslength);if(Y.Array.indexOf(transactions,href)<0&&!body.hasClass("io-loading")){if(body.scrollInfo.getScrollInfo().atBottom||Y.IdleTimer.isIdle()&&pager.get("region").top-fold<body.get("winHeight")){body.addClass("io-loading");loadMoreButton.addClass("pure-button-disabled");Y.jsonp(href,{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3})}}}}function onSuccess(response){try{var numfound=parseInt(response.response.numFound,10),start=parseInt(response.response.start,10),docslength=parseInt(response.response.docs.length,10);transactions.push(this.url);container.setAttribute("data-numFound",numfound);container.setAttribute("data-start",start);container.setAttribute("data-docsLength",docslength);totalFound.set("text",numfound);totalFound.removeClass("hidden");Y.each(response.response.docs,function(item,index){if(response.highlighting&&response.highlighting[item.identifier].description){response.response.docs[index].slash=response.highlighting[item.identifier].description[0]}else{response.response.docs[index].slash=response.response.docs[index].description}});container.append(template({items:response.response.docs}));if(start+docslength===numfound)body.addClass("io-done");body.removeClass("io-loading");loadMoreButton.removeClass("pure-button-disabled")}catch(e){Y.log("error")}}Y.IdleTimer.subscribe("idle",onScroll);Y.IdleTimer.start(5e3);body.plug(Y.Plugin.ScrollInfo,{scrollMargin:fold});body.scrollInfo.on({scroll:onScroll});if(match&&match[1]){searchString=decodeURIComponent(match[1].toLowerCase());query.set("text",searchString)}else{query.set("text","All titles")}Y.jsonp(datasourceURL+searchString,{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3});loadMoreButton.on("click",onClick);pager.on("available",onPaginatorAvailable)});</script>
+
 </body>
 </html>
