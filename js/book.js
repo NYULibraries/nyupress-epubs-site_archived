@@ -4,7 +4,8 @@ YUI().use(
   
     'use strict'  
 
-    var topOffsetHeight = Y.one('.home-menu').get('offsetHeight')
+    var body = Y.one('body')
+      , topOffsetHeight = Y.one('.home-menu').get('offsetHeight')
       , iframe = Y.one('iframe')
       , match = location.pathname.match(/\/book\/(.*)/)
       , viewport = Y.DOM.viewportRegion()
@@ -21,11 +22,11 @@ YUI().use(
         match[1]
     ) {
 
-        src = 'http://dev-dl-pa.home.nyu.edu/NYUPressOA/simpleviewer.html?epub=epub_content/' + encodeURIComponent(match[1]) + '&embedded=true'
+        src = body.getAttribute('data-readium') + '/simpleviewer.html?epub=epub_content/' + encodeURIComponent(match[1]) + '&embedded=true'
 
     }
     else {
-        src = '../404.html'
+        src = body.getAttribute('data-app') + '/404.html'
     }
     
     iframe.set('src', src)

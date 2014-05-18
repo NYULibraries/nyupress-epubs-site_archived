@@ -35,27 +35,23 @@
     {{/items}}
   </script>    
 </head>
-<body class="details-page page">
+<body class="details-page page" data-app="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site" data-discovery="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress">
 <div>
-  
   <div class="header"><div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
   <a class="pure-menu-heading" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Open Access Books</a>
   <ul>
-    <li class="pure-menu-selected"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Home</a></li>
+    <li><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Home</a></li>
     <li><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/about">About</a></li>
   </ul>
 </div></div>
-    
   <div class="pure-g breadcrumb">
     <div class="pure-u-1">
       <span class="page-title"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Home</a> &gt; Book details</span>
     </div>
   </div>
-  
   <div class="content-wrapper">
     <div class="data-container"></div>
   </div>
-  
   <div class="pure-g container bottom">
     <div class="pure-u-1">
       <h2>Contact Us</h2>
@@ -64,13 +60,10 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
     </div>
   </div>
-
   <div class="pure-g container footer"><div class="pure-u-1">
   <p>Powered by <a href="http://dlib.nyu.edu/dlts/">NYU Digital Library Technology Services</a></p>
 </div></div>
-  
 </div>
-  
-  <script>YUI().use("node","event","io","jsonp","jsonp-url","json-parse","handlebars",function(Y){"use strict";var datasourceURL="http://localhost:3000/book/",datasourceURL="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:",body=Y.one("body"),container=Y.one(".data-container"),match=location.pathname.match(/\/details\/(.*)/),source=Y.one("#list-template").getHTML(),template=Y.Handlebars.compile(source);function onFailure(){Y.io("../404.html",{on:{success:function(transactionid,response){container.append(response.response)}}})}function onTimeout(){onFailure()}function onSuccess(response){try{container.append(template({items:response.response.docs}));body.removeClass("io-loading")}catch(e){onFailure()}}if(match&&match[1]){body.addClass("io-loading");Y.jsonp(datasourceURL+encodeURIComponent(match[1]),{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3})}else{onFailure()}});</script>
+<script>YUI().use("node","event","io","jsonp","jsonp-url","json-parse","handlebars",function(Y){"use strict";var body=Y.one("body"),container=Y.one(".data-container"),datasourceURL=body.getAttribute("data-discovery")+"/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:",match=location.pathname.match(/\/details\/(.*)/),source=Y.one("#list-template").getHTML(),template=Y.Handlebars.compile(source);function onFailure(){Y.io(body.getAttribute("data-app")+"/404.html",{on:{success:function(transactionid,response){container.append(response.response)}}})}function onTimeout(){onFailure()}function onSuccess(response){try{container.append(template({items:response.response.docs}));body.removeClass("io-loading")}catch(e){onFailure()}}if(match&&match[1]){body.addClass("io-loading");Y.jsonp(datasourceURL+encodeURIComponent(match[1]),{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3})}else{onFailure()}});</script>
 </body>
 </html>

@@ -12,11 +12,11 @@ YUI().use(
 
     'use strict'
     
-    var datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref'
-      , body = Y.one('body')
+    var body = Y.one('body')
       , container = Y.one('#a')
       , query = Y.one('.query')
       , loadMoreButton = Y.one('.pure-button.loading')
+      , datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref'      
       , searchString = '*:*'
       , transactions = []
       , pager = Y.one('ul.pure-paginator')
@@ -26,7 +26,6 @@ YUI().use(
       
     function onFailure() {
         Y.log('onFailure') // leave here for now
-        // Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
     }
     
     function onTimeout() {

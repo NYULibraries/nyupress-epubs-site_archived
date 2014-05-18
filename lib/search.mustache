@@ -25,16 +25,13 @@
     {{/items}}
   </script>  
 </head>
-<body class="home search">
-  
+<body class="home search" data-app="<% appUrl %>" data-discovery="<% discovery %>">
   <div class="header"><%> header %></div>
-
   <div class="pure-g">
     <div class="pure-u-1 breadcrumb">
       <span class="page-title"><a href="<% appUrl %>/">Home</a> &gt; Search &gt; <span class="query"></span></span>
     </div>
   </div>
-
   <div class="content-wrapper">
     <div class="pure-g data-container">
       <div class="pure-u-1">
@@ -46,15 +43,12 @@
       </div>
     </div>
   </div>
-  
   <ul class="pure-paginator"></ul>      
-
   <div class="pure-g container more-books">
     <div class="pure-u-1">
       <a href="#" class="pure-button loading">More books</a>
     </div>
   </div>
-
   <div class="pure-g container bottom">
     <div class="pure-u-1">
       <h2>Contact Us</h2>
@@ -63,12 +57,8 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
     </div>
   </div>  
-
   <div class="pure-g container footer"><%> footer %></div>
-
 </div>
-
 <%={{ }}=%><script>{{{js}}}</script>
-
 </body>
 </html>

@@ -12,12 +12,12 @@ YUI().use(
 
     'use strict'
 
-    var datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref&q='
-      , body = Y.one('body')
+    var body = Y.one('body')
       , container = Y.one('#a')
       , query = Y.one('.query')
       , loadMoreButton = Y.one('.pure-button.loading')
       , totalFound = Y.one('.total-found')      
+      , datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref&q='
       , searchString = '*:*'
       , transactions = []
       , href
@@ -29,7 +29,6 @@ YUI().use(
 
     function onFailure() {
         Y.log('onFailure')
-        // Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
     }
     
     function onTimeout() {

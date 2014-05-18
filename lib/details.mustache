@@ -31,21 +31,17 @@
     {{/items}}
   </script>    
 </head>
-<body class="details-page page">
+<body class="details-page page" data-app="<% appUrl %>" data-discovery="<% discovery %>">
 <div>
-  
   <div class="header"><%> header %></div>
-    
   <div class="pure-g breadcrumb">
     <div class="pure-u-1">
       <span class="page-title"><a href="<% appUrl %>/">Home</a> &gt; Book details</span>
     </div>
   </div>
-  
   <div class="content-wrapper">
     <div class="data-container"></div>
   </div>
-  
   <div class="pure-g container bottom">
     <div class="pure-u-1">
       <h2>Contact Us</h2>
@@ -54,11 +50,8 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
     </div>
   </div>
-
   <div class="pure-g container footer"><%> footer %></div>
-  
 </div>
-  
-  <%={{ }}=%><script>{{{js}}}</script>
+<%={{ }}=%><script>{{{js}}}</script>
 </body>
 </html>

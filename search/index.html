@@ -29,22 +29,19 @@
     {{/items}}
   </script>  
 </head>
-<body class="home search">
-  
+<body class="home search" data-app="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site" data-discovery="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress">
   <div class="header"><div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
   <a class="pure-menu-heading" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Open Access Books</a>
   <ul>
-    <li class="pure-menu-selected"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Home</a></li>
+    <li><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Home</a></li>
     <li><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/about">About</a></li>
   </ul>
 </div></div>
-
   <div class="pure-g">
     <div class="pure-u-1 breadcrumb">
       <span class="page-title"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/">Home</a> &gt; Search &gt; <span class="query"></span></span>
     </div>
   </div>
-
   <div class="content-wrapper">
     <div class="pure-g data-container">
       <div class="pure-u-1">
@@ -56,15 +53,12 @@
       </div>
     </div>
   </div>
-  
   <ul class="pure-paginator"></ul>      
-
   <div class="pure-g container more-books">
     <div class="pure-u-1">
       <a href="#" class="pure-button loading">More books</a>
     </div>
   </div>
-
   <div class="pure-g container bottom">
     <div class="pure-u-1">
       <h2>Contact Us</h2>
@@ -73,14 +67,10 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
     </div>
   </div>  
-
   <div class="pure-g container footer"><div class="pure-u-1">
   <p>Powered by <a href="http://dlib.nyu.edu/dlts/">NYU Digital Library Technology Services</a></p>
 </div></div>
-
 </div>
-
-<script>YUI().use("node","event","io","node-scroll-info","handlebars","json-parse","jsonp","jsonp-url","gallery-idletimer",function(Y){"use strict";var datasourceURL="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref&q=",body=Y.one("body"),container=Y.one("#a"),query=Y.one(".query"),loadMoreButton=Y.one(".pure-button.loading"),totalFound=Y.one(".total-found"),searchString="*:*",transactions=[],href,pager=Y.one("ul.pure-paginator"),fold=200,match=location.pathname.match(/\/search\/(.*)/),source=Y.one("#list-template").getHTML(),template=Y.Handlebars.compile(source);function onFailure(){Y.log("onFailure")}function onTimeout(){onFailure()}function onClick(e){e.preventDefault();onScroll()}function onPaginatorAvailable(){if(this.get("region").top-fold<body.get("winHeight"))onScroll()}function onScroll(e){if(body.hasClass("io-done"))return;var numfound=parseInt(container.getAttribute("data-numfound"),10),start=parseInt(container.getAttribute("data-start"),10),docslength=parseInt(container.getAttribute("data-docslength"),10);if(start+docslength<=numfound){href=datasourceURL+searchString+"&start="+(start+docslength);if(Y.Array.indexOf(transactions,href)<0&&!body.hasClass("io-loading")){if(body.scrollInfo.getScrollInfo().atBottom||Y.IdleTimer.isIdle()&&pager.get("region").top-fold<body.get("winHeight")){body.addClass("io-loading");loadMoreButton.addClass("pure-button-disabled");Y.jsonp(href,{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3})}}}}function onSuccess(response){try{var numfound=parseInt(response.response.numFound,10),start=parseInt(response.response.start,10),docslength=parseInt(response.response.docs.length,10);transactions.push(this.url);container.setAttribute("data-numFound",numfound);container.setAttribute("data-start",start);container.setAttribute("data-docsLength",docslength);totalFound.set("text",numfound);totalFound.removeClass("hidden");Y.each(response.response.docs,function(item,index){if(response.highlighting&&response.highlighting[item.identifier].description){response.response.docs[index].slash=response.highlighting[item.identifier].description[0]}else{response.response.docs[index].slash=response.response.docs[index].description}});container.append(template({items:response.response.docs}));if(start+docslength===numfound)body.addClass("io-done");body.removeClass("io-loading");loadMoreButton.removeClass("pure-button-disabled")}catch(e){Y.log("error")}}Y.IdleTimer.subscribe("idle",onScroll);Y.IdleTimer.start(5e3);body.plug(Y.Plugin.ScrollInfo,{scrollMargin:fold});body.scrollInfo.on({scroll:onScroll});if(match&&match[1]){searchString=decodeURIComponent(match[1].toLowerCase());query.set("text",searchString)}else{query.set("text","All titles")}Y.jsonp(datasourceURL+searchString,{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3});loadMoreButton.on("click",onClick);pager.on("available",onPaginatorAvailable)});</script>
-
+<script>YUI().use("node","event","io","node-scroll-info","handlebars","json-parse","jsonp","jsonp-url","gallery-idletimer",function(Y){"use strict";var body=Y.one("body"),container=Y.one("#a"),query=Y.one(".query"),loadMoreButton=Y.one(".pure-button.loading"),totalFound=Y.one(".total-found"),datasourceURL=body.getAttribute("data-discovery")+"/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref&q=",searchString="*:*",transactions=[],href,pager=Y.one("ul.pure-paginator"),fold=200,match=location.pathname.match(/\/search\/(.*)/),source=Y.one("#list-template").getHTML(),template=Y.Handlebars.compile(source);function onFailure(){Y.log("onFailure")}function onTimeout(){onFailure()}function onClick(e){e.preventDefault();onScroll()}function onPaginatorAvailable(){if(this.get("region").top-fold<body.get("winHeight"))onScroll()}function onScroll(e){if(body.hasClass("io-done"))return;var numfound=parseInt(container.getAttribute("data-numfound"),10),start=parseInt(container.getAttribute("data-start"),10),docslength=parseInt(container.getAttribute("data-docslength"),10);if(start+docslength<=numfound){href=datasourceURL+searchString+"&start="+(start+docslength);if(Y.Array.indexOf(transactions,href)<0&&!body.hasClass("io-loading")){if(body.scrollInfo.getScrollInfo().atBottom||Y.IdleTimer.isIdle()&&pager.get("region").top-fold<body.get("winHeight")){body.addClass("io-loading");loadMoreButton.addClass("pure-button-disabled");Y.jsonp(href,{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3})}}}}function onSuccess(response){try{var numfound=parseInt(response.response.numFound,10),start=parseInt(response.response.start,10),docslength=parseInt(response.response.docs.length,10);transactions.push(this.url);container.setAttribute("data-numFound",numfound);container.setAttribute("data-start",start);container.setAttribute("data-docsLength",docslength);totalFound.set("text",numfound);totalFound.removeClass("hidden");Y.each(response.response.docs,function(item,index){if(response.highlighting&&response.highlighting[item.identifier].description){response.response.docs[index].slash=response.highlighting[item.identifier].description[0]}else{response.response.docs[index].slash=response.response.docs[index].description}});container.append(template({items:response.response.docs}));if(start+docslength===numfound)body.addClass("io-done");body.removeClass("io-loading");loadMoreButton.removeClass("pure-button-disabled")}catch(e){Y.log("error")}}Y.IdleTimer.subscribe("idle",onScroll);Y.IdleTimer.start(5e3);body.plug(Y.Plugin.ScrollInfo,{scrollMargin:fold});body.scrollInfo.on({scroll:onScroll});if(match&&match[1]){searchString=decodeURIComponent(match[1].toLowerCase());query.set("text",searchString)}else{query.set("text","All titles")}Y.jsonp(datasourceURL+searchString,{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3});loadMoreButton.on("click",onClick);pager.on("available",onPaginatorAvailable)});</script>
 </body>
 </html>

@@ -10,16 +10,15 @@ YUI().use(
   
     'use strict'  
   
-    var datasourceURL = 'http://localhost:3000/book/'
-      , datasourceURL = 'http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:'
-      , body = Y.one('body')
+    var body = Y.one('body')
       , container = Y.one('.data-container')
+      , datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:'
       , match = location.pathname.match(/\/details\/(.*)/)      
       , source   = Y.one('#list-template').getHTML()
       , template = Y.Handlebars.compile(source)
 
     function onFailure() {
-        Y.io('../404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
+        Y.io( body.getAttribute('data-app') + '/404.html', { on : { success : function(transactionid, response) { container.append(response.response) } } } )
     }
     
     function onTimeout() {
