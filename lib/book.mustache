@@ -3,11 +3,12 @@
 <html>
 <head>
   <title>NYU Press: <% title %></title>
-  <%> head %>
+	 <%> head %>
 </head>
 <body class="page book" data-app="<% appUrl %>" data-readium="<% readiumUrl %>">
   <div class="header"><%> header %></div>
-  <iframe allowfullscreen mozallowfullscreen webkitallowfullscreen></iframe>
-  <%={{ }}=%><script>{{{js}}}</script>
+  <iframe style="width:100%" allowfullscreen mozallowfullscreen webkitallowfullscreen seamless="seamless" frameBorder="0"></iframe>
+  <%> footer %>
+ <script src="<% appUrl %>/js/book.js"></script>
 </body>
 </html>

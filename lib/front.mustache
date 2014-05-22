@@ -5,66 +5,40 @@
   <title>NYU Press: <% title %></title>
   <%> head %>
   <script id="list-template" type="text/x-handlebars-template">
-    {{#items}}
-      <div class="pure-g library-item">
-        <div class="pure-u">
+  {{#items}}
+      <div class="library-item">
           <div class="img_hold">
-            <a href="<% appUrl %>/book/{{identifier}}"><img class="img-responsive" src="<% readiumUrl %>/{{coverHref}}" alt="" title="{{title}}"/></a>
+          <img class="img-responsive" src="<% readiumUrl %>/{{coverHref}}" alt="" title="{{title}}"/>
           </div>
-        </div>
-        <div class="pure-u body">
-          <h4><a href="<% appUrl %>/book/{{identifier}}">{{title}}</a></h4>
-          <div>by {{author}}</div>
-          <p>{{description}}</p>
-          <div class="caption buttons">
-            <a class="pure-button" href="<% appUrl %>/book/{{identifier}}">Read</a>
-            <a class="pure-button" href="<% appUrl %>/details/{{identifier}}">View Details</a>
+        <div class="book-info">
+          <h4><a class="item-link" href="<% appUrl %>/details/{{identifier}}">{{title}}</a></h4>
+          <div class="author">by {{author}}</div>
+          <div class="description">{{description}}</div>
+          <div class="buttons">
+            <a class="btn btn-default" href="<% appUrl %>/book/{{identifier}}">Read</a>
+            <a class="btn btn-default" href="<% appUrl %>/details/{{identifier}}">View Details</a>
           </div>
-        </div>
+       </div>
       </div>
     {{/items}}
   </script>  
 </head>
-<body class="home" data-app="<% appUrl %>" data-discovery="<% discovery %>">
-  <div class="header"><%> header %></div>
+<body class="home list-view" data-app="<% appUrl %>" data-discovery="<% discovery %>">
+  <%> header %>
   <div class="content-wrapper">
-    <div class="ribbon l-box-lrg pure-g">
-      <div class="pure-u-1-2">
-        <h2 class="content-head content-head-ribbon">About Open Access Books</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-        <a href="<% appUrl %>/about" class="pure-button button-more">read more</a>
-      </div>
-      <div class="pure-u-1-2">
-        <h3>Find books</h3>
-        <form class="pure-form" value="" method="get" action="<% appUrl %>/search">
-          <input type="text" class="pure-input" placeholder="American politics" value="">
+      <div class="data-container">
+        <form class="pure-form" value="" method="get" action="<% appUrl %>/search" name="searchform" class="searchform">
+          <input class="searchbox pure-input" name="searchbox"  type="text" placeholder="Search NYU OA books..." value="" size="30" maxlength="300">
           <button type="submit" class="pure-button">Search</button>
         </form>
-      </div>
-    </div>
-    <div class="pure-g data-container">
-      <div class="pure-u-1">
         <h2>Browse titles</h2>
-        <div class="pure-g">
-          <div id="a" class="pure-u-1 library-items" data-page="1" data-pages="1"></div>
-        </div>
+        <div id="a" class="library-items" data-page="1" data-pages="1"></div>
       </div>
-    </div>
-    <ul class="pure-paginator"></ul>
-    <div class="pure-g container more-books">
-      <div class="pure-u-1">
-        <a href="#" class="pure-button loading">More books</a>
+      <ul class="pure-paginator"></ul>
+      <div class="pure-g container more-books">
+        <div class="pure-u-1"> <a href="#" class="pure-button loading">More books</a> </div>
       </div>
-    </div>
-    <div class="pure-g container bottom">
-      <div class="pure-u-1">
-        <h2>Contact Us</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-        <h2>More Information</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-      </div>
-    </div>
-    <div class="pure-g container footer"><%> footer %></div>
+      <%> footer %>
   </div>
   <%={{ }}=%><script>{{{js}}}</script>
 </body>

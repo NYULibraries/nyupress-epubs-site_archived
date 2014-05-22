@@ -6,26 +6,25 @@
   <%> head %>
   <script id="list-template" type="text/x-handlebars-template">
     {{#items}}
-      <div class="pure-g">
-        <div class="pure-u-1-3">
-          <a href="<% appUrl %>/book/{{identifier}}"><img class="img-responsive" src="<% readiumUrl %>/{{coverHref}}" alt="" title="{{title}}"/></a>
+      <div class="detail-item">
+        <div class="img-hold">
+         <img class="img-responsive" src="<% readiumUrl %>/{{coverHref}}" alt="{{title}}" title="{{title}}"/>
         </div>
-        <div class="pure-u-2-3 body">
-          <div class="container">
-            <h4 class="title">{{title}}</h4>
-            <div>Author: {{author}}</div>
-            <div>Publisher: {{publisher}}</div>          
-            <div>Publication Date: {{date}}</div>
-            <div>Subject: {{subject}}</div>      
-            <div>ISBN: {{identifier}}</div>      
-            <div>Permanent Link: <a href="{{handle}}">{{handle}}</a></div>            
-            <div>Number of pages: {{format}}</div>
+        <div class="book-info">
+         <h4 class="title">{{title}}</h4>
+            <div><span class="infolabel">Author:</span> {{author}}</div>
+            <div><span class="infolabel">Publisher:</span> {{publisher}}</div>          
+            <div><span class="infolabel">Publication Date:</span> {{date}}</div>
+            <div><span class="infolabel">Subject:</span> {{subject}}</div>      
+            <div><span class="infolabel">ISBN:</span> {{identifier}}</div>      
+            <div><span class="infolabel">Permanent Link:</span> {{handle}}</div>            
+            <div><span class="infolabel">Number of pages:</span> {{format}}</div>
             <div><p>{{description}}</p></div>
-            <div class="caption buttons">
-              <a class="pure-button" href="http://nyupress.org/search.aspx?keyword={{identifier}}">Buy the book</a>
-              <a class="pure-button" href="<% appUrl %>/book/{{identifier}}">Read</a>
+            <div class="buttons">
+              <a class="btn btn-default" href="http://nyupress.org/search.aspx?keyword={{identifier}}">Buy the book</a>
+              <a class="btn btn-default" href="<% appUrl %>/book/{{identifier}}">Read</a>
             </div>
-          </div>
+            <div class="rights-info"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></div>
         </div>
       </div>
     {{/items}}
@@ -33,25 +32,18 @@
 </head>
 <body class="details-page page" data-app="<% appUrl %>" data-discovery="<% discovery %>">
 <div>
-  <div class="header"><%> header %></div>
-  <div class="pure-g breadcrumb">
-    <div class="pure-u-1">
-      <span class="page-title"><a href="<% appUrl %>/">Home</a> &gt; Book details</span>
-    </div>
+
+  <%> header %>
+
+  <div class="breadcrumb">
+      <span class="page-title"><a href="<% appUrl %>">Home</a> &gt; Book details</span>
   </div>
+  
   <div class="content-wrapper">
-    <div class="data-container"></div>
+      <div class="data-container"></div>
   </div>
-  <div class="pure-g container bottom">
-    <div class="pure-u-1">
-      <h2>Contact Us</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-      <h2>More Information</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-    </div>
-  </div>
-  <div class="pure-g container footer"><%> footer %></div>
 </div>
+ <%> footer %>
 <%={{ }}=%><script>{{{js}}}</script>
 </body>
 </html>
