@@ -20,13 +20,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 10px;
 }
 
-.data-container h2.page-title {
-    padding: 3rem 10px 0;
-    /*  margin: 0 0 4rem 0;*/
-    font: normal 16px/1 Helvetica, sans-serif;
-    border-bottom: 1px solid #999;
-    color: #434343;
-}
+
 
 a:link, a:visited {
     color: #6FA64D;
@@ -90,14 +84,12 @@ a.btn {
     margin: 30px auto 70px;
     max-width: 650px;
 }
-
 .data-container h2.page-title {
-    font: normal 16px/1 Helvetica, sans-serif;
-    color: #434343;
+    padding:  0px 0;
+ 
     text-transform: uppercase;
     color: #333;
-    margin: 15px 0 0;
-    margin-bottom: 1rem;
+    margin:  0 0;
     font-size: 15px;
     line-height: 1.4;
     font-family: 'Gotham Light', Gotham-Light, arial;
@@ -654,25 +646,9 @@ input.searchbox:focus {
     }
     h2.page-title {
       
-        margin-bottom: 1rem;
-        text-transform: uppercase;
-
-        margin: 3rem 0px 0px;
+        margin:  0px;
     }
-    h2.page-title {
-        color: #aaa;
-        background-color: #323232;
-        margin-bottom: 1rem;
-        font: normal 11px/1.1 Helvetica, sans-serif;
-        margin: 0px;
-        padding: 11px 10px 7px;
-        text-transform: uppercase;
-        /*  border-bottom: 1px solid #555;*/
-        -webkit-box-shadow: 0px 3px 4px rgba(5, 5, 5, 0.3);
-        -moz-box-shadow: 0px 3px 4px rgba(5, 5, 5, 0.3);
-        box-shadow: 0px 3px 4px rgba(5, 5, 5, 0.3);
-
-    }
+  
     footer li a:link, footer li a:visited {
         color: #aaa;
         margin-bottom: 1rem;
