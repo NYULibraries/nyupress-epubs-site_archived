@@ -8,7 +8,8 @@ YUI().use(
             query = Y.one('.query'),
             loadMoreButton = Y.one('.pure-button.loading'),
             totalFound = Y.one('.total-found'),
-            datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref&q=',
+            itemsFoundText = Y.one('.items-found'),
+            datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref,thumbHref&q=',
             searchString = '*:*',
             transactions = [],
             href, pager = Y.one('ul.pure-paginator'),
@@ -92,47 +93,48 @@ YUI().use(
 
                     var numfound = parseInt(response.response.numFound, 10),
                         start = parseInt(response.response.start, 10),
-                        docslength = parseInt(response.response.docs.length, 10)
+                        docslength = parseInt(response.response.docs.length, 10);
 
-                        // store response url to avoid making multiple request to the same source
-                        transactions.push(this.url)
+                    // store response url to avoid making multiple request to the same source
+                    transactions.push(this.url);
 
-                        container.setAttribute("data-numFound", numfound)
+                    container.setAttribute("data-numFound", numfound);
 
-                        container.setAttribute("data-start", start)
+                    container.setAttribute("data-start", start);
 
-                        container.setAttribute("data-docsLength", docslength)
+                    container.setAttribute("data-docsLength", docslength);
 
-                        // set the number of items found
-                        totalFound.set('text', numfound)
+                    // set the number of items found
+                    totalFound.set('text', numfound);
+                    // plural or singular book
+                    itemsFoundText.set('text', ((numfound == "1" ? 'book' : 'books')));
+                    // show the number of items found
+                    totalFound.removeClass('hidden')
 
-                        // show the number of items found
-                        totalFound.removeClass('hidden')
+                    // highlighting object in Solr is not part of the document; find the document
+                    // and add the highlight slash
+                    Y.each(response.response.docs, function(item, index) {
 
-                        // highlighting object in Solr is not part of the document; find the document
-                        // and add the highlight slash
-                        Y.each(response.response.docs, function(item, index) {
+                        if (response.highlighting && response.highlighting[item.identifier].description) {
+                            response.response.docs[index].slash = response.highlighting[item.identifier].description[0]
+                        } else {
+                            response.response.docs[index].slash = response.response.docs[index].description
+                        }
 
-                            if (response.highlighting && response.highlighting[item.identifier].description) {
-                                response.response.docs[index].slash = response.highlighting[item.identifier].description[0]
-                            } else {
-                                response.response.docs[index].slash = response.response.docs[index].description
-                            }
+                    })
 
+                    // render HTML and append to container
+                    container.append(
+                        template({
+                            items: response.response.docs
                         })
+                    )
 
-                        // render HTML and append to container
-                        container.append(
-                            template({
-                                items: response.response.docs
-                            })
-                        )
+                    if (start + docslength === numfound) body.addClass('io-done')
 
-                        if (start + docslength === numfound) body.addClass('io-done')
+                    body.removeClass('io-loading')
 
-                        body.removeClass('io-loading')
-
-                        loadMoreButton.removeClass('pure-button-disabled')
+                    loadMoreButton.removeClass('pure-button-disabled')
 
                 } catch (e) {
                     Y.log('error')

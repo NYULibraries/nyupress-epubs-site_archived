@@ -3,7 +3,7 @@
 <html>
 <head>
   <title>NYU Press Seach: <% title %></title>
-<%> head %>
+  <%> head %>
   <script id="list-template" type="text/x-handlebars-template">
       {{#items}}
       <div class="library-item">
@@ -23,29 +23,22 @@
     {{/items}}
   </script>  
 </head>
-<body class="home search" data-app="<% appUrl %>" data-discovery="<% discovery %>">
+<body class="list-view search" data-app="<% appUrl %>" data-discovery="<% discovery %>">
    <%> header %>
 
-
-   <div class="breadcrumb">
-      <span class="page-title"><a href="<% appUrl %>">Home</a> &gt; Search &gt; <span class="query"></span></span>
+  <div class="breadcrumb">
+    <span class="page-title"><a href="<% appUrl %>">Home</a> &gt; Search &gt; <span class="query"></span></span>
   </div>
-
 
   <div class="content-wrapper">
     <div class="data-container">
-     
-        <h2>View titles</h2>
-        <p class="found">We've found <span class="total-found">0</span> books results</p>
-        <div>
-          <form class="pure-form" value="" method="get" action="<% appUrl %>/search" name="searchform" class="searchform">
-          <input class="searchbox pure-input" name="searchbox"  type="text" placeholder="Search NYU OA books..." value="" size="30" maxlength="300">
-          <button type="submit" class="pure-button">Search</button>
-        </form>
-      </div>
-        <div class="pure-g">
+
+      <h2 class="page-title">Search Results</h2>
+
+      <p class="found"><span class="total-found">0</span> <span class="items-found">books</span> found</p>
+      <div class="pure-g">
           <div id="a" class="pure-u-1 library-items"></div>
-        </div>
+      </div>
     </div>
   </div>
 

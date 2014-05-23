@@ -2,9 +2,9 @@
 
 umask 002
 
-#APP_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site"
+APP_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site"
 # no trailing slash
-APP_URL="http://localhost/nyupress-epubs-site"
+#APP_URL="http://localhost/nyupress-epubs-site"
 
 READIUM_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA"
 
@@ -22,7 +22,7 @@ DETAILS_JS=`uglifyjs ../js/details.js`
 
 ABOUT_DATA=" { title : 'About', appUrl: '$APP_URL', css: '$CSS' } "
 
-RIGHTS_DATA=" { title : 'Rights', appUrl: '$APP_URL', css: '$CSS' } "
+RIGHTS_DATA=" { title : 'Rights', appUrl: '$APP_URL', css: '$CSS'} "
 
 FRONT_DATA=" { title : 'Browse titles', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$FRONT_JS', css: '$CSS', discovery: '$DISCOVERY_URL' } "
 

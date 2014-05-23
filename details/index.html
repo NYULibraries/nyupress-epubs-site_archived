@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost/nyupress-epubs-site/css/bootstrap.css">
-  <link rel="stylesheet" href="http://localhost/nyupress-epubs-site/css/dlts.css">
-  <link rel="stylesheet" href="http://localhost/nyupress-epubs-site/css/nav.css">
-  <script src="http://yui.yahooapis.com/3.15.0/build/yui/yui-min.js"></script>  <script id="list-template" type="text/x-handlebars-template">
+   <link rel="stylesheet" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/css/bootstrap.css"> 
+  <link rel="stylesheet" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/css/dlts.css">
+  <script src="http://yui.yahooapis.com/3.15.0/build/yui/yui-min.js"></script>
+  <script src="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/js/searchbox.js"></script>  <script id="list-template" type="text/x-handlebars-template">
     {{#items}}
       <div class="detail-item">
         <div class="img-hold">
@@ -25,8 +25,8 @@
             <div><span class="infolabel">Number of pages:</span> {{format}}</div>
             <div><p>{{description}}</p></div>
             <div class="buttons">
-              <a class="btn btn-default" href="http://nyupress.org/search.aspx?keyword={{identifier}}">Buy the book</a>
-              <a class="btn btn-default" href="http://localhost/nyupress-epubs-site/book/{{identifier}}">Read</a>
+              <a class="btn btn-default" href="http://nyupress.org/search.aspx?keyword={{identifier}}" target="_blank">Buy the book</a>
+              <a class="btn btn-default" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/book/{{identifier}}">Read</a>
             </div>
             <div class="rights-info"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></div>
         </div>
@@ -34,25 +34,30 @@
     {{/items}}
   </script>    
 </head>
-<body class="details-page page" data-app="http://localhost/nyupress-epubs-site" data-discovery="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress">
+<body class="details-page page" data-app="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site" data-discovery="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress">
 <div>
 
   <div class="header">
     <nav class="navbar" role="navigation" id="navbar-fixed-top">
       <div class="navbar-inner">
-          <div class="container">
-          <header> 
-            <h2 id="logo-replace"><a href="http://localhost/nyupress-epubs-site" class="brand">NYU Press</a></h2>
-              <h1 id="site-title"><a href="http://localhost/nyupress-epubs-site">Open Access Books</a></h1>
-              <div class="n-utils"> <a href="http://localhost/nyupress-epubs-site/about" id="aboutlink">About</a> </div>
+        <div class="container">
+          <header role="banner">
+            <h2 id="logo-replace"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site" class="brand">NYU Press</a></h2>
+            <h1 id="site-title"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site">Open Access Books</a></h1>
+            <div class="n-utils">
+              <button id="search-toggle" style="display:none">X</button>
+              <form role="search" class="pure-form searchform" value="" method="get" action="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/search" name="searchform" >
+                <input class="searchbox pure-input" name="searchbox" id="searchbox"  type="text" placeholder="Search for books..." value="" size="30" maxlength="300">
+                  <!-- <button type="submit" class="pure-button">Search</button> -->
+              </form>
+            </div>
           </header>
         </div>
       </div>
     </nav>
   </div>
-
   <div class="breadcrumb">
-      <span class="page-title"><a href="http://localhost/nyupress-epubs-site">Home</a> &gt; Book details</span>
+      <span class="page-title"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site">Home</a> &gt; Book details</span>
   </div>
   
   <div class="content-wrapper">
@@ -62,12 +67,12 @@
    <footer id ="pagefooter">
      <div class="footer-inner">
        <ul>
-         <li><span><a href="http://localhost/nyupress-epubs-site/about">About</a></span></li>
-         <li><span><a href="http://localhost/nyupress-epubs-site/rights">Rights Information</a></span></li>
+         <li><span><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/about">About</a></span></li>
+         <li><span><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/rights">Rights Information</a></span></li>
          <li><span><a href="http://nyupress.org/" target="_blank">NYU Press</a></span></li>
          <li><span>Powered by <a href="http://dlib.nyu.edu/dlts/"  target="_blank">NYU DLTS</a></span></li>
        </ul>
      </div>
-   </footer><script>YUI().use("node","event","io","jsonp","jsonp-url","json-parse","handlebars",function(Y){"use strict";var body=Y.one("body"),container=Y.one(".data-container"),datasourceURL=body.getAttribute("data-discovery")+"/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:",match=location.pathname.match(/\/details\/(.*)/),source=Y.one("#list-template").getHTML(),template=Y.Handlebars.compile(source);function onFailure(){Y.io(body.getAttribute("data-app")+"/404.html",{on:{success:function(transactionid,response){container.append(response.response)}}})}function onTimeout(){onFailure()}function onSuccess(response){try{container.append(template({items:response.response.docs}));body.removeClass("io-loading")}catch(e){onFailure()}}if(match&&match[1]){body.addClass("io-loading");Y.jsonp(datasourceURL+encodeURIComponent(match[1]),{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3})}else{onFailure()}});</script>
+   </footer><script>YUI().use("node","event","io","jsonp","jsonp-url","json-parse","handlebars",function(Y){"use strict";var body=Y.one("body"),container=Y.one(".data-container"),datasourceURL=body.getAttribute("data-discovery")+"/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:",match=location.pathname.match(/\/details\/(.*)/),source=Y.one("#list-template").getHTML(),template=Y.Handlebars.compile(source);function onFailure(){Y.io(body.getAttribute("data-app")+"/404.html",{on:{success:function(transactionid,response){container.append(response.response)}}})}function onTimeout(){onFailure()}function onSubmit(e){e.preventDefault();var currentTarget=e.currentTarget,value=Y.one(".pure-input");location.href=currentTarget.get("action")+"/"+value.get("value")}function onSuccess(response){try{container.append(template({items:response.response.docs}));body.removeClass("io-loading")}catch(e){onFailure()}}if(match&&match[1]){body.addClass("io-loading");Y.jsonp(datasourceURL+encodeURIComponent(match[1]),{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3})}else{onFailure()}body.delegate("submit",onSubmit,"form")});</script>
 </body>
 </html>
