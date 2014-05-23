@@ -1,5 +1,9 @@
+/*!
+ * custom skin for NYU Press Open Access Books site
+ */
 body {
     padding: 0;
+    min-width: 300px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,6 +19,7 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 800px;
     padding: 0 10px;
 }
+
 .data-container h2.page-title {
     padding: 3rem 10px 0;
     /*  margin: 0 0 4rem 0;*/
@@ -22,12 +27,15 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid #999;
     color: #434343;
 }
+
 a:link, a:visited {
-    color:#6FA64D;
+    color: #6FA64D;
 }
+
 a.btn {
     color: #333;
 }
+
 #aboutlink {
     padding-right: 25px;
     height: 28px;
@@ -36,9 +44,11 @@ a.btn {
     vertical-align: bottom;
     padding-top: 14px;
 }
+
 #aboutlink:hover {
-    background: url(../images/oa_logo_sprite.png) no-repeat right bottom;   
+    background: url(../images/oa_logo_sprite.png) no-repeat right bottom;
 }
+
 /* overriding bootstrap */
 .breadcrumb {
     background-color: #F5F5F5;
@@ -48,23 +58,29 @@ a.btn {
     padding: 8px 15px 6px;
     border-bottom: 1px solid #dedede;
 }
+
 .data-container h2.page-title a:link, .data-container h2.page-title a:visited {
     color: #888888;
 }
+
 .page-title {
     margin-bottom: 1rem;
 }
+
 .sorter {
     text-align: right;
 }
+
 .sorter span {
     font-weight: bold;
 }
+
 .sorter a {
     color: #333;
     text-decoration: underline;
     font-weight: normal;
 }
+
 .data-container {
     margin: 30px auto 70px;
     max-width: 650px;
@@ -76,62 +92,62 @@ a.btn {
     margin: 15px 0 0;
     font-size: 15px;
     line-height: 1.4;
-    font-family:'Gotham Light', Gotham-Light, arial;
+    font-family: 'Gotham Light', Gotham-Light, arial;
     font-weight: normal;
     font-weight: 300;
     clear: both;
     float: none;
 }
 
+.content-wrapper {}
 
-.content-wrapper {
-   
-   
-}
 footer#pagefooter {
     position: staric;
-  
     width: 100%;
 }
+
 .list-view footer#pagefooter {
     position: fixed;
-   bottom: 0;
-     left: 0;
+    bottom: 0;
+    left: 0;
     z-index: 2000;
     width: 100%;
 }
+
 footer#pagefooter ul {
     margin: 0;
     padding: 0;
 }
+
 footer#pagefooter li {
     display: inline-block;
     color: #878787;
     padding: 0 5px 0 0;
 }
+
 footer#pagefooter li + li:before {
-    content:"|";
+    content: "|";
 }
+
 footer#pagefooter li span {
-     padding: 0 0 0 5px;
-      display: inline-block;
-      color: #999;
+    padding: 0 0 0 5px;
+    display: inline-block;
+    color: #999;
 }
-footer#pagefooter li , footer#pagefooter li a:link, footer#pagefooter li a:visited {
-   
+
+footer#pagefooter li, footer#pagefooter li a:link, footer#pagefooter li a:visited {
     color: #ccc;
     font-size: 13px;
-    font-family:'Gotham Light', Gotham-Light, arial;
+    font-family: 'Gotham Light', Gotham-Light, arial;
     font-weight: normal;
     font-weight: 300;
-   
 }
+
 footer#pagefooter li a:hover {
     color: white;
 }
 
 .footer-inner {
-
     padding: 5px 0 7px 0;
     color: white;
     text-align: center;
@@ -149,46 +165,25 @@ footer#pagefooter li a:hover {
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-.row-view .info-item.title {
-    line-height: 1.2;
-}
-.row-view .cover-image {
-    position: static;
-    float: left;
-    width: 8%;
-    height: auto;
-}
-.row-view .book-info {
-    position: static;
-    float: right;
-    width: 80%;
-    margin-right: 10%;
-}
-.row-view .book-item {
-    width: 100%;
-    padding: 20px 20px 20px 10px;
-    height: auto;
-    overflow: hidden;
-}
+
 a.info-icon {
     display: none;
 }
+
 .book-item .cover-image {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 }
-/* list view */
- .library-items.row, .library-items {
-    display: table;
-    margin: 0;
-}
+
 .library-items {
     margin-top: 10px;
 }
+
 .library-items .title, .library-items .author {
     white-space: normal;
 }
+
 .library-item {
     height: auto;
     display: table-row;
@@ -197,15 +192,18 @@ a.info-icon {
     clear: both;
     padding: 0;
 }
+
 .library-item:nth-child(odd) {
     background: #f6f6f6;
 }
+
 .img_hold {
     display: table-cell;
     vertical-align: top;
     width: 110px;
     padding: 10px 10px 10px 0;
 }
+
 .library-item img {
     margin: 0px;
     position: static;
@@ -219,10 +217,12 @@ a.info-icon {
     margin-top: 3rem;
     height: auto;
 }
+
 .detail-item .book-title {
     line-height: 1.2;
     padding-bottom: 5px;
 }
+
 .detail-item .img-hold {
     float: left;
     margin-right: 15px;
@@ -230,35 +230,43 @@ a.info-icon {
     max-width: 200px;
     height: auto;
 }
+
 .detail-item .img-hold img {
     width: 100%;
     height: auto;
 }
+
 .detail-item .infolabel {
     color: #999;
 }
+
 .detail-item .buttons {
     text-align: right;
     margin-right: 30px;
 }
+
 .detail-item .rights-info {
     padding-top: 2em;
     font-size: 1.3rem;
     max-width: 70rem;
-    clear:left;
+    clear: left;
 }
-.detail-item .rights-info img{
+
+.detail-item .rights-info img {
     display: inline-block;
     margin-right: 10px;
     margin-bottom: 5px;
 }
+
 .detail-item .item-link {
     float: right;
     margin: 20px;
 }
+
 .no-cover-nyup {
     background-color: #61777D;
 }
+
 /*#app-container {
     padding: 0px 10px;
     -webkit-overflow-scrolling: touch;
@@ -269,21 +277,25 @@ a.info-icon {
     width: auto;
     padding-top: 20px;
 }
+
 .library-item .book-info .title, h4 {
     margin: 0 0 3px 0;
     /*color: #6FA64D;*/
     font-weight: 300;
     font-size: 20px;
     line-height: 1.3;
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
- .library-item a.details {
+
+.library-item a.details {
     margin-right: 30px;
     margin-top: 0;
 }
+
 .library-item .buttons a.btn {
     display: inline-block;
 }
+
 .library-item .book-info {
     margin: 0px;
     max-height: 290px;
@@ -294,6 +306,7 @@ a.info-icon {
     display: table-cell;
     float: none;
 }
+
 .library-item .author {
     margin-top: 0px;
     padding-bottom: 5px;
@@ -302,17 +315,21 @@ a.info-icon {
     color: #555;
     /* #6FA64D*/
 }
+
 .library-item .description {
     font: 14px/1.4 Arial;
     color: #333;
 }
+
 .item-link {
     display: block;
 }
+
 .item-link:hover, .item-link:hover .description {
     text-decoration: none;
     color: #333;
 }
+
 .item-link:hover .title {
     text-decoration: underline;
 }
@@ -320,20 +337,379 @@ a.info-icon {
 /* Sticky footer styles  http://getbootstrap.com/examples/sticky-footer/sticky-footer.css
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
+
 body.page {
-  /* Margin bottom by footer height */
-  margin-bottom: 43px;
+    /* Margin bottom by footer height */
+    margin-bottom: 43px;
 }
+
 body.page footer#pagefooter {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 43px;
- 
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 43px;
+}
+
+/*  Navigation */
+
+/*  ------------------------------------------------------------------------- */
+
+.navbar {
+    min-height: 55px;
+    position: relative;
+    border: none;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    margin-bottom: 0px;
+    background-color: #2c2c2c;
+    background-image: -moz-linear-gradient(top, #333333, #222222);
+    background-image: -ms-linear-gradient(top, #333333, #222222);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
+    background-image: -webkit-linear-gradient(top, #333333, #222222);
+    background-image: -o-linear-gradient(top, #333333, #222222);
+    background-image: linear, top, #333333, #222222;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='ie-hex-str(#333333)', endColorstr='ie-hex-str(#222222)', GradientType=0);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.navbar-inner {
+    height: auto;
+}
+
+.home .navbar  li {
+    margin: 0;
+}
+
+.navbar #logo-replace a {
+    width: 105px;
+    height: 50px;
+    display: block;
+    text-indent: 300%;
+    background-image: url("../images/NYUPLogo.png");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    white-space: nowrap;
+}
+
+.navbar #logo-replace {
+    height: 50px;
+    width: 105px;
+    overflow: hidden;
+    margin: 0;
+}
+
+.navbar #site-title {
+    font: normal 200 22px / 1.5 "Gotham Extra Light", Gotham-ExtraLight, arial;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+}
+
+.home .navbar  #site-title {
+    font: normal 200 24px / 1.5 "Gotham Extra Light", Gotham-ExtraLight, arial;
+
+}
+
+.navbar #site-title a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    
+}
+
+.navbar #site-title a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.home .navbar  .n-utils li {
+    margin-right: 20px;
+    float: right;
+}
+
+.navbar a:link, .navbar a:visited {
+    color: white;
+}
+
+.navbar a:focus, .navbar a:hover {
+    text-decoration: underline;
+}
+
+/*.navbar  #site-title a {
+    margin-bottom: 0;
+}
+*/
+.navbar .container {
+    display: table;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.navbar header {
+    display: table-row;
+}
+
+.navbar header > * {
+    padding: 5px 0 5px 10px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.home .navbar  header > * {
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.navbar .n-utils {
+    display: table-cell;
+    padding: 10px 10px 10px 0;
+    /* overriding bootstrap */
+    /*float: none !important;*/
+    text-align: right;
+}
+
+.navbar .n-utils a {
+    white-space: nowrap;
+    /*text-transform: uppercase;*/
+    font: normal 200 13px/1 'Gotham Extra Light', Gotham-ExtraLight, arial;
+    color: #bbb;
+}
+
+.navbar .btn-default {
+    border: none;
+    background-color: transparent;
+}
+
+.navbar .icon {
+    width: 40px;
+    height: 40px;
+    /* box-shadow: 1px 1px 5px rgb(0, 0, 0);*/
+}
+
+.icon:first-of-type {
+    margin-right: 5px;
+}
+
+a#s-btn {
+    width: 30px;
+    height: auto;
+    padding-top: 10px;
+}
+
+a#s-btn img {
+    width: 100%;
+    height: auto;
+}
+
+/*  End Navigation */
+
+/*  Search */
+
+/*  ------------------------------------------------------------------------- */
+
+.searchform label {
+    right: -999em;
+    position: absolute;
+}
+
+.searchform {
+    margin: 0;
+    font: normal 200 12px / 1 "Gotham Light", Gotham-Light, arial;
+}
+
+input.searchbox {
+    margin: 0 10px 0 0;
+    font-size: 13px;
+    
+    color: white;
+    padding: 10px 10px 5px 10px;
+    background: #343434 url("../images/s4.png") no-repeat right center;
+    background-size: 26px;
+    border: 1px solid #666;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: 0;
+    width: 200px;
+}
+
+input.searchbox:focus {
+    outline: 0;
+    background-color: white;
+    color: #333;
+    /*   border-color: #57068c;*/
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.375) inset;
+    outline: 0 none;
+    border: 1px solid #aaa;
+    /*border-top: none;*/
+    /*  /*border-top: 1px solid #666;*/
+    /*border-bottom: 1px solid #DDD;*/
+    /*  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.49), 0 -1px 1px #333333, 0 1px 0 #222222;*/
+    /* box-shadow: inset 0 0 10px 1px rgba(0,0,0,.30);*/
 }
 
 
+
+/*@media screen and (min-width: 551px) {
+    .home .navbar #logo-replace a {
+        width: 160px;
+        height: 75px;
+        margin: 0;
+    }
+    .home .navbar  #logo-replace {
+        height: 75px;
+        width: 160px;
+        margin: 0 !important;
+       
+    }
+    .navbar header > * {
+        padding: 10px 0 10px 10px;
+    }
+}*/
+.navbar header > * {
+    padding: 10px 0 10px 10px;
+}
+
+@media screen and (max-width: 600px), screen and (device-aspect-ratio: 40 / 71) {
+    /* http://stackoverflow.com/questions/12539697/iphone-5-css-media-query */
+    .library-items {
+        margin: 3rem 0px 0px;
+    }
+    h2.page-title {
+        color: #aaa;
+        background-color: #323232;
+        margin-bottom: 1rem;
+        font: normal 11px/1.1 Helvetica, sans-serif;
+        margin: 0px;
+        padding: 11px 10px 7px;
+        text-transform: uppercase;
+        /*  border-bottom: 1px solid #555;*/
+        -webkit-box-shadow: 0px 3px 4px rgba(5, 5, 5, 0.3);
+        -moz-box-shadow: 0px 3px 4px rgba(5, 5, 5, 0.3);
+        box-shadow: 0px 3px 4px rgba(5, 5, 5, 0.3);
+    }
+    footer li a:link, footer li a:visited {
+        color: #aaa;
+        margin-bottom: 1rem;
+        font: normal 11px/1.1 Helvetica, sans-serif;
+        margin: 0px;
+        padding: 11px 10px 7px;
+        text-transform: uppercase;
+    }
+    .footer-inner {
+        padding: 2px 0 5px;
+    }
+    .navbar .reader .icon-full-screen {
+        display: none;
+    }
+    .navbar .reader .brand, .home .navbar  .brand {
+        /* height: 40px;
+         width: 40px;
+         margin-right: 10px;*/
+    }
+    .navbar .reader #logo-replace, .home .navbar #logo-replace, .navbar #logo-replace {
+        height: 40px;
+        width: 40px;
+    }
+    .navbar #logo-replace a {
+        height: 40px;
+        width: 40px;
+        background-position: right top;
+    }
+    .navbar header .n-utils {
+        vertical-align: bottom;
+    }
+    .navbar .reader #site-title {
+        font: normal 200 16px / 1.1 "Gotham Extra Light", Gotham-ExtraLight, arial;
+        /* max-width: 15rem;*/
+    }
+    .home .navbar  #site-title, .page .navbar  #site-title, .navbar  #site-title {
+        font: normal 200 18px / 1.1 "Gotham Extra Light", Gotham-ExtraLight, arial;
+    
+        /* max-width: 15rem;*/
+    }
+    .navbar {
+        padding: 10px;
+    }
+    .navbar .container, .navbar header, .navbar header > *, .navbar .n-utils,
+    .home .navbar header > * {
+        display: block;
+        padding: 0;
+    }
+    .navbar header {
+        /* clear floats */
+        width: 100%;
+        overflow: hidden;
+    }
+    .navbar header h2, .navbar header h1 {
+        float: left;
+
+    }
+    .navbar header h1, .home .navbar header h1 {
+        padding: 10px 0px 0px 10px;
+    }
+    .navbar header .n-utils {
+        float: none;
+    }
+    #search-toggle, #search-toggle[style] {
+        border: none;
+        color: #888;
+        font: normal  12px / 1 arial;
+        padding: 10px;
+        display: block !important;
+        float: right;
+        opacity: .8;
+        width: 40px;
+        height: 40px;
+        background: transparent url("../images/s3.png") no-repeat center center;
+        background-size: 50%;
+        text-indent: -999em;
+    }
+    #search-toggle.open {
+        text-indent: 0;
+        background: none;
+        /*  background: transparent url("../images/close.png") no-repeat center center;
+          background-size: 35%;*/
+    }
+    #search-toggle:focus {
+        outline: none;
+    }
+    #search-toggle::-moz-focus-inner {
+        border: 0;
+    }
+    .searchform {
+        /* background-color: red;*/
+        display: none;
+    }
+    .searchform.open {
+        /* background-color: red;*/
+        display: block;
+    }
+    .searchform input.searchbox {
+        width: 100%;
+        margin-top: 10px;
+        margin-right: 0;
+        /* 16px and up prevents autozoom in safari iOS */
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .home .navbar  #site-title, .navbar .reader #site-title, .navbar  #site-title {
+        /*max-width: 15rem;*/
+        font: 200 14px/1.1 "Gotham Extra Light",Gotham-ExtraLight,arial;
+    }
+}
+
+/*  ------------------------------------------------------------------------- */

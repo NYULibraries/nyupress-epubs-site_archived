@@ -6,9 +6,9 @@
   <%> head %>
   <script id="list-template" type="text/x-handlebars-template">
   {{#items}}
-      <div class="library-item">
+      <div class="library-item">{{thumbHref}}
           <div class="img_hold">
-          <img class="img-responsive" src="<% readiumUrl %>/{{coverHref}}" alt="" title="{{title}}"/>
+          <img class="img-responsive" src="<% readiumUrl %>/{{thumbHref}}" alt="" title="{{title}}"/>
           </div>
         <div class="book-info">
           <h4><a class="item-link" href="<% appUrl %>/details/{{identifier}}">{{title}}</a></h4>
@@ -26,12 +26,8 @@
 <body class="home list-view" data-app="<% appUrl %>" data-discovery="<% discovery %>">
   <%> header %>
   <div class="content-wrapper">
-      <div class="data-container">
-        <form class="pure-form" value="" method="get" action="<% appUrl %>/search" name="searchform" class="searchform">
-          <input class="searchbox pure-input" name="searchbox"  type="text" placeholder="Search NYU OA books..." value="" size="30" maxlength="300">
-          <button type="submit" class="pure-button">Search</button>
-        </form>
-        <h2>Browse titles</h2>
+      <div class="data-container" role="main">
+        <h2>Browse all titles</h2>
         <div id="a" class="library-items" data-page="1" data-pages="1"></div>
       </div>
       <ul class="pure-paginator"></ul>

@@ -22,7 +22,7 @@ DETAILS_JS=`uglifyjs ../js/details.js`
 
 ABOUT_DATA=" { title : 'About', appUrl: '$APP_URL', css: '$CSS' } "
 
-RIGHTS_DATA=" { title : 'Rights', appUrl: '$APP_URL', css: '$CSS' } "
+RIGHTS_DATA=" { title : 'Rights', appUrl: '$APP_URL', css: '$CSS'} "
 
 FRONT_DATA=" { title : 'Browse titles', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$FRONT_JS', css: '$CSS', discovery: '$DISCOVERY_URL' } "
 
