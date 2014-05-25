@@ -461,9 +461,12 @@ body.page footer#pagefooter {
     overflow: hidden;
     margin: 0;
 }
-
+.home .navbar #logo-replace, .home .navbar #logo-replace a {
+    height: 75px;
+    width: 160px;
+}
 .navbar #site-title {
-    font: normal 200 22px / 1.5 "Gotham Extra Light", Gotham-ExtraLight, arial;
+    font: normal 200 22px / 1 "Gotham Extra Light", Gotham-ExtraLight, arial;
     letter-spacing: .5px;
     text-transform: uppercase;
     color: white;

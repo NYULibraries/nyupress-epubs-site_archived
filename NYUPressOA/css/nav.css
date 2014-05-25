@@ -1,0 +1,232 @@
+
+#readerHeader {
+     background-color: #2c2c2c;
+     color: white;
+    /*background-image: -moz-linear-gradient(top, #EEEEEE, #DDDDDD);
+    background-image: -ms-linear-gradient(top, #EEEEEE, #DDDDDD);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EEEEEE), to(#DDDDDD));
+    background-image: -webkit-linear-gradient(top, #EEEEEE, #DDDDDD);
+    background-image: -o-linear-gradient(top, #EEEEEE, #DDDDDD);
+    background-image: linear, top, #EEEEEE, #DDDDDD;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='ie-hex-str(#EEEEEE)', endColorstr='ie-hex-str(#DDDDDD)', GradientType=0);*/
+      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    width: 100%;
+   /* overflow: hidden;*/
+     min-height: 55px;
+     display:table;
+}
+#readerHeader h1{
+   font-size: 16px;
+   padding: 10px 0px 10px 20px;
+     display:table-cell;
+}
+.n-utils {
+     display:table-cell;
+     padding: 10px 20px 10px 0;
+    /* overriding bootstrap */
+    float: none !important;
+    text-align: right;
+}
+
+#readerHeader > * {
+    display: table-cell;
+    vertical-align: bottom;
+}
+.navbar .n-utils {
+    display: table-cell;
+    padding: 10px 20px 10px 0;
+    /* overriding bootstrap */
+    float: none !important;
+    text-align: right;
+}
+.navbar .n-utils a {
+    white-space: nowrap;
+    /*text-transform: uppercase;*/
+    font: normal 200 13px/1'Gotham Extra Light', Gotham-ExtraLight, arial;
+    color: #bbb;
+}
+@media screen and (min-width: 551px) {
+    .navbar .home .brand {
+        width: 170px;
+        margin: 0;
+    }
+    .navbar .home #logo-replace {
+        height: 75px;
+        width: 160px;
+        margin: 0 !important;
+        padding: 0;
+        /* user agent overrides */
+        -webkit-margin-before: 0em;
+        -webkit-margin-after: 0em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+    }
+    .navbar header > * {
+        padding: 10px 0 10px 10px;
+    }
+}
+@media screen and (max-width: 720px) {
+    .navbar .home header .navbar-right {
+        display: none;
+    }
+}
+@media screen and (max-width: 600px), screen and (device-aspect-ratio: 40/71) {
+    /* http://stackoverflow.com/questions/12539697/iphone-5-css-media-query */
+    .library-items {
+        margin: 3rem 0px 0px;
+    }
+    .library-container h2.page-title {
+        color: #aaa;
+        background-color: #323232;
+        margin-bottom: 1rem;
+        font: normal 11px/1.1 Helvetica, sans-serif;
+        margin: 0px;
+        padding: 11px 10px 7px;
+        text-transform: uppercase;
+        /*  border-bottom: 1px solid #555;*/
+        -webkit-box-shadow: 0px 3px 4px rgba(5, 5, 5, 0.3);
+        -moz-box-shadow: 0px 3px 4px rgba(5, 5, 5, 0.3);
+        box-shadow: 0px 3px 4px rgba(5, 5, 5, 0.3);
+    }
+    footer li a:link, footer li a:visited {
+        color: #aaa;
+        margin-bottom: 1rem;
+        font: normal 11px/1.1 Helvetica, sans-serif;
+        margin: 0px;
+        padding: 11px 10px 7px;
+        text-transform: uppercase;
+    }
+    .footer-inner {
+        padding: 2px 0 5px;
+    }
+    .navbar .reader .icon-full-screen {
+        display: none;
+    }
+    .navbar .reader .brand, .navbar .home .brand {
+        height: 40px;
+        width: 40px;
+        margin-right: 10px;
+    }
+    .navbar .reader #logo-replace, .navbar .home #logo-replace {
+        height: 40px;
+        width: 40px;
+        background-position: right top;
+    }
+    .navbar .home header .n-utils {
+        display: none;
+    }
+    .navbar .reader #site-title {
+        font: normal 200 16px/1.1'Gotham Extra Light', Gotham-ExtraLight, arial;
+        /* max-width: 15rem;*/
+    }
+    .navbar .home #site-title {
+        /*  padding-top: 15px;*/
+        font: normal 200 18px/1.1'Gotham Extra Light', Gotham-ExtraLight, arial;
+        /* max-width: 15rem;*/
+    }
+}
+@media screen and (max-width: 330px) {
+    .navbar .home #site-title, .navbar .reader #site-title {
+        max-width: 15rem;
+    }
+}
+.navbar .btn-default {
+    border: none;
+    background-color: transparent;
+}
+.navbar .icon {
+    width: 40px;
+    height: 40px;
+    /* box-shadow: 1px 1px 5px rgb(0, 0, 0);*/
+}
+.icon:first-of-type {
+    margin-right: 5px;
+}
+a#s-btn {
+    width: 30px;
+    height: auto;
+    padding-top: 10px;
+}
+a#s-btn img {
+    width: 100%;
+    height: auto;
+}
+/*  Search */
+
+/*  ------------------------------------------------------------------------- */
+
+/*  ------------------------------------------------------------------------- */
+
+/*  ------------------------------------------------------------------------- */
+
+/*  ------------------------------------------------------------------------- */
+ input.searchbox {
+    /* display: none;*/
+    /*  float: left;*/
+    margin: 0 10px 0 0;
+    font-size: 13px;
+    font-weight: normal;
+    color: white;
+    padding: 10px 10px 5px 10px;
+    background: #343434 url("../images/top_bar/s2.png") no-repeat right center;
+    background-size: 25px;
+    border: 1px solid #cccccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: 0;
+    width: 230px;
+}
+input.searchbox:focus {
+    background-color: white;
+    color: #57068c;
+    color: #333;
+    border-color: #57068c;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.375) inset, 0 0 8px rgba(87, 6, 140, 0.6);
+    outline: 0 none;
+}
+input.searchbox:focus {
+    border: 1px solid transparent;
+    /*border-top: none;*/
+    /*border-top: 1px solid #666;*/
+    /*border-bottom: 1px solid #DDD;*/
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.49), 0 -1px 1px #333333, 0 1px 0 #222222;
+    /* box-shadow: inset 0 0 10px 1px rgba(0,0,0,.30);*/
+    outline: 0;
+}
+.searchform {
+    margin: 0;
+    font: normal 200 12px/1"Gotham Light", Gotham-Light, arial;
+}
+.searchform fieldset {
+    display: block;
+    float: left;
+    line-height: 1;
+}
+.searchform fieldset div:first-of-type {
+    margin: 2px 0 8px;
+}
+.searchform fieldset label {
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1;
+    display: inline-block;
+    color: white;
+    margin: 0;
+    font: normal 200 12px/1'Gotham Light', Gotham-Light, arial;
+}
+.searchform input[type="radio"] {
+    margin: 0;
+}
+/*  End Navigation */
+
+/*  ------------------------------------------------------------------------- */
+
+/*  ------------------------------------------------------------------------- */
+
+/*  ------------------------------------------------------------------------- */
+
+/*  ------------------------------------------------------------------------- */

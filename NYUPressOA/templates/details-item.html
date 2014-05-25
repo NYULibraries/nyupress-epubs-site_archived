@@ -1,0 +1,27 @@
+<div class="details-body-page">
+    <div class="img-hold">
+        {{#data.coverHref}}
+        <img class="img-responsive" src="{{ data.coverHref }}" alt="ePUB cover">{{/data.coverHref}} {{^data.coverHref}}
+        <div class="no-cover">
+            <p>{{data.title}}</p>
+        </div>
+        {{/data.coverHref}}
+    </div>
+    <div class='book-info'>
+        <h3 class='book-title'>{{ data.title }}</h3>
+        <div><span class="infolabel">{{strings.i18n_author}}</span>{{data.author}}</div>
+        <div><span class="infolabel">{{strings.i18n_publisher}}</span>{{data.publisher}}</div>
+        <div><span class="infolabel">{{strings.i18n_pub_date}}</span>{{data.date}}</div>
+        <div><span class="infolabel">Subject:</span> {{data.subject}}</div>
+        <div><span class="infolabel">{{strings.i18n_id}}</span>{{data.identifier}}</div>
+        <div><span class="infolabel">Permanent Link:</span> <a href="{{data.handle}}">{{data.handle}}</a></div>
+        <div><span class="infolabel">{{strings.i18n_format}}</span>{{data.format}}</div>
+        <div><span class="infolabel">Buy the book:</span>  <a target="_blank" href="http://nyupress.org/search.aspx?keyword={{data.identifier}}">http://nyupress.org/search.aspx?keyword={{data.identifier}}</a>
+        </div>
+        <div><span class="infolabel">Abstract:</span> {{#data.description}}{{ data.description }}{{/data.description}} {{^data.description}}Abstract not available{{/data.description}}</div>
+        <div class='read'><a href="simpleviewer.html?epub={{& data.packageUrl}}" class="btn btn-default item-link">{{strings.i18n_read}}</a>
+        </div>
+
+
+    </div>
+</div>
