@@ -10368,7 +10368,8 @@ define('emub-model/package_document_parser', ['require', 'module', 'jquery', 'un
             jsonMetadata.rights = $("rights").text();
             jsonMetadata.spread = $("meta[property='rendition:spread']", $metadata).text();
             jsonMetadata.title = $("title", $metadata).text();
-            console.log(" ^&%&^%&% 1 i hae got yr title " + jsonMetadata.title);
+            console.info(jsonMetadata);
+            console.log(" LMH Title: " + jsonMetadata.title);
             return jsonMetadata;
         }
 
