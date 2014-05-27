@@ -24,6 +24,20 @@ a:link, a:visited {
     color: #6FA64D;
 }
 
+body.io-loading {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(../images/loading.gif);
+}
+
+
+/*a[target="_blank"] {
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-image: url(../images/ext_link_icon.svg);
+    padding-right: 13px;
+}*/
+
 a.btn {
     color: #333;
 }
@@ -94,14 +108,17 @@ a.btn {
     clear: both;
     float: none;
 }
+
 .home .data-container h2.page-title {
-     font-size: 17px;
-     margin: 35px 0 10px;
+    font-size: 17px;
+    margin: 35px 0 10px;
 }
+
 .home .data-container p:first-child {
-     font-size: 1.2em;
-     margin: 35px 0 10px;
+    font-size: 1.2em;
+    margin: 35px 0 10px;
 }
+
 .data-container h2.page-title a:link, .data-container h2.page-title a:visited {
     color: #888888;
 }
