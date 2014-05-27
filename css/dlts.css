@@ -694,7 +694,7 @@ input.searchbox:focus {
         /* max-width: 15rem;*/
     }
     .navbar {
-        padding: 10px;
+        padding: 10px 20px;
     }
     .navbar .container, .navbar header, .navbar header > *, .navbar .n-utils,
     .home .navbar header > * {

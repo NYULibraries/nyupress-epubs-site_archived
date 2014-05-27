@@ -127,6 +127,15 @@
         font: normal 200 18px/1.1'Gotham Extra Light', Gotham-ExtraLight, arial;
         /* max-width: 15rem;*/
     }
+    #readerHeader button.icon-toc, #readerHeader button.icon-full-screen {
+        display: none;
+    }
+     #readerHeader button.icon-settings {
+        border: none;
+        width: 40px;
+        margin-right: 0px;
+    }
+    
 }
 @media screen and (max-width: 330px) {
     .navbar .home #site-title, .navbar .reader #site-title {

@@ -258,3 +258,6 @@ body.list-view .description {
 .item-link:hover .title {
     text-decoration: underline;
 }
+.modal-content h5 {
+    margin: 20px 0;
+}
