@@ -20,8 +20,6 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 10px;
 }
 
-
-
 a:link, a:visited {
     color: #6FA64D;
 }
@@ -53,7 +51,6 @@ a.btn {
     border-bottom: 1px solid #dedede;
 }
 
-
 .data-container h2.page-title a:link, .data-container h2.page-title a:visited {
     color: #888888;
 }
@@ -76,7 +73,6 @@ a.btn {
     font-weight: normal;
 }
 
-
 .data-container {
     width: auto;
     position: static;
@@ -84,19 +80,27 @@ a.btn {
     margin: 30px auto 70px;
     max-width: 650px;
 }
+
 .data-container h2.page-title {
-    padding:  0px 0;
- 
+    padding: 0px 0;
     text-transform: uppercase;
     color: #333;
-    margin:  0 0;
-    font-size: 15px;
+    margin: 0 0 10px;
+    font-size: 19px;
     line-height: 1.4;
     font-family: 'Gotham Light', Gotham-Light, arial;
     font-weight: normal;
     font-weight: 300;
     clear: both;
     float: none;
+}
+.home .data-container h2.page-title {
+     font-size: 17px;
+     margin: 35px 0 10px;
+}
+.home .data-container p:first-child {
+     font-size: 1.2em;
+     margin: 35px 0 10px;
 }
 .data-container h2.page-title a:link, .data-container h2.page-title a:visited {
     color: #888888;
@@ -281,11 +285,7 @@ a.info-icon {
     padding-top: 20px;
 }
 
-
-.library-item .book-info .title{
-
-
-
+.library-item .book-info .title {
     margin: 0 0 3px 0;
     /*color: #6FA64D;*/
     font-weight: 300;
@@ -305,7 +305,7 @@ a.info-icon {
 
 .library-item .book-info {
     margin: 0px;
-  /*  max-height: 290px;*/
+    /*  max-height: 290px;*/
     height: auto;
     position: static;
     vertical-align: top;
@@ -359,44 +359,6 @@ body.page footer#pagefooter {
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 43px;
-
-}
-
-/*  Navigation */
-
-/*  ------------------------------------------------------------------------- */
-
-.navbar {
-    min-height: 55px;
-    position: relative;
-    border: none;
-    border-radius: 0px;
-    margin-bottom: 20px;
-    margin-bottom: 0px;
-    background-color: #2c2c2c;
-    background-image: -moz-linear-gradient(top, #333333, #222222);
-    background-image: -ms-linear-gradient(top, #333333, #222222);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
-    background-image: -webkit-linear-gradient(top, #333333, #222222);
-    background-image: -o-linear-gradient(top, #333333, #222222);
-    background-image: linear, top, #333333, #222222;
-    background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='ie-hex-str(#333333)', endColorstr='ie-hex-str(#222222)', GradientType=0);
-    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-
-}
-
-.navbar-inner {
-    height: auto;
-}
-
-.home .navbar  li {
-    margin: 0;
-}
-
-
 }
 
 /*  Navigation */
@@ -432,7 +394,29 @@ body.page footer#pagefooter {
     margin: 0;
 }
 
+/*  Navigation */
 
+/*  ------------------------------------------------------------------------- */
+
+.navbar {
+    min-height: 55px;
+    position: relative;
+    border: none;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    margin-bottom: 0px;
+    background-color: #2c2c2c;
+    background-image: -moz-linear-gradient(top, #333333, #222222);
+    background-image: -ms-linear-gradient(top, #333333, #222222);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
+    background-image: -webkit-linear-gradient(top, #333333, #222222);
+    background-image: -o-linear-gradient(top, #333333, #222222);
+    background-image: linear, top, #333333, #222222;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='ie-hex-str(#333333)', endColorstr='ie-hex-str(#222222)', GradientType=0);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .navbar-inner {
@@ -443,6 +427,13 @@ body.page footer#pagefooter {
     margin: 0;
 }
 
+.navbar-inner {
+    height: auto;
+}
+
+.home .navbar  li {
+    margin: 0;
+}
 
 .navbar #logo-replace a {
     width: 105px;
@@ -461,10 +452,7 @@ body.page footer#pagefooter {
     overflow: hidden;
     margin: 0;
 }
-.home .navbar #logo-replace, .home .navbar #logo-replace a {
-    height: 75px;
-    width: 160px;
-}
+
 .navbar #site-title {
     font: normal 200 22px / 1 "Gotham Extra Light", Gotham-ExtraLight, arial;
     letter-spacing: .5px;
@@ -475,14 +463,12 @@ body.page footer#pagefooter {
 
 .home .navbar  #site-title {
     font: normal 200 24px / 1.5 "Gotham Extra Light", Gotham-ExtraLight, arial;
-
 }
 
 .navbar #site-title a {
     display: block;
     text-decoration: none;
     color: white;
-    
 }
 
 .navbar #site-title a:hover {
@@ -591,7 +577,6 @@ a#s-btn img {
 input.searchbox {
     margin: 0 10px 0 0;
     font-size: 13px;
-    
     color: white;
     padding: 10px 10px 5px 10px;
     background: #343434 url("../images/s4.png") no-repeat right center;
@@ -619,10 +604,8 @@ input.searchbox:focus {
     /* box-shadow: inset 0 0 10px 1px rgba(0,0,0,.30);*/
 }
 
-
-
-/*@media screen and (min-width: 551px) {
-    .home .navbar #logo-replace a {
+@media screen and (min-width: 600 px) {
+    /*.home .navbar #logo-replace a {
         width: 160px;
         height: 75px;
         margin: 0;
@@ -635,8 +618,13 @@ input.searchbox:focus {
     }
     .navbar header > * {
         padding: 10px 0 10px 10px;
+    }*/
+    .home .navbar #logo-replace, .home .navbar #logo-replace a {
+        height: 75px;
+        width: 160px;
     }
-}*/
+}
+
 .navbar header > * {
     padding: 10px 0 10px 10px;
 }
@@ -644,14 +632,11 @@ input.searchbox:focus {
 @media screen and (max-width: 600px), screen and (device-aspect-ratio: 40 / 71) {
     /* http://stackoverflow.com/questions/12539697/iphone-5-css-media-query */
     .library-items {
-
         margin: 1rem 0px 0px;
     }
     h2.page-title {
-      
-        margin:  0px;
+        margin: 0px;
     }
-  
     footer li a:link, footer li a:visited {
         color: #aaa;
         margin-bottom: 1rem;
@@ -666,13 +651,11 @@ input.searchbox:focus {
     .navbar .reader .icon-full-screen {
         display: none;
     }
-
     .navbar .reader .brand, .home .navbar  .brand {
         /* height: 40px;
          width: 40px;
          margin-right: 10px;*/
     }
-
     .navbar .reader #logo-replace, .home .navbar #logo-replace, .navbar #logo-replace {
         height: 40px;
         width: 40px;
@@ -689,9 +672,8 @@ input.searchbox:focus {
         font: normal 200 16px / 1.1 "Gotham Extra Light", Gotham-ExtraLight, arial;
         /* max-width: 15rem;*/
     }
-    .home .navbar  #site-title, .page .navbar  #site-title, .navbar  #site-title {
+    .home .navbar #site-title, .page .navbar #site-title, .navbar #site-title {
         font: normal 200 18px / 1.1 "Gotham Extra Light", Gotham-ExtraLight, arial;
-    
         /* max-width: 15rem;*/
     }
     .navbar {
@@ -709,7 +691,6 @@ input.searchbox:focus {
     }
     .navbar header h2, .navbar header h1 {
         float: left;
-
     }
     .navbar header h1, .home .navbar header h1 {
         padding: 10px 0px 0px 10px;
@@ -761,9 +742,7 @@ input.searchbox:focus {
 }
 
 @media screen and (max-width: 350px) {
-
-    .home .navbar  #site-title, .page .navbar  #site-title, .navbar .reader #site-title, .navbar  #site-title {
-
+    .home .navbar #site-title, .page .navbar #site-title, .navbar .reader #site-title, .navbar #site-title {
         font: 200 14px/1.1 "Gotham Extra Light",Gotham-ExtraLight,arial;
     }
 }

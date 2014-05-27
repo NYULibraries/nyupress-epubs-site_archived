@@ -7,6 +7,7 @@ APP_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site"
 #APP_URL="http://localhost/nyupress-epubs-site"
 
 READIUM_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA"
+#READIUM_URL="http://localhost/nyupress-epubs-site/NYUPressOA"
 
 DISCOVERY_URL="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress"
 
