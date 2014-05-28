@@ -3,3 +3,18 @@
 
 NYUPressOA/epub_content/*
 NYUPressOA/i18n/*
+book/index.html
+
+*.html
+
+rights/index.html
+
+*.html
+
+search/index.html
+
+index.html
+
+details/index.html
+
+about/index.html
