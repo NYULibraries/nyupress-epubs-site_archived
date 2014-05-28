@@ -323,7 +323,7 @@ ReadiumSDK.Helpers.Margins = function(margin, border, padding) {
 
     this.height = function() {
         return this.top + this.bottom;
-    }
+    };
 };
 
 ReadiumSDK.Helpers.Margins.fromElement = function($element) {
@@ -531,7 +531,7 @@ ReadiumSDK.Models.Style = function(selector, declarations) {
             }
         }
 
-    }
+    };
 };
 define("style", ["readiumSDK"], (function(global) {
     return function() {
@@ -610,7 +610,7 @@ ReadiumSDK.Collections.StyleCollection = function() {
                 }
             }
         }
-    }
+    };
 
 };
 define("styleCollection", ["readiumSDK", "style"], (function(global) {
@@ -691,7 +691,7 @@ ReadiumSDK.Models.SpineItem = function(itemData, index, spine) {
             self.page_spread != ReadiumSDK.Models.SpineItem.SPREAD_RIGHT &&
             self.page_spread != ReadiumSDK.Models.SpineItem.SPREAD_CENTER) {
 
-            console.error(self.page_spread + " is not a recognized spread type");
+            //console.error(self.page_spread + " is not a recognized spread type");
         }
 
     }
@@ -710,7 +710,7 @@ ReadiumSDK.Models.SpineItem = function(itemData, index, spine) {
 
     this.isFixedLayout = function() {
         return this.rendition_layout ? this.rendition_layout === "pre-paginated" : this.spine.package.isFixedLayout();
-    }
+    };
 
 };
 
@@ -978,7 +978,7 @@ ReadiumSDK.Models.Smil.TimeContainerNode = function() {
         }
 
         return node;
-    }
+    };
 
     this.isEscapable = function(userEscapables) {
         if (this.epubtype === "") {
@@ -1002,7 +1002,7 @@ ReadiumSDK.Models.Smil.TimeContainerNode = function() {
         }
 
         return false;
-    }
+    };
 
     this.isSkippable = function(userSkippables) {
         if (this.epubtype === "") {
@@ -1026,7 +1026,7 @@ ReadiumSDK.Models.Smil.TimeContainerNode = function() {
         }
 
         return false;
-    }
+    };
 };
 
 ReadiumSDK.Models.Smil.TimeContainerNode.prototype = new ReadiumSDK.Models.Smil.SmilNode();
@@ -1106,7 +1106,7 @@ ReadiumSDK.Models.SmilModel = function() {
 ReadiumSDK.Models.SmilModel.fromSmilDTO = function(smilDTO, mo) {
 
     if (mo.DEBUG) {
-        console.debug("Media Overlay DTO import...");
+        // console.debug("Media Overlay DTO import...");
     }
 
     var indent = 0;
@@ -1126,18 +1126,18 @@ ReadiumSDK.Models.SmilModel.fromSmilDTO = function(smilDTO, mo) {
 
     smilModel.duration = smilDTO.duration;
     if (smilModel.duration && smilModel.duration.length && smilModel.duration.length > 0) {
-        console.error("SMIL duration is string, parsing float... (" + smilModel.duration + ")");
+        //console.error("SMIL duration is string, parsing float... (" + smilModel.duration + ")");
         smilModel.duration = parseFloat(smilModel.duration);
     }
 
     smilModel.mo = mo; //ReadiumSDK.Models.MediaOverlay
 
     if (smilModel.mo.DEBUG) {
-        console.log("JS MO smilVersion=" + smilModel.smilVersion);
-        console.log("JS MO id=" + smilModel.id);
-        console.log("JS MO spineItemId=" + smilModel.spineItemId);
-        console.log("JS MO href=" + smilModel.href);
-        console.log("JS MO duration=" + smilModel.duration);
+        // console.log("JS MO smilVersion=" + smilModel.smilVersion);
+        // console.log("JS MO id=" + smilModel.id);
+        // console.log("JS MO spineItemId=" + smilModel.spineItemId);
+        // console.log("JS MO href=" + smilModel.href);
+        // console.log("JS MO duration=" + smilModel.duration);
     }
 
     var safeCopyProperty = function(property, from, to, isRequired) {
@@ -1154,7 +1154,7 @@ ReadiumSDK.Models.SmilModel.fromSmilDTO = function(smilDTO, mo) {
                 console.log(getIndent() + "JS MO: [" + property + "=" + to[property] + "]");
             }
         } else if (isRequired) {
-            console.error("Required property " + property + " not found in smil node " + from.nodeType);
+            //console.error("Required property " + property + " not found in smil node " + from.nodeType);
         }
     };
 
@@ -1165,7 +1165,7 @@ ReadiumSDK.Models.SmilModel.fromSmilDTO = function(smilDTO, mo) {
         if (nodeDTO.nodeType == "seq") {
 
             if (smilModel.mo.DEBUG) {
-                console.log(getIndent() + "JS MO seq");
+                //console.log(getIndent() + "JS MO seq");
             }
 
             node = new ReadiumSDK.Models.Smil.SeqNode();
@@ -1180,7 +1180,7 @@ ReadiumSDK.Models.SmilModel.fromSmilDTO = function(smilDTO, mo) {
         } else if (nodeDTO.nodeType == "par") {
 
             if (smilModel.mo.DEBUG) {
-                console.log(getIndent() + "JS MO par");
+                // console.log(getIndent() + "JS MO par");
             }
 
             node = new ReadiumSDK.Models.Smil.ParNode();
@@ -1200,7 +1200,7 @@ ReadiumSDK.Models.SmilModel.fromSmilDTO = function(smilDTO, mo) {
                 } else if (child.nodeType == "audio") {
                     node.audio = child;
                 } else {
-                    console.error("Unexpected smil node type: " + child.nodeType);
+                    //console.error("Unexpected smil node type: " + child.nodeType);
                 }
             }
 
@@ -1218,7 +1218,7 @@ ReadiumSDK.Models.SmilModel.fromSmilDTO = function(smilDTO, mo) {
         } else if (nodeDTO.nodeType == "text") {
 
             if (smilModel.mo.DEBUG) {
-                console.log(getIndent() + "JS MO text");
+                //console.log(getIndent() + "JS MO text");
             }
 
             node = new ReadiumSDK.Models.Smil.TextNode();
@@ -1230,7 +1230,7 @@ ReadiumSDK.Models.SmilModel.fromSmilDTO = function(smilDTO, mo) {
         } else if (nodeDTO.nodeType == "audio") {
 
             if (smilModel.mo.DEBUG) {
-                console.log(getIndent() + "JS MO audio");
+                //console.log(getIndent() + "JS MO audio");
             }
 
             node = new ReadiumSDK.Models.Smil.AudioNode();
@@ -1240,29 +1240,29 @@ ReadiumSDK.Models.SmilModel.fromSmilDTO = function(smilDTO, mo) {
 
             safeCopyProperty("clipBegin", nodeDTO, node);
             if (node.clipBegin && node.clipBegin.length && node.clipBegin.length > 0) {
-                console.error("SMIL clipBegin is string, parsing float... (" + node.clipBegin + ")");
+                //console.error("SMIL clipBegin is string, parsing float... (" + node.clipBegin + ")");
                 node.clipBegin = parseFloat(node.clipBegin);
             }
             if (node.clipBegin < 0) {
                 if (smilModel.mo.DEBUG) {
-                    console.log(getIndent() + "JS MO clipBegin adjusted to ZERO");
+                    //console.log(getIndent() + "JS MO clipBegin adjusted to ZERO");
                 }
                 node.clipBegin = 0;
             }
 
             safeCopyProperty("clipEnd", nodeDTO, node);
             if (node.clipEnd && node.clipEnd.length && node.clipEnd.length > 0) {
-                console.error("SMIL clipEnd is string, parsing float... (" + node.clipEnd + ")");
+                //console.error("SMIL clipEnd is string, parsing float... (" + node.clipEnd + ")");
                 node.clipEnd = parseFloat(node.clipEnd);
             }
             if (node.clipEnd <= node.clipBegin) {
                 if (smilModel.mo.DEBUG) {
-                    console.log(getIndent() + "JS MO clipEnd adjusted to MAX");
+                    //console.log(getIndent() + "JS MO clipEnd adjusted to MAX");
                 }
                 node.clipEnd = node.MAX;
             }
         } else {
-            console.error("Unexpected smil node type: " + nodeDTO.nodeType);
+            //console.error("Unexpected smil node type: " + nodeDTO.nodeType);
             return undefined;
         }
 
@@ -1338,7 +1338,7 @@ ReadiumSDK.Models.MediaOverlay = function() {
             var smil = this.smil_models[i];
             if (smil.spineItemId === spineItem.idref) {
                 if (spineItem.media_overlay_id !== smil.id) {
-                    console.error("SMIL INCORRECT ID?? " + spineItem.media_overlay_id + " /// " + smil.id);
+                    //console.error("SMIL INCORRECT ID?? " + spineItem.media_overlay_id + " /// " + smil.id);
                 }
                 return smil;
             }
@@ -1399,7 +1399,7 @@ ReadiumSDK.Models.MediaOverlay.fromDTO = function(moDTO) {
 
     mo.duration = moDTO.duration;
     if (mo.duration && mo.duration.length && mo.duration.length > 0) {
-        console.error("SMIL total duration is string, parsing float... (" + mo.duration + ")");
+        //console.error("SMIL total duration is string, parsing float... (" + mo.duration + ")");
         mo.duration = parseFloat(mo.duration);
     }
     if (mo.DEBUG)
@@ -1611,11 +1611,11 @@ ReadiumSDK.Views.AudioPlayer = function(onStatusChanged, onPositionChanged, onAu
         }
 
         _audioElement.playbackRate = _rate;
-    }
+    };
     self.setRate(_rate);
     this.getRate = function() {
         return _rate;
-    }
+    };
 
 
     var _volume = 100.0;
@@ -1628,11 +1628,11 @@ ReadiumSDK.Views.AudioPlayer = function(onStatusChanged, onPositionChanged, onAu
             _volume = 1.0;
         }
         _audioElement.volume = _volume;
-    }
+    };
     self.setVolume(_volume);
     this.getVolume = function() {
         return _volume;
-    }
+    };
 
     this.play = function() {
         if (DEBUG) {
@@ -2013,13 +2013,13 @@ ReadiumSDK.Views.AudioPlayer = function(onStatusChanged, onPositionChanged, onAu
         try {
             _audioElement.currentTime = newCurrentTime;
         } catch (ex) {
-            console.error(ex.message);
+            //console.error(ex.message);
 
             setTimeout(function() {
                 try {
                     _audioElement.currentTime = newCurrentTime;
                 } catch (ex) {
-                    console.error(ex.message);
+                    //console.error(ex.message);
                 }
             }, 5);
         }
@@ -2233,7 +2233,7 @@ ReadiumSDK.Views.MediaOverlayElementHighlighter = function(reader) {
             _activeClass = "";
             _playbackActiveClass = "";
         }
-    }
+    };
 
 };
 define("mediaOverlayElementHighlighter", ["readiumSDK"], (function(global) {
@@ -2615,7 +2615,7 @@ ReadiumSDK.Views.MediaOverlayPlayer = function(reader, onStatusChanged) {
                 reader.openContentUrl(_smilIterator.currentPar.text.src, _smilIterator.smil.href, self);
             }
         } else {
-            console.log("No more SMIL");
+            //console.log("No more SMIL");
             self.reset();
         }
     }
@@ -3302,7 +3302,7 @@ console.debug("textAbsoluteRef: " + textAbsoluteRef);
             speakStart(undefined);
         } else {
             if (!_audioPlayer.play()) {
-                console.log("Audio player was dead, reactivating...");
+                //console.log("Audio player was dead, reactivating...");
 
                 self.reset();
                 self.toggleMediaOverlay();
@@ -5824,7 +5824,7 @@ define("pageOpenRequest", ["readiumSDK"], (function(global) {
         }
 
         OutOfRangeError.prototype = new Error(message);
-        OutOfRangeError.constructor = OutOfRangeError()
+        OutOfRangeError.constructor = OutOfRangeError();
 
         return new OutOfRangeError();
     };
@@ -6250,7 +6250,7 @@ ReadiumSDK.Views.CfiNavigationLogic = function($viewport, $iframe) {
         var foundElement = this.findFirstVisibleElement(topOffset);
 
         if (!foundElement.$element) {
-            console.log("Could not generate CFI no visible element on page");
+            //console.log("Could not generate CFI no visible element on page");
             return undefined;
         }
 
@@ -6274,7 +6274,7 @@ ReadiumSDK.Views.CfiNavigationLogic = function($viewport, $iframe) {
         var $element = EPUBcfi.Interpreter.getTargetElementWithPartialCFI(wrappedCfi, contentDoc);
 
         if (!$element || $element.length == 0) {
-            console.log("Can't find element for CFI: " + cfi);
+            //console.log("Can't find element for CFI: " + cfi);
             return undefined;
         }
 
@@ -6324,7 +6324,7 @@ ReadiumSDK.Views.CfiNavigationLogic = function($viewport, $iframe) {
                 ret.x = parseInt(terminus.substr(0, colIx));
                 ret.y = parseInt(terminus.substr(colIx + 1));
             } else {
-                console.log("Unexpected terminating step format");
+                //console.log("Unexpected terminating step format");
             }
 
             ret.cfi = cfi.substring(0, ix);
@@ -6449,7 +6449,7 @@ ReadiumSDK.Views.CfiNavigationLogic = function($viewport, $iframe) {
 
         return false;
 
-    }
+    };
 
     this.getElement = function(selector) {
 
@@ -6460,7 +6460,7 @@ ReadiumSDK.Views.CfiNavigationLogic = function($viewport, $iframe) {
         }
 
         return 0;
-    }
+    };
 
 };
 define("cfiNavigationLogic", ["readiumSDK", "epubCfi"], (function(global) {
@@ -7218,7 +7218,7 @@ ReadiumSDK.Views.FixedView = Backbone.View.extend({
                 }
 
                 if (paginationRequest) {
-                    self.onPagesLoaded(initiator, paginationRequest.spineItem, paginationRequest.elementId)
+                    self.onPagesLoaded(initiator, paginationRequest.spineItem, paginationRequest.elementId);
                 } else {
                     self.onPagesLoaded(initiator);
                 }
@@ -7830,13 +7830,10 @@ ReadiumSDK.Views.ReflowableView = Backbone.View.extend({
 
         this.trigger(ReadiumSDK.Events.CONTENT_DOCUMENT_LOADED, this.$iframe, this.currentSpineItem);
 
+        // console.info(this.$iframe[0].contentDocument);
+        // console.log(" Frame width " + this.$iframe[0].css("width"));
         var epubContentDocument = this.$iframe[0].contentDocument;
-        //console.log("asdf ");
-        //  console.log("asdf " + this.$iframe[0].css("width"));
-        //console.info(this.$iframe[0].contentDocument);
-        // console.log("asdf " + this.$iframe[0].css("width"));
         this.$epubHtml = $("html", epubContentDocument);
-        this.$epubDoc = this.$iframe;
         this.$epubHtml.css("height", "100%");
         this.$epubHtml.css("position", "fixed");
         // this.$epubHtml.css("-webkit-column-axis", "horizontal");
@@ -7845,26 +7842,20 @@ ReadiumSDK.Views.ReflowableView = Backbone.View.extend({
 
         this.updateHtmlFontSizeAndColumnGap();
 
-
-        /////////
-        //Columns Debugging
-        // this.$epubHtml.css("-webkit-column-rule-color", "red");
-        // this.$epubHtml.css("-webkit-column-rule-style", "dashed");
-        //this.$epubHtml.css("background-color", '#ffff00');
-        /////////
-
         this.applyStyles();
 
         this.applySwitches(epubContentDocument);
         this.registerTriggers(epubContentDocument);
         ////
-        ////
         this.$epubSVG = $("svg", epubContentDocument);
-        console.log(" this.$epubSVG " + this.$epubSVG);
+
         if (this.$epubSVG) {
-            var winH2 = this.$epubHtml.height();
-            var winW2 = this.$epubHtml.width();
-            console.log("2 LMH in cover " + winH2 + "  " + winW2);
+            var winH2 = this.$epubHtml.height(),
+                winW2 = this.$epubHtml.width();
+            // TODO: fix this condition so this does not load with every page
+            //console.log(" In cover " + winH2 + "  " + winW2);
+            //console.log(" this.$epubSVG " + this.$epubSVG);
+            //console.info(this.$epubSVG);
             this.$epubSVG.attr("width", winW2);
             this.$epubSVG.attr("height", winH2);
         }
@@ -7878,10 +7869,8 @@ ReadiumSDK.Views.ReflowableView = Backbone.View.extend({
         //we have to take it to account manually
         var elementMargins = ReadiumSDK.Helpers.Margins.fromElement(this.$el);
         this.setFrameSizesToRectangle(elementMargins.padding);
-
         this.updateViewportSize();
         this.updatePagination();
-
     },
 
     applyBookStyles: function() {
@@ -8005,7 +7994,7 @@ ReadiumSDK.Views.ReflowableView = Backbone.View.extend({
                 $('default', this).remove();
                 //                $('default', this).prop("hidden", true);
             }
-        })
+        });
     },
 
     onPaginationChanged: function(initiator, paginationRequest_spineItem, paginationRequest_elementId) {
@@ -8162,7 +8151,7 @@ ReadiumSDK.Views.ReflowableView = Backbone.View.extend({
 
         var pageIndexes = this.getOpenPageIndexes();
 
-        return pageIndexes.indexOf(index) != -1
+        return pageIndexes.indexOf(index) != -1;
     },
 
     getOpenPageIndexes: function() {
@@ -8417,7 +8406,7 @@ ReadiumSDK.Views.MediaOverlayDataInjector = function(mediaOverlay, mediaOverlayP
 
             iter.next();
         }
-    }
+    };
 };
 define("mediaOvelayDataInjector", ["readiumSDK", "mediaOverlay", "mediaOverlayPlayer", "smilModel", "spineItem"], (function(global) {
     return function() {
@@ -8519,10 +8508,10 @@ ReadiumSDK.Views.IFrameLoader = function() {
 
             try {
                 iframe.contentWindow.navigator.epubReadingSystem = navigator.epubReadingSystem;
-                console.debug("epubReadingSystem name:" + iframe.contentWindow.navigator.epubReadingSystem.name + " version:" + iframe.contentWindow.navigator.epubReadingSystem.version + " is loaded to iframe");
-                // console.log(" ^&%&^%&% 3 i hae got yr title " + window.jsonMetadata.title);
+                //console.debug("epubReadingSystem name:" + iframe.contentWindow.navigator.epubReadingSystem.name + " version:" + iframe.contentWindow.navigator.epubReadingSystem.version + " is loaded to iframe");
+                // console.log(" Title: " + window.jsonMetadata.title);
             } catch (ex) {
-                console.log("epubReadingSystem INJECTION ERROR! " + ex.message);
+                //console.log("epubReadingSystem INJECTION ERROR! " + ex.message);
             }
 
             isWaitingForFrameLoad = false;
@@ -9419,8 +9408,8 @@ define('epub-fetch/plain_fetcher', ['require', 'module', 'jquery', 'URIjs', './m
                 },
                 error: function(xhr, status, errorThrown) {
                     console.log('Error when AJAX fetching ' + fileUrl);
-                    console.log(status);
-                    console.log(errorThrown);
+                    //console.log(status);
+                    //console.log(errorThrown);
                     onerror(errorThrown);
                 }
             });
@@ -9481,13 +9470,13 @@ define('epub-fetch/zip_fetcher', ['require', 'module', 'jquery', 'URIjs', './mar
             function _handleError(err) {
                 if (err) {
                     if (err.message) {
-                        console.error(err.message);
+                        //console.error(err.message);
                     }
                     if (err.stack) {
-                        console.error(err.stack);
+                        //console.error(err.stack);
                     }
                 }
-                console.error(err);
+                //console.error(err);
             }
 
             // Description: perform a function with an initialized zip filesystem, making sure that such filesystem is initialized.
@@ -9676,7 +9665,7 @@ define('epub-fetch/zip_fetcher', ['require', 'module', 'jquery', 'URIjs', './mar
             var matchResults = uuidRegexp.exec(id);
             var rawUuid = matchResults[2] + matchResults[3] + matchResults[4] + matchResults[5] + matchResults[6];
             if (!rawUuid || rawUuid.length != 32) {
-                console.error('Bad UUID format for ID :' + id);
+                //console.error('Bad UUID format for ID :' + id);
             }
             var byteArray = [];
             for (var i = 0; i < 16; i++) {
@@ -9952,10 +9941,10 @@ define('epub-fetch/resource_fetcher', ['require', 'module', 'jquery', 'URIjs', '
                         function(error) {
                             if (error) {
                                 if (error.message) {
-                                    console.error(error.message);
+                                    //console.error(error.message);
                                 }
                                 if (error.stack) {
-                                    console.error(error.stack);
+                                    //console.error(error.stack);
                                 }
                             }
                             cssUrlFetchDeferred.resolve();
@@ -10223,10 +10212,10 @@ define('emub-model/package_document_parser', ['require', 'module', 'jquery', 'un
         function onError(error) {
             if (error) {
                 if (error.message) {
-                    console.error(error.message);
+                    //console.error(error.message);
                 }
                 if (error.stack) {
-                    console.error(error.stack);
+                    //console.error(error.stack);
                 }
             }
         }
@@ -10259,9 +10248,8 @@ define('emub-model/package_document_parser', ['require', 'module', 'jquery', 'un
                     json.metadata.cover_href = cover;
                 }
 
-                // LMH 
                 $('#readerHeader #book-title').html(json.metadata.title);
-                // console.log(" title " + json.metadata.title);
+                // console.log(" Title " + json.metadata.title);
                 $.when(updateMetadataWithIBookProperties(json.metadata)).then(function() {
 
                     if (json.metadata.layout === "pre-paginated") {
@@ -11081,8 +11069,8 @@ define('emub-model/package_document', ['require', 'module', 'jquery', 'underscor
                 resourceFetcher.relativeToPackageFetchFileContents(tocUrl, 'text', function(tocDocumentText) {
                     callback(tocDocumentText)
                 }, function(err) {
-                    console.error('ERROR fetching TOC from [' + getToc() + ']:');
-                    console.error(err);
+                    //console.error('ERROR fetching TOC from [' + getToc() + ']:');
+                    //console.error(err);
                     callback(undefined);
                 });
             }
@@ -11332,10 +11320,10 @@ define('epub-fetch/iframe_zip_loader', [], function() {
                             });
                     }, function(err) {
                         if (err.message) {
-                            console.error(err.message);
+                            //console.error(err.message);
                         }
 
-                        console.error(err);
+                        //console.error(err);
                         callback.call(context, success);
                     });
                 };
