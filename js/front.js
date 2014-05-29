@@ -7,7 +7,7 @@ YUI().use(
             container = Y.one('#a'),
             query = Y.one('.query'),
             loadMoreButton = Y.one('.pure-button.loading'),
-            datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref',
+            datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref,thumbHref',
             searchString = '*:*',
             transactions = [],
             pager = Y.one('ul.pure-paginator'),

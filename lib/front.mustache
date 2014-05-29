@@ -6,9 +6,9 @@
   <%> head %>
   <script id="list-template" type="text/x-handlebars-template">
   {{#items}}
-      <div class="library-item">{{thumbHref}}
+      <div class="library-item">
           <div class="img_hold">
-          <img class="img-responsive" src="<% readiumUrl %>/{{coverHref}}" alt="" title="{{title}}"/>
+          <img class="img-responsive" src="<% readiumUrl %>/{{thumbHref}}" alt="" title="{{title}}"/>
           </div>
         <div class="book-info">
           <h4><a class="item-link" href="<% appUrl %>/details/{{identifier}}">{{title}}</a></h4>
