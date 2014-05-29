@@ -7680,8 +7680,8 @@ ReadiumSDK.Views.ReflowableView = Backbone.View.extend({
 
     paginationInfo: {
 
-        visibleColumnCount: 2,
-        columnGap: 20,
+        visibleColumnCount: 1,
+        columnGap: 0,
         spreadCount: 0,
         currentSpreadIndex: 0,
         columnWidth: undefined,
@@ -7838,6 +7838,11 @@ ReadiumSDK.Views.ReflowableView = Backbone.View.extend({
         this.$epubHtml.css("position", "fixed");
         // this.$epubHtml.css("-webkit-column-axis", "horizontal");
         // this.$epubHtml.css("-moz-column-axis", "horizontal");
+
+        this.$epubBody = $("body", epubContentDocument);
+        // clobber any padding that appears in the epub's css
+        this.$epubBody.css("margin", "0");
+
         this.applyBookStyles();
 
         this.updateHtmlFontSizeAndColumnGap();
@@ -7857,7 +7862,7 @@ ReadiumSDK.Views.ReflowableView = Backbone.View.extend({
             //console.log(" this.$epubSVG " + this.$epubSVG);
             //console.info(this.$epubSVG);
             this.$epubSVG.attr("width", winW2);
-            this.$epubSVG.attr("height", winH2);
+            this.$epubSVG.attr("height", (winH2 - 10));
         }
     },
 
@@ -10433,7 +10438,7 @@ define('emub-model/package_document_parser', ['require', 'module', 'jquery', 'un
             if (metaNode.length === 1 && contentAttr) {
                 $imageNode = $('item[id="' + contentAttr + '"]', manifest);
                 if ($imageNode.length === 1 && $imageNode.attr("href")) {
-
+                    //console.log("  case 2 getCoverHref " + $imageNode.attr("href"));
                     return $imageNode.attr("href");
                 }
             }
@@ -10441,7 +10446,7 @@ define('emub-model/package_document_parser', ['require', 'module', 'jquery', 'un
             // that didn't seem to work so, it think epub2 just uses item with id=cover
             $imageNode = $('#cover', manifest);
             if ($imageNode.length === 1 && $imageNode.attr("href")) {
-                console.log("YES  case 3 getCoverHref " + $imageNode.attr("href"));
+                //console.log("  case 3 getCoverHref " + $imageNode.attr("href"));
                 return $imageNode.attr("href");
             }
 

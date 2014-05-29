@@ -30,7 +30,6 @@ body.io-loading {
     background-image: url(../images/loading.gif);
 }
 
-
 /*a[target="_blank"] {
     background-position: center right;
     background-repeat: no-repeat;
@@ -250,8 +249,8 @@ a.info-icon {
 .detail-item .img-hold {
     float: left;
     margin-right: 15px;
-    width: 25%;
-    max-width: 200px;
+    width: 27%;
+    max-width: 160px;
     height: auto;
 }
 
@@ -662,9 +661,25 @@ input.searchbox:focus {
         padding: 11px 10px 7px;
         text-transform: uppercase;
     }
+    footer li a[href="http://dlib.nyu.edu/dlts/"] {
+        padding: 11px 10px 7px 0;
+    }
+   
     .footer-inner {
         padding: 2px 0 5px;
     }
+    body.page {
+        /* Margin bottom by footer height */
+        margin-bottom: 59px;
+    }
+    body.page footer#pagefooter {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Set the fixed height of the footer here */
+        height: 59px;
+    }
+
     .navbar .reader .icon-full-screen {
         display: none;
     }
@@ -694,7 +709,7 @@ input.searchbox:focus {
         /* max-width: 15rem;*/
     }
     .navbar {
-        padding: 10px 20px;
+        padding: 10px 10px;
     }
     .navbar .container, .navbar header, .navbar header > *, .navbar .n-utils,
     .home .navbar header > * {

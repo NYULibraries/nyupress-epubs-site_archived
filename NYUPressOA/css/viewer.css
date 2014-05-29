@@ -213,11 +213,10 @@
         top: 0px;
     }
 }
-
 #epub-reader-container {
     position: absolute;
-    left: 50px;
-    right: 50px;
+    left: 60px;
+    right: 60px;
     bottom: 30px;
     top: 30px;
 }
