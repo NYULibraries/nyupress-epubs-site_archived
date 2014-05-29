@@ -619,7 +619,9 @@ input.searchbox:focus {
     /*  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.49), 0 -1px 1px #333333, 0 1px 0 #222222;*/
     /* box-shadow: inset 0 0 10px 1px rgba(0,0,0,.30);*/
 }
-
+.more-books a {
+    display: none;
+}
 @media screen and (min-width: 600 px) {
     /*.home .navbar #logo-replace a {
         width: 160px;

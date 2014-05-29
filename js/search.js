@@ -42,7 +42,9 @@ YUI().use(
         }
 
         function onPaginatorAvailable() {
-            if (this.get('region').top - fold < body.get('winHeight')) onScroll();
+            if (this.get('region').top - fold < body.get('winHeight')) {
+                onScroll();
+            }
         }
 
         function onScroll(e) {

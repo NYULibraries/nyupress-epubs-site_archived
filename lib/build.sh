@@ -4,12 +4,13 @@ umask 002
 
 # no trailing slash
 APP_URL="http://localhost/nyupress-epubs-site"
-#APP_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site"
-#APP_URL="http://openaccessbooks.nyupress.org"
+APP_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site"
+APP_URL="http://openaccessbooks.nyupress.org"
 
-#READIUM_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA"
-#APP_URL="http://openaccessbooks.nyupress.org/"
 READIUM_URL="http://localhost/nyupress-epubs-site/NYUPressOA"
+READIUM_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA"
+READIUM_URL="http://openaccessbooks.nyupress.org/NYUPressOA"
+
 
 DISCOVERY_URL="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress"
 
@@ -35,8 +36,8 @@ DETAILS_DATA=" { title : 'Book details', appUrl: '$APP_URL', readiumUrl: '$READI
 
 SEARCH_DATA=" { title : 'Search', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$SEARCH_JS', css: '$CSS', discovery: '$DISCOVERY_URL' } "
 
-#echo $FRONT_DATA | mustache - front.mustache > ../index2.html
-echo $FRONT_DATA | mustache - front.mustache > ../index.html
+echo $FRONT_DATA | mustache - front.mustache > ../index2.html
+#echo $FRONT_DATA | mustache - front.mustache > ../index.html
 
 echo $ABOUT_DATA | mustache - about.mustache > ../about/index.html
 
