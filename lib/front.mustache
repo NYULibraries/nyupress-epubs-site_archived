@@ -3,15 +3,15 @@
 <html>
 <head>
   <title>NYU Press: <% title %></title>
-  <%> head %>
+<%> head %>
   <script id="list-template" type="text/x-handlebars-template">
   {{#items}}
       <div class="library-item">
           <div class="img_hold">
-          <img class="img-responsive" src="<% readiumUrl %>/{{thumbHref}}" alt="" title="{{title}}"/>
+          <a class="item-link" href="<% appUrl %>/details/{{identifier}}"><img class="img-responsive" src="<% readiumUrl %>/{{thumbHref}}" alt="" title="{{title}}"/></a>
           </div>
         <div class="book-info">
-          <h4><a class="item-link" href="<% appUrl %>/details/{{identifier}}">{{title}}</a></h4>
+          <h4 class="book-title"><a class="item-link" href="<% appUrl %>/details/{{identifier}}">{{title}}</a></h4>
           <div class="author">by {{author}}</div>
           <div class="description">{{description}}</div>
           <div class="buttons">
@@ -22,6 +22,8 @@
       </div>
     {{/items}}
   </script>  
+
+  <%> googleanalytics %>
 </head>
 <body class="home list-view" data-app="<% appUrl %>" data-discovery="<% discovery %>">
   <%> header %>
@@ -34,6 +36,13 @@
       </div>
       <ul class="pure-paginator"></ul>
       
+
+  <div class="pure-g container more-books">
+    <div class="pure-u-1">
+      <a href="#" class="pure-button loading">More books</a>
+    </div>
+  </div>
+
       <%> footer %>
   </div>
   <%={{ }}=%><script>{{{js}}}</script>

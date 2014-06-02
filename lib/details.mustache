@@ -11,7 +11,7 @@
          <img class="img-responsive" src="<% readiumUrl %>/{{thumbHref}}" alt="{{title}}" title="{{title}}"/>
         </div>
         <div class="book-info">
-         <h4 class="title">{{title}}</h4>
+         <h4 class="book-title">{{title}}</h4>
             <div><span class="infolabel">Author:</span> {{author}}</div>
             <div><span class="infolabel">Publisher:</span> {{publisher}}</div>          
             <div><span class="infolabel">Publication Date:</span> {{date}}</div>
@@ -19,7 +19,7 @@
             <div><span class="infolabel">ISBN:</span> {{identifier}}</div>      
             <div><span class="infolabel">Permanent Link:</span> {{handle}}</div>            
             <div><span class="infolabel">Number of pages:</span> {{format}}</div>
-            <div><p>{{description}}</p></div>
+            <div id="description"><p>{{description}}</p></div>
             <div class="buttons">
               <a class="btn btn-default" href="http://nyupress.org/search.aspx?keyword={{identifier}}" target="_blank">Buy the book</a>
               <a class="btn btn-default" href="<% appUrl %>/book/{{identifier}}">Read</a>
@@ -28,7 +28,8 @@
         </div>
       </div>
     {{/items}}
-  </script>    
+  </script> 
+ 
 </head>
 <body class="details-page page" data-app="<% appUrl %>" data-discovery="<% discovery %>">
 <div>
