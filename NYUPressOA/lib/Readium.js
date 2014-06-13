@@ -1388,11 +1388,11 @@ ReadiumSDK.Models.MediaOverlay.fromDTO = function(moDTO) {
     var mo = new ReadiumSDK.Models.MediaOverlay();
 
     if (!moDTO) {
-        console.debug("No Media Overlay.");
+        //console.debug("No Media Overlay.");
         return mo;
     }
 
-    console.debug("Media Overlay INIT...");
+    //console.debug("Media Overlay INIT...");
 
     // if (mo.DEBUG)
     //     console.debug(JSON.stringify(moDTO));
@@ -1403,19 +1403,19 @@ ReadiumSDK.Models.MediaOverlay.fromDTO = function(moDTO) {
         mo.duration = parseFloat(mo.duration);
     }
     if (mo.DEBUG)
-        console.debug("Media Overlay Duration (TOTAL): " + mo.duration);
+        //console.debug("Media Overlay Duration (TOTAL): " + mo.duration);
 
     mo.narrator = moDTO.narrator;
     if (mo.DEBUG)
-        console.debug("Media Overlay Narrator: " + mo.narrator);
+        //console.debug("Media Overlay Narrator: " + mo.narrator);
 
     mo.activeClass = moDTO.activeClass;
     if (mo.DEBUG)
-        console.debug("Media Overlay Active-Class: " + mo.activeClass);
+       // console.debug("Media Overlay Active-Class: " + mo.activeClass);
 
     mo.playbackActiveClass = moDTO.playbackActiveClass;
     if (mo.DEBUG)
-        console.debug("Media Overlay Playback-Active-Class: " + mo.playbackActiveClass);
+        //console.debug("Media Overlay Playback-Active-Class: " + mo.playbackActiveClass);
 
     var count = moDTO.smil_models.length;
     if (mo.DEBUG)
@@ -9353,7 +9353,7 @@ define('epub-fetch/plain_fetcher', ['require', 'module', 'jquery', 'URIjs', './m
         var _jsonMetadata;
 
         var _packageUrl;
-        console.log("LMH PlainExplodedFetcher baseUrl " + baseUrl);
+        //console.log("LMH PlainExplodedFetcher baseUrl " + baseUrl);
         this.initialize = function(callback) {
 
             var containerPath = new URI(baseUrl + '/META-INF/container.xml');
@@ -9362,7 +9362,7 @@ define('epub-fetch/plain_fetcher', ['require', 'module', 'jquery', 'URIjs', './m
                 callback();
 
             }, function(error) {
-                console.error("unable to find package document: " + error);
+               // console.error("unable to find package document: " + error);
                 _packageUrl = baseUrl;
 
                 callback();
@@ -9373,14 +9373,14 @@ define('epub-fetch/plain_fetcher', ['require', 'module', 'jquery', 'URIjs', './m
 
             // Make absolute to the package document path
             var epubResourceRelURI = new URI(epubResourceURI);
-            console.log('LMH  resolveURI: ' + epubResourceRelURI);
+           // console.log('LMH  resolveURI: ' + epubResourceRelURI);
             var epubResourceAbsURI = epubResourceRelURI.absoluteTo(_packageUrl);
             return epubResourceAbsURI.toString();
         };
 
 
         this.getPackageUrl = function() {
-            console.log('LMH  getPackageUrl:');
+            //console.log('LMH  getPackageUrl:');
             return _packageUrl;
         };
 
@@ -9820,7 +9820,7 @@ define('epub-fetch/resource_fetcher', ['require', 'module', 'jquery', 'URIjs', '
     ],
     function(require, module, $, URI, MarkupParser, ContentTypeDiscovery, PlainExplodedFetcher, ZipFetcher,
         ProcessedItemsRegistry, ResourceCache) {
-        console.log('LMH resource_resolver module id: ' + module.id);
+        //console.log('LMH resource_resolver module id: ' + module.id);
 
 
         var ResourceFetcher = function(rootUrl, libDir) {
@@ -9864,7 +9864,7 @@ define('epub-fetch/resource_fetcher', ['require', 'module', 'jquery', 'URIjs', '
                 if (isExploded) {
 
                     var plainFetcher = new PlainExplodedFetcher(rootUrl);
-                    console.log('LMH createDataFetcher rootUrl is ' + rootUrl);
+                    //console.log('LMH createDataFetcher rootUrl is ' + rootUrl);
                     plainFetcher.initialize(function() {
 
                         callback(plainFetcher);
@@ -10362,7 +10362,7 @@ define('emub-model/package_document_parser', ['require', 'module', 'jquery', 'un
             jsonMetadata.spread = $("meta[property='rendition:spread']", $metadata).text();
             jsonMetadata.title = $("title", $metadata).text();
             console.info(jsonMetadata);
-            console.log(" LMH Title: " + jsonMetadata.title);
+            //console.log(" LMH Title: " + jsonMetadata.title);
             return jsonMetadata;
         }
 
