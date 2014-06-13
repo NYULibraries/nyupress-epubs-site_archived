@@ -14,11 +14,11 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     width: 100%;
     /* overflow: hidden;*/
-    
     display: table;
 }
 
 #readerHeader h1 {
+    /* font: normal 200 22px / 1 'Gotham 2r', 'Gotham A', 'Gotham B', Helvetica;*/
     font-size: 16px;
     padding: 2px 0px 10px 10px;
     display: table-cell;
@@ -44,7 +44,7 @@
     transition: all .5s ease;
 }
 
-.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
     background-color: transparent;
     outline: none;
     border: none;
@@ -170,7 +170,7 @@
     #readerHeader button.icon-settings, #readerHeader button.icon-full-screen {
         display: none;
     }
-    #readerHeader button.icon-toc{
+    #readerHeader button.icon-toc {
         border: none;
         width: 40px;
         margin-right: 0px;
