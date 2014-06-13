@@ -1,13 +1,11 @@
 require.config({
-    // baseUrl: '/NYUPressOA/lib/',
-    // baseUrl: 'http://localhost/NYUPressOA/lib/',
     baseUrl: './lib/',
     paths: {
         'text': 'thirdparty/text/text',
         'hgn': 'thirdparty/hgn',
         'hogan': 'thirdparty/hogan',
         'jath': 'thirdparty/jath.min',
-        'jquery': 'thirdparty/jquery-1.9.1',
+        'jquery': 'thirdparty/jquery-1.9.1.min',
         'underscore': 'thirdparty/underscore-1.4.4',
         'backbone': 'thirdparty/backbone-0.9.10',
         'bootstrap': 'thirdparty/bootstrap.min',
