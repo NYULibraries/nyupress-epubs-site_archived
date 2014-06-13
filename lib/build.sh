@@ -12,7 +12,8 @@ READIUM_URL="http://localhost/nyupress-epubs-site/NYUPressOA"
 READIUM_URL="http://openaccessbooks.nyupress.org/NYUPressOA"
 
 
-DISCOVERY_URL="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress"
+#DISCOVERY_URL="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress"
+DISCOVERY_URL="http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress"
 
 CSS=`cssmin ../css/style.css`
 
