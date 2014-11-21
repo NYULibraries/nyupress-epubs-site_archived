@@ -15,7 +15,7 @@ READIUM_URL="http://openaccessbooks.nyupress.org/NYUPressOA"
 #DISCOVERY_URL="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress"
 DISCOVERY_URL="http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress"
 
-CSS=`cssmin ../css/style.css`
+CSS=`cssmin -s ../css/style.css -d ../css/style.min.css`
 
 SEARCH_JS=`uglifyjs ../js/search.js`
 
