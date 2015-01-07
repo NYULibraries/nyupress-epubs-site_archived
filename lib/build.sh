@@ -15,8 +15,6 @@ READIUM_URL="http://openaccessbooks.nyupress.org/NYUPressOA"
 #DISCOVERY_URL="http://dev-discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress"
 DISCOVERY_URL="http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress"
 
-CSS=`cssmin -s ../css/style.css -d ../css/style.min.css`
-
 SEARCH_JS=`uglifyjs ../js/search.js`
 
 FRONT_JS=`uglifyjs ../js/front.js`
@@ -25,17 +23,17 @@ BOOK_JS=`uglifyjs ../js/book.js`
 
 DETAILS_JS=`uglifyjs ../js/details.js`
 
-ABOUT_DATA=" { title : 'About', appUrl: '$APP_URL', css: '$CSS' } "
+ABOUT_DATA=" { title : 'About', appUrl: '$APP_URL'  } "
 
-RIGHTS_DATA=" { title : 'Rights', appUrl: '$APP_URL', css: '$CSS'} "
+RIGHTS_DATA=" { title : 'Rights', appUrl: '$APP_URL'} "
 
-FRONT_DATA=" { title : 'Browse titles', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$FRONT_JS', css: '$CSS', discovery: '$DISCOVERY_URL' } "
+FRONT_DATA=" { title : 'Browse titles', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$FRONT_JS',  discovery: '$DISCOVERY_URL' } "
 
-BOOK_DATA=" { title : 'Read online', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$BOOK_JS', css: '$CSS', discovery: '$DISCOVERY_URL' } "
+BOOK_DATA=" { title : 'Read online', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$BOOK_JS', discovery: '$DISCOVERY_URL' } "
 
-DETAILS_DATA=" { title : 'Book details', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$DETAILS_JS', css: '$CSS', discovery: '$DISCOVERY_URL' } "
+DETAILS_DATA=" { title : 'Book details', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$DETAILS_JS',  discovery: '$DISCOVERY_URL' } "
 
-SEARCH_DATA=" { title : 'Search', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$SEARCH_JS', css: '$CSS', discovery: '$DISCOVERY_URL' } "
+SEARCH_DATA=" { title : 'Search', appUrl: '$APP_URL', readiumUrl: '$READIUM_URL', js: '$SEARCH_JS', discovery: '$DISCOVERY_URL' } "
 
 echo $FRONT_DATA | mustache - front.mustache > ../index.html
 
