@@ -7,15 +7,15 @@
       {{#items}}
       <div class="library-item">
         <div class="img_hold">
-          <a class="item-link" href="http://openaccessbooks.nyupress.org/details/{{identifier}}"><img class="img-responsive" src="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" alt="" title="{{title}}"/></a>
+          <a class="item-link" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}"><img class="img-responsive" src="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" alt="" title="{{title}}"/></a>
         </div>
         <div class="book-info">
-          <h4 class="book-title"><a class="item-link" href="http://openaccessbooks.nyupress.org/details/{{identifier}}">{{title}}</a></h4>
+          <h4 class="book-title"><a class="item-link" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}">{{title}}</a></h4>
           <div class="author">by {{author}}</div>
           <div class="description">{{description}}</div>
           <div class="caption buttons">
-            <a class="btn btn-default" href="http://openaccessbooks.nyupress.org/book/{{identifier}}">Read</a>
-            <a class="btn btn-default" href="http://openaccessbooks.nyupress.org/details/{{identifier}}">View Details</a>
+            <a class="btn btn-default" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/book/{{identifier}}">Read</a>
+            <a class="btn btn-default" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}">View Details</a>
           </div>
        </div>
       </div>
@@ -27,8 +27,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="http://openaccessbooks.nyupress.org/css/bootstrap.css"> 
-  <link rel="stylesheet" href="http://openaccessbooks.nyupress.org/css/dlts.css">
+  <link rel="stylesheet" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/css/bootstrap.css"> 
+  <link rel="stylesheet" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/css/dlts.css">
   <script src="http://yui.yahooapis.com/3.15.0/build/yui/yui-min.js"></script>
   <script>
   YUI().use('node', function(Y) {
@@ -67,17 +67,17 @@
   });
   </script>
 </head>
-<body class="list-view search" data-app="http://openaccessbooks.nyupress.org" data-discovery="http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress">
+<body class="list-view search" data-app="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site" data-discovery="http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress">
    <div class="header">
      <nav class="navbar" role="navigation" id="navbar-fixed-top">
        <div class="navbar-inner">
          <div class="container">
            <header role="banner">
-             <h2 id="logo-replace"><a href="http://openaccessbooks.nyupress.org" class="brand">NYU Press</a></h2>
-             <h1 id="site-title"><a href="http://openaccessbooks.nyupress.org">Open Access Books</a></h1>
+             <h2 id="logo-replace"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site" class="brand">NYU Press</a></h2>
+             <h1 id="site-title"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site">Open Access Books</a></h1>
              <div class="n-utils">
                <button id="search-toggle" style="display:none">X</button>
-               <form role="search" class="pure-form searchform" value="" method="get" action="http://openaccessbooks.nyupress.org/search" name="searchform" >
+               <form role="search" class="pure-form searchform" value="" method="get" action="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/search" name="searchform" >
                  <input class="searchbox pure-input" name="searchbox" id="searchbox"  type="text" placeholder="Search for books..." value="" size="30" maxlength="300">
                    <!-- <button type="submit" class="pure-button">Search</button> -->
                </form>
@@ -88,7 +88,7 @@
      </nav>
    </div>
   <div class="breadcrumb">
-    <span class="page-title"><a href="http://openaccessbooks.nyupress.org">Home</a> &gt; Search &gt; <span class="query"></span></span>
+    <span class="page-title"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site">Home</a> &gt; Search &gt; <span class="query"></span></span>
   </div>
 
   <div class="content-wrapper">
@@ -114,8 +114,8 @@
      <footer id ="pagefooter">
        <div class="footer-inner">
          <ul>
-           <li><span><a href="http://openaccessbooks.nyupress.org/about">About</a></span></li>
-           <li><span><a href="http://openaccessbooks.nyupress.org/rights">Rights Information</a></span></li>
+           <li><span><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/about">About</a></span></li>
+           <li><span><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/rights">Rights Information</a></span></li>
            <li id="nyup-link"><span><a href="http://nyupress.org/" target="_blank">NYU Press</a></span></li>
            <li id="dlts-link"><span>Powered by <a href="http://dlib.nyu.edu/dlts/"  target="_blank">NYU DLTS</a></span></li>
          </ul>
