@@ -49,20 +49,20 @@
   </script>
   <script id="list-template" type="text/x-handlebars-template">
     {{#items}}
-      <div class="detail-item">
+      <div itemscope itemtype="http://schema.org/Book" class="detail-item">
         <div class="img-hold">
-         <img class="img-responsive" src="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" alt="{{title}}" title="{{title}}"/>
+         <img itemprop="image" class="img-responsive" src="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" alt="{{title}}" title="{{title}}"/>
         </div>
         <div class="book-info">
-         <h4 class="book-title">{{title}}</h4>
-            <div><span class="infolabel">Author:</span> {{author}}</div>
-            <div><span class="infolabel">Publisher:</span> {{publisher}}</div>          
-            <div><span class="infolabel">Publication Date:</span> {{date}}</div>
-            <div><span class="infolabel">Subject:</span> {{subject}}</div>      
-            <div><span class="infolabel">ISBN:</span> {{identifier}}</div>      
-            <div><span class="infolabel">Permanent Link:</span> {{handle}}</div>            
-            <div><span class="infolabel">Number of pages:</span> {{format}}</div>
-            <div id="description"><p>{{description}}</p></div>
+         <h4 itemprop="name" class="book-title">{{title}}</h4>
+            <div><span class="infolabel">Author:</span><span itemprop="author"> {{author}}</span></div>
+            <div><span class="infolabel">Publisher:</span><span itemprop="publisher"> {{publisher}}</span></div>          
+            <div><span class="infolabel">Publication Date:</span><span itemprop="datePublished"> {{date}}</span></div>
+            <div><span class="infolabel">Subject:</span><span itemprop="about"> {{subject}}</span></div>      
+            <div><span class="infolabel">ISBN:</span><span itemprop="isbn"> {{identifier}}</span></div>      
+            <div><span class="infolabel">Permanent Link:</span><span itemprop="sameAs"> {{handle}}</span></div>            
+            <div><span class="infolabel">Number of pages:</span><span itemprop="numberOfPages"> {{format}}</span></div>
+            <div id="description"><p itemprop="description">{{description}}</p></div>
             <div class="buttons">
               <a class="btn btn-default" href="http://nyupress.org/books/{{identifier}}" target="_blank">Buy the book</a>
               <a class="btn btn-default" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/book/{{identifier}}">Read</a>

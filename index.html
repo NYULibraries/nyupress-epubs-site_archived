@@ -49,14 +49,14 @@ YUI().use('node', function(Y) {
 </script>
   <script id="list-template" type="text/x-handlebars-template">
   {{#items}}
-      <div class="library-item">
+      <div itemcope itemtype="http://schema.org/Book" class="library-item">
           <div class="img_hold">
-          <a class="item-link" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}"><img class="img-responsive" src="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" alt="" title="{{title}}"/></a>
+          <a class="item-link" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}"><img itemprop="image" class="img-responsive" src="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" alt="" title="{{title}}"/></a>
           </div>
         <div class="book-info">
-          <h4 class="book-title"><a class="item-link" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}">{{title}}</a></h4>
-          <div class="author">by {{author}}</div>
-          <div class="description">{{description}}</div>
+          <h4 itemprop="name" class="book-title"><a class="item-link" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}">{{title}}</a></h4>
+          <div class="author">by <span itemprop="author">{{author}}</span></div>
+          <div itemprop="description" class="description">{{description}}</div>
           <div class="buttons">
             <a class="btn btn-default" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/book/{{identifier}}">Read</a>
             <a class="btn btn-default" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}">View Details</a>
