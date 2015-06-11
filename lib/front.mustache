@@ -6,7 +6,7 @@
 <%> head %>
   <script id="list-template" type="text/x-handlebars-template">
   {{#items}}
-      <div itemcope itemtype="http://schema.org/Book" class="library-item">
+      <div itemscope itemtype="http://schema.org/Book" class="library-item">
           <div class="img_hold">
           <a class="item-link" href="<% appUrl %>/details/{{identifier}}"><img itemprop="image" class="img-responsive" src="<% readiumUrl %>/{{thumbHref}}" alt="" title="{{title}}"/></a>
           </div>
