@@ -1,0 +1,8 @@
+{
+  "front": {
+    "title" : "Browse titles",
+    "route": "/index.html",
+    "template": "front.mustache",
+    "content": ""
+  }
+}

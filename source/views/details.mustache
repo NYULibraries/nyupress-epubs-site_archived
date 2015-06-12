@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{appName}}: {{title}}</title>
+  {{> head }}
+</head>
+<body class="details-page page" data-app="{{appUrl}}" data-discovery="{{discovery}}" data-script='{ "hbs" : [ { "id" : "list-template" , "template" : "list-template.hbs" } ] }'>
+<div>
+  {{> header }}
+  <div class="breadcrumb">
+    <span class="page-title"><a href="{{appUrl}}">Home</a> &gt; Book details</span>
+  </div>
+  <div class="content-wrapper">
+    <div class="data-container"></div>
+  </div>
+</div>
+{{> footer }}
+{{{ closure }}}
+<script src="{{appUrl}}/js/details.js"></script>
+</body>
+</html>

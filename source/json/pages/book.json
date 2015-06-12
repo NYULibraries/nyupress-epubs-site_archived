@@ -1,0 +1,8 @@
+{
+  "book": {
+    "title" : "Read online",
+    "route": "/book/index.html",
+    "template": "book.mustache",
+    "content": ""    
+  }
+}

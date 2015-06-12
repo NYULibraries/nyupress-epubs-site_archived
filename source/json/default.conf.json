@@ -1,0 +1,8 @@
+{
+  "appName": "New York University Press",
+  "collectionCode": "nyupress-epubs-site",
+  "appUrl": "http://localhost:8000/nyupress-epubs-site",
+  "appRoot": "/nyupress-epubs-site",
+  "discovery": "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress",
+  "readiumUrl" : "http://openaccessbooks.nyupress.org/NYUPressOA"
+}

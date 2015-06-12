@@ -1,0 +1,8 @@
+{
+  "details": {
+    "title" : "Book details",
+    "route": "/details/index.html",
+    "template": "details.mustache",
+    "content": ""    
+  }
+}
