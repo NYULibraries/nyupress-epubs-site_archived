@@ -1,3 +1,5 @@
+'use strict' ;
+
 var grunt = require('grunt') ;
 
 function project () {
@@ -16,12 +18,14 @@ function project () {
 
 function gitclone () {
 
+  var projectConfiguration = project () ;	
+
   return { 
     clone : {
       options : {
-        repository : 'git@github.com:elgiovanno/readium-js-viewer.git',  // fix this ; get this from conf
-        branch : 'master',  // fix this ; get this from conf
-        directory: 'build/NYUPressOA' // fix this ; get this from conf
+        repository : projectConfiguration.readiumRepositoryURL,
+        branch : projectConfiguration.readiumRepositoryBranch,
+        directory: __dirname + '/build/' + projectConfiguration.readiumDirectoryName // we assume ReadiumJS will be hosted as part of the site. for now?
       }
     }
   }

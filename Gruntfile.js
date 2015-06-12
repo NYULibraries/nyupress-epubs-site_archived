@@ -10,9 +10,8 @@ module.exports = function ( grunt ) {
   var taskConfiguration = { pkg : pkg } ;
   
   /** task to run */
-  // var tasks = [ 'clean', 'copy', 'gitclone', 'uglify', 'writeHTML' ] ;
-  
-  var tasks = [ 'clean', 'copy', 'uglify', 'writeHTML' ] ;
+  var tasks = [ 'clean', 'copy', 'gitclone', 'uglify', 'writeHTML' ] ;
+  var tasks = [ 'clean', 'copy', 'uglify', 'writeHTML' ] ; // while offline
   
   _.each ( tasks , function ( task ) {
 	  
@@ -25,7 +24,7 @@ module.exports = function ( grunt ) {
       taskConfiguration[task] = configuration[task]() ;
     }
     
-    /** because some people just don't follow conventions */
+    /** because some fools are uncapable of following conventions */
     if ( task === 'gitclone' ) gruntTask = 'grunt-git' ;
     
     else gruntTask = gruntTaskPrefix + task ;
