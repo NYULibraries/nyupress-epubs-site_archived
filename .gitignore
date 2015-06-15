@@ -8,7 +8,6 @@ NYUPressOA/i18n/*
 .DS_Store
 
 # build files
-build
 build/*
 node_modules/*
 
