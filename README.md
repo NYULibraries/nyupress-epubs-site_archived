@@ -18,4 +18,4 @@ A site for viewing and displaying epub books.
 
 ### Build
 
-grunt
+`grunt`
