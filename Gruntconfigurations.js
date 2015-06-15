@@ -19,13 +19,16 @@ function project () {
 function gitclone () {
 
   var projectConfiguration = project () ;	
+  
+  var readiumDirectory =  ( projectConfiguration.readiumDirectory !== '' ) ? projectConfiguration.readiumDirectory : __dirname + '/build' ;
 
   return { 
     clone : {
       options : {
         repository : projectConfiguration.readiumRepositoryURL,
         branch : projectConfiguration.readiumRepositoryBranch,
-        directory: __dirname + '/build/' + projectConfiguration.readiumDirectoryName // we assume ReadiumJS will be hosted as part of the site. for now?
+        directory: readiumDirectory ,
+        directoryName: projectConfiguration.readiumDirectoryName
       }
     }
   }
