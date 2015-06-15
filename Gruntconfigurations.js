@@ -28,7 +28,9 @@ function gitclone () {
         repository : projectConfiguration.readiumRepositoryURL,
         branch : projectConfiguration.readiumRepositoryBranch,
         directory: readiumDirectory ,
-        directoryName: projectConfiguration.readiumDirectoryName
+        directoryName: projectConfiguration.readiumDirectoryName,
+        booksDirectory: projectConfiguration.readiumBooksDirectory,
+        clone : projectConfiguration.readiumCloneFromSource
       }
     }
   }
