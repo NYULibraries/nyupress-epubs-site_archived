@@ -1,0 +1,3 @@
+[submodule "readium-js-viewer"]
+	path = readium-js-viewer
+	url = git@github.com:elgiovanno/readium-js-viewer.git
