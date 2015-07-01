@@ -3,12 +3,12 @@
 umask 002
 
 # no trailing slash
-APP_URL="http://localhost/nyupress-epubs-site"
-#APP_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site"
+#APP_URL="http://localhost/nyupress-epubs-site"
+APP_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site"
 #APP_URL="http://openaccessbooks.nyupress.org"
 
-READIUM_URL="http://localhost/nyupress-epubs-site/NYUPressOA"
-#READIUM_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA"
+#READIUM_URL="http://localhost/nyupress-epubs-site/NYUPressOA"
+READIUM_URL="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA"
 #READIUM_URL="http://openaccessbooks.nyupress.org/NYUPressOA"
 
 
