@@ -4,11 +4,16 @@ YUI().use(
         'use strict';
 
         var body = Y.one('body'),
+            head = Y.one('head'),
             container = Y.one('.data-container'),
             datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:',
             match = location.pathname.match(/\/details\/(.*)/),
+            meta = Y.one('#meta-tags').getHTML(),
             source = Y.one('#list-template').getHTML(),
-            template = Y.Handlebars.compile(source);
+            template = Y.Handlebars.compile(source),
+            metaTemplate = Y.Handlebars.compile(meta);
+
+        console.log(head, meta, container, source, template, metaTemplate);
 
         function onFailure() {
             Y.io(body.getAttribute('data-app') + '/404.html', {
@@ -37,6 +42,12 @@ YUI().use(
         function onSuccess(response) {
 
             try {
+
+                head.append(
+                    metaTemplate({
+                        items: response.response.docs 
+                    })
+                )
 
                 container.append(
                     template({

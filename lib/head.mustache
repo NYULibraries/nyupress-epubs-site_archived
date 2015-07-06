@@ -4,6 +4,16 @@
 <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7436432/628284/css/fonts.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/x-handlebars-template" id="meta-tags">
+{{#items}}
+    <meta property="og:url"                content="<% appUrl %>/details/{{identifier}}" />
+    <meta property="og:type"               content="Book" />
+    <meta property="og:title"              content="{{title}}" />
+    <meta property="og:description"        content="{{description}}" />
+    <meta property="og:image"              content="<% readiumUrl %>/{{thumbHref}}" />
+    <meta property="og:image:width"        content="200">
+{{/items}}
+</script>
 
 <link rel="stylesheet" href="<% appUrl %>/css/bootstrap.css"> 
 <link rel="stylesheet" href="<% appUrl %>/css/dlts.css">
