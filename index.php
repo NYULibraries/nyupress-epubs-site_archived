@@ -7,16 +7,12 @@
 <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7436432/628284/css/fonts.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script type="text/x-handlebars-template" id="meta-tags">
-{{#items}}
-    <meta property="og:url"                content="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" />
-    <meta property="og:type"               content="Book" />
-    <meta property="og:title"              content="{{title}}" />
-    <meta property="og:description"        content="{{description}}" />
-    <meta property="og:image"              content="http://43cc2f68.ngrok.io/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" />
-    <meta property="og:image:width"        content="200" >
-{{/items}}
-</script>
+<meta property="og:type" content="book">
+<meta property="og:url" content="<?php echo $url ?>">
+<meta property="og:title" content="<?php echo $bookData["title"] ?>">
+<meta property="og:description" content="<?php echo $bookData["description"] ?>">
+<meta property="og:image" content="<?php echo "http://openaccessbooks.nyupress.org/NYUPressOA/" . $bookData["thumbHref"] ?>">
+<meta property="og:image:width" content="200">
 
 <link rel="stylesheet" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/css/bootstrap.css"> 
 <link rel="stylesheet" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/css/dlts.css">
@@ -61,7 +57,7 @@ YUI().use('node', function(Y) {
   {{#items}}
       <div itemscope itemtype="http://schema.org/Book" class="library-item">
           <div class="img_hold">
-          <a class="item-link" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}"><img itemprop="image" class="img-responsive" src="http://43cc2f68.ngrok.io/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" alt="" title="{{title}}"/></a>
+          <a class="item-link" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}"><img itemprop="image" class="img-responsive" src="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" alt="" title="{{title}}"/></a>
           </div>
         <div class="book-info">
           <h4 itemprop="name" class="book-title"><a class="item-link" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}">{{title}}</a></h4>

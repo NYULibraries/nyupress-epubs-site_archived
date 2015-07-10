@@ -1,3 +1,11 @@
+<?php 
+$service = "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&fl=*&fq=id:";
+$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$id = preg_replace( '%^(.+)/%', '', $url );
+$json = file_get_contents( $service . $id );
+$data = json_decode( $json, true );
+$bookData = $data["response"]["docs"][0];
+?>
 <!doctype html>
 <html itemscope itemtype="http://schema.org/Book">
 <head>
@@ -7,16 +15,12 @@
   <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7436432/628284/css/fonts.css" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="text/x-handlebars-template" id="meta-tags">
-  {{#items}}
-      <meta property="og:url"                content="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" />
-      <meta property="og:type"               content="Book" />
-      <meta property="og:title"              content="{{title}}" />
-      <meta property="og:description"        content="{{description}}" />
-      <meta property="og:image"              content="http://43cc2f68.ngrok.io/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" />
-      <meta property="og:image:width"        content="200" >
-  {{/items}}
-  </script>
+  <meta property="og:type" content="book">
+  <meta property="og:url" content="<?php echo $url ?>">
+  <meta property="og:title" content="<?php echo $bookData["title"] ?>">
+  <meta property="og:description" content="<?php echo $bookData["description"] ?>">
+  <meta property="og:image" content="<?php echo "http://openaccessbooks.nyupress.org/NYUPressOA/" . $bookData["thumbHref"] ?>">
+  <meta property="og:image:width" content="200">
   
   <link rel="stylesheet" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/css/bootstrap.css"> 
   <link rel="stylesheet" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/css/dlts.css">
@@ -61,27 +65,27 @@
     {{#items}}
     <div itemscope itemtype="http://schema.org/Book" class="detail-item">
         <div class="img-hold">
-         <img itemprop="image" class="img-responsive" src="http://43cc2f68.ngrok.io/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" alt="{{title}}" title="{{title}}"/>
+         <img id="book-image" itemprop="image" class="img-responsive" src="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" alt="{{title}}" title="{{title}}"/>
         </div>
         <div class="book-info">
-         <h4 itemprop="name" class="book-title">{{title}}</h4>
-            <div><span class="infolabel">Author:</span><span itemprop="author"> {{author}}</span></div>
-            <div><span class="infolabel">Publisher:</span><span itemprop="publisher"> {{publisher}}</span></div>          
-            <div><span class="infolabel">Publication Date:</span><span itemprop="datePublished"> {{date}}</span></div>
-            <div><span class="infolabel">Subject:</span><span itemprop="about"> {{subject}}</span></div>      
-            <div><span class="infolabel">ISBN:</span><span itemprop="isbn"> {{identifier}}</span></div>      
-            <div><span class="infolabel">Permanent Link:</span><span itemprop="sameAs"> {{handle}}</span></div>            
-            <div><span class="infolabel">Number of pages:</span><span itemprop="numberOfPages"> {{format}}</span></div>
-            <div id="description"><p itemprop="description">{{description}}</p></div>
+         <h4 id="book-title" itemprop="name" class="book-title">{{title}}</h4>
+            <div><span class="infolabel">Author: </span><span id="author" itemprop="author">{{author}}</span></div>
+            <div><span class="infolabel">Publisher: </span><span itemprop="publisher">{{publisher}}</span></div>          
+            <div><span class="infolabel">Publication Date: </span><span itemprop="datePublished">{{date}}</span></div>
+            <div><span class="infolabel">Subject: </span><span itemprop="about">{{subject}}</span></div>      
+            <div><span class="infolabel">ISBN: </span><span itemprop="isbn">{{identifier}}</span></div>      
+            <div><span class="infolabel">Permanent Link: </span><span itemprop="sameAs">{{handle}}</span></div>            
+            <div><span class="infolabel">Number of pages: </span><span itemprop="numberOfPages">{{format}}</span></div>
+            <div id="description"><p id="book-description" itemprop="description">{{description}}</p></div>
             <div class="buttons">
               <a class="btn btn-default" href="http://nyupress.org/books/{{identifier}}" target="_blank">Buy the book</a>
               <a class="btn btn-default" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/book/{{identifier}}">Read</a>
             </div>
             <div class="social">
-              <span class='st_facebook_large' displayText='Facebook'></span>
-              <span class='st_twitter_large' st_via="" displayText='Tweet'></span>
-              <span class='st_linkedin_large' displayText='LinkedIn'></span>
-              <span class='st_googleplus_large' st_url="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" st_image="http://43cc2f68.ngrok.io/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" displayText='Google+ Share'></span>
+              <span class='st_facebook_large' st_url="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" st_image="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" displayText='Facebook'></span>
+              <span class='st_twitter_large' st_url="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" st_image="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" st_via="" displayText='Tweet'></span>
+              <span class='st_linkedin_large' st_url="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" st_image="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" displayText='LinkedIn'></span>
+              <span class='st_googleplus_large' st_url="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" st_image="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" displayText='Google+ Share'></span>
             </div>
             <div class="rights-info"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img width="80" height="15" alt="Creative Commons License" style="border-width:0" src="http://43cc2f68.ngrok.io/nyupress-epubs-site/images/creativecommonsbadge.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></div>
         </div>
@@ -131,6 +135,6 @@
          <li id="dlts-link"><span>Powered by <a href="http://dlib.nyu.edu/dlts/"  target="_blank">NYU DLTS</a></span></li>
        </ul>
      </div>
-   </footer><script>YUI().use("node","event","io","jsonp","jsonp-url","json-parse","handlebars",function(Y){"use strict";var body=Y.one("body"),head=Y.one("head"),container=Y.one(".data-container"),datasourceURL=body.getAttribute("data-discovery")+"/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:",match=location.pathname.match(/\/details\/(.*)/),meta=Y.one("#meta-tags").getHTML(),source=Y.one("#list-template").getHTML(),template=Y.Handlebars.compile(source),metaTemplate=Y.Handlebars.compile(meta);console.log(head,meta,container,source,template,metaTemplate);function onFailure(){Y.io(body.getAttribute("data-app")+"/404.html",{on:{success:function(transactionid,response){container.append(response.response)}}})}function onTimeout(){onFailure()}function onSubmit(e){e.preventDefault();var currentTarget=e.currentTarget,value=Y.one(".pure-input");location.href=currentTarget.get("action")+"/"+value.get("value")}function onSuccess(response){try{head.append(metaTemplate({items:response.response.docs}));container.append(template({items:response.response.docs}));body.removeClass("io-loading")}catch(e){onFailure()}}if(match&&match[1]){body.addClass("io-loading");Y.jsonp(datasourceURL+encodeURIComponent(match[1]),{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3})}else{onFailure()}body.delegate("submit",onSubmit,"form")});</script>
+   </footer><script>YUI().use("node","event","io","jsonp","jsonp-url","json-parse","handlebars",function(Y){"use strict";var body=Y.one("body"),container=Y.one(".data-container"),datasourceURL=body.getAttribute("data-discovery")+"/select?&wt=json&json.wrf=callback={callback}&fl=*&fq=id:",match=location.pathname.match(/\/details\/(.*)/),source=Y.one("#list-template").getHTML(),template=Y.Handlebars.compile(source);function onFailure(){Y.io(body.getAttribute("data-app")+"/404.html",{on:{success:function(transactionid,response){container.append(response.response)}}})}function onTimeout(){onFailure()}function onSubmit(e){e.preventDefault();var currentTarget=e.currentTarget,value=Y.one(".pure-input");location.href=currentTarget.get("action")+"/"+value.get("value")}function onSuccess(response){try{container.append(template({items:response.response.docs}));body.removeClass("io-loading")}catch(e){onFailure()}}if(match&&match[1]){body.addClass("io-loading");Y.jsonp(datasourceURL+encodeURIComponent(match[1]),{on:{success:onSuccess,failure:onFailure,timeout:onTimeout},timeout:3e3})}else{onFailure()}body.delegate("submit",onSubmit,"form")});</script>
 </body>
 </html>
