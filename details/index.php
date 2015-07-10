@@ -1,4 +1,5 @@
 <?php 
+// get json object from SOLR service to prerender og meta tags
 $service = "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&fl=*&fq=id:";
 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $id = preg_replace( '%^(.+)/%', '', $url );
