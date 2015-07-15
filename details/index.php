@@ -1,8 +1,20 @@
 <?php 
-// get json object from SOLR service to prerender og meta tags
-$service = "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&fl=*&fq=id:";
+// set_include_path('../SolrPHPClient/');
+require_once('../SolrPHPClient/Apache/Solr/Service.php');
+$solr = new Apache_Solr_Service('discovery.dlib.nyu.edu', '8080', '/solr3_discovery');
 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $id = preg_replace( '%^(.+)/%', '', $url );
+$query = "/nyupress/select?&wt=json&fl=*&fq=id:$id";
+echo $_REQUEST['q'];
+$response = $solr->search($query, 0, 10);
+
+if (!$solr->ping()) {
+  echo "Solr is not responding";
+}
+
+print_r($response);
+
+$service = "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&fl=*&fq=id:";
 $json = file_get_contents( $service . $id );
 $data = json_decode( $json, true );
 $bookData = $data["response"]["docs"][0];
@@ -23,8 +35,8 @@ $bookData = $data["response"]["docs"][0];
   <meta property="og:image" content="<?php echo "http://openaccessbooks.nyupress.org/NYUPressOA/" . $bookData["thumbHref"] ?>">
   <meta property="og:image:width" content="200">
   
-  <link rel="stylesheet" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/css/bootstrap.css"> 
-  <link rel="stylesheet" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/css/dlts.css">
+  <link rel="stylesheet" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/css/bootstrap.css"> 
+  <link rel="stylesheet" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/css/dlts.css">
   <script src="http://yui.yahooapis.com/3.15.0/build/yui/yui-min.js"></script>
   <script>
   YUI().use('node', function(Y) {
@@ -66,7 +78,7 @@ $bookData = $data["response"]["docs"][0];
     {{#items}}
     <div itemscope itemtype="http://schema.org/Book" class="detail-item">
         <div class="img-hold">
-         <img id="book-image" itemprop="image" class="img-responsive" src="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" alt="{{title}}" title="{{title}}"/>
+         <img id="book-image" itemprop="image" class="img-responsive" src="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" alt="{{title}}" title="{{title}}"/>
         </div>
         <div class="book-info">
          <h4 id="book-title" itemprop="name" class="book-title">{{title}}</h4>
@@ -80,15 +92,15 @@ $bookData = $data["response"]["docs"][0];
             <div id="description"><p id="book-description" itemprop="description">{{description}}</p></div>
             <div class="buttons">
               <a class="btn btn-default" href="http://nyupress.org/books/{{identifier}}" target="_blank">Buy the book</a>
-              <a class="btn btn-default" href="http://43cc2f68.ngrok.io/nyupress-epubs-site/book/{{identifier}}">Read</a>
+              <a class="btn btn-default" href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/book/{{identifier}}">Read</a>
             </div>
             <div class="social">
-              <span class='st_facebook_large' st_url="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" st_image="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" displayText='Facebook'></span>
-              <span class='st_twitter_large' st_url="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" st_image="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" st_via="" displayText='Tweet'></span>
-              <span class='st_linkedin_large' st_url="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" st_image="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" displayText='LinkedIn'></span>
-              <span class='st_googleplus_large' st_url="http://43cc2f68.ngrok.io/nyupress-epubs-site/details/{{identifier}}" st_image="http://openaccessbooks.nyupress.org/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" displayText='Google+ Share'></span>
+              <span class='st_facebook_large' st_url="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}" st_image="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" displayText='Facebook'></span>
+              <span class='st_twitter_large' st_url="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}" st_image="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" st_via="" displayText='Tweet'></span>
+              <span class='st_linkedin_large' st_url="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}" st_image="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" displayText='LinkedIn'></span>
+              <span class='st_googleplus_large' st_url="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/details/{{identifier}}" st_image="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/NYUPressOA/{{thumbHref}}" st_summary="{{description}}" st_title="{{title}}" displayText='Google+ Share'></span>
             </div>
-            <div class="rights-info"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img width="80" height="15" alt="Creative Commons License" style="border-width:0" src="http://43cc2f68.ngrok.io/nyupress-epubs-site/images/creativecommonsbadge.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></div>
+            <div class="rights-info"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img width="80" height="15" alt="Creative Commons License" style="border-width:0" src="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/images/creativecommonsbadge.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></div>
         </div>
       </div>
     {{/items}}
@@ -97,7 +109,7 @@ $bookData = $data["response"]["docs"][0];
   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
   <script type="text/javascript">stLight.options({publisher: "9f7e1ebf-93de-45e6-b1d3-6f81661f02ba", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
-<body class="details-page page" data-app="http://43cc2f68.ngrok.io/nyupress-epubs-site" data-discovery="http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress">
+<body class="details-page page" data-app="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site" data-discovery="http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress">
 <div>
 
   <div class="header">
@@ -105,11 +117,11 @@ $bookData = $data["response"]["docs"][0];
       <div class="navbar-inner">
         <div class="container">
           <header role="banner">
-            <h2 id="logo-replace"><a href="http://43cc2f68.ngrok.io/nyupress-epubs-site" class="brand">NYU Press</a></h2>
-            <h1 id="site-title"><a href="http://43cc2f68.ngrok.io/nyupress-epubs-site">Open Access Books</a></h1>
+            <h2 id="logo-replace"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site" class="brand">NYU Press</a></h2>
+            <h1 id="site-title"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site">Open Access Books</a></h1>
             <div class="n-utils">
               <button id="search-toggle" style="display:none">X</button>
-              <form role="search" class="pure-form searchform" value="" method="get" action="http://43cc2f68.ngrok.io/nyupress-epubs-site/search" name="searchform" >
+              <form role="search" class="pure-form searchform" value="" method="get" action="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/search" name="searchform" >
                 <input class="searchbox pure-input" name="searchbox" id="searchbox"  type="text" placeholder="Search for books..." value="" size="30" maxlength="300">
                   <!-- <button type="submit" class="pure-button">Search</button> -->
               </form>
@@ -120,7 +132,7 @@ $bookData = $data["response"]["docs"][0];
     </nav>
   </div>
   <div class="breadcrumb">
-      <span class="page-title"><a href="http://43cc2f68.ngrok.io/nyupress-epubs-site">Home</a> &gt; Book details</span>
+      <span class="page-title"><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site">Home</a> &gt; Book details</span>
   </div>
   
   <div class="content-wrapper">
@@ -130,8 +142,8 @@ $bookData = $data["response"]["docs"][0];
    <footer id ="pagefooter">
      <div class="footer-inner">
        <ul>
-         <li><span><a href="http://43cc2f68.ngrok.io/nyupress-epubs-site/about">About</a></span></li>
-         <li><span><a href="http://43cc2f68.ngrok.io/nyupress-epubs-site/rights">Rights Information</a></span></li>
+         <li><span><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/about">About</a></span></li>
+         <li><span><a href="http://dev-dl-pa.home.nyu.edu/nyupress-epubs-site/rights">Rights Information</a></span></li>
          <li id="nyup-link"><span><a href="http://nyupress.org/" target="_blank">NYU Press</a></span></li>
          <li id="dlts-link"><span>Powered by <a href="http://dlib.nyu.edu/dlts/"  target="_blank">NYU DLTS</a></span></li>
        </ul>
