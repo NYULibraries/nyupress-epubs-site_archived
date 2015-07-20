@@ -1,20 +1,7 @@
 <?php 
-// set_include_path('../SolrPHPClient/');
-require_once('../SolrPHPClient/Apache/Solr/Service.php');
-$solr = new Apache_Solr_Service('discovery.dlib.nyu.edu', '8080', '/solr3_discovery');
+$service = "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&fl=*&fq=id:";
 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $id = preg_replace( '%^(.+)/%', '', $url );
-$query = "/nyupress/select?&wt=json&fl=*&fq=id:$id";
-echo $_REQUEST['q'];
-$response = $solr->search($query, 0, 10);
-
-if (!$solr->ping()) {
-  echo "Solr is not responding";
-}
-
-print_r($response);
-
-$service = "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&fl=*&fq=id:";
 $json = file_get_contents( $service . $id );
 $data = json_decode( $json, true );
 $bookData = $data["response"]["docs"][0];
