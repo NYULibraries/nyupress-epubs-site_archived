@@ -788,6 +788,11 @@ input.searchbox:focus {
     margin:28px 33px 0 0;
 }
 
+header .social {
+    float:left;
+    margin: 9px 0 0 0;
+}
+
 @media screen and (max-width: 350px) {
     .home .navbar #site-title, .page .navbar #site-title, .navbar .reader #site-title, .navbar #site-title {
            /* Gotham Extra Light = 'Gotham 2r', 'Gotham A', 'Gotham B' */
