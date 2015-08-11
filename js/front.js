@@ -1,5 +1,5 @@
 YUI().use(
-    'node', 'event', 'io', 'node-scroll-info', 'handlebars', 'json-parse', 'jsonp', 'jsonp-url', 'gallery-idletimer', function(Y) {
+    'node', 'event', 'io', 'node-scroll-info', 'handlebars', 'json-parse', 'jsonp', 'jsonp-url', 'gallery-idletimer', 'escape', function(Y) {
 
         'use strict';
 
@@ -97,11 +97,16 @@ YUI().use(
 
         function onSuccess(response) {
 
-            try {
+            // try {
 
                 var numfound = parseInt(response.response.numFound, 10),
                     start = parseInt(response.response.start, 10),
-                    docslength = parseInt(response.response.docs.length, 10);
+                    docslength = parseInt(response.response.docs.length, 10),
+                    docs = response.response.docs,
+                    href = Y.Node.create('<a href> ...</a>'),
+                    description,
+                    descriptionLength,
+                    node;
 
                 // store called to avoid making the request multiple times
                 transactions.push(this.url);
@@ -119,15 +124,31 @@ YUI().use(
                     })
                 );
 
+                description = Y.all('.description.unprocessed');
+
+                // hide ellipse on descriptions under 300 chars and truncate + 300
+                description.each(function(i) {
+
+                    node = i._node;
+                    descriptionLength = node.innerHTML.length;
+
+                    if (descriptionLength < 300) {
+                        node.nextElementSibling.hidden = true;
+                    } else if (descriptionLength > 300) {
+                        node.innerHTML = node.innerHTML.substring(0, 299);
+                    };
+                    i.replaceClass('unprocessed', 'processed');
+                });
+
                 if (start + docslength === numfound) body.addClass('io-done');
 
                 body.removeClass('io-loading');
 
                 loadMoreButton.removeClass('pure-button-disabled');
 
-            } catch (e) {
-                Y.log('error'); // leave here for now
-            }
+            // } catch (e) {
+            //     Y.log('error'); // leave here for now
+            // }
         }
 
         Y.IdleTimer.subscribe('idle', onScroll);
