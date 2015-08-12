@@ -1,9 +1,11 @@
+{{=<% %>=}}
 <!doctype html>
 <html>
 <head>
-  <title>{{appName}}: {{title}}</title>
+  <title>NYU Press Search: <% title %></title>
+  
   <script id="list-template" type="text/x-handlebars-template">
-    {{#items}}
+      {{#items}}
       <div class="library-item">
         <div class="img_hold">
           <a class="item-link" href="<% appUrl %>/details/{{identifier}}"><img class="img-responsive" src="<% readiumUrl %>/{{thumbHref}}" alt="" title="{{title}}"/></a>
@@ -20,29 +22,37 @@
       </div>
     {{/items}}
   </script>  
-  {{> head }}
+  <%> head %>
 </head>
-<body class="list-view search" data-app="{{appUrl}}" data-discovery="{{discovery}}">
-  {{> header }}
+<body class="list-view search" data-app="<% appUrl %>" data-discovery="<% discovery %>">
+   <%> header %>
+
   <div class="breadcrumb">
-    <span class="page-title"><a href="{{appUrl}}">Home</a> &gt; Search &gt; <span class="query"></span></span>
+    <span class="page-title"><a href="<% appUrl %>">Home</a> &gt; Search &gt; <span class="query"></span></span>
   </div>
+
   <div class="content-wrapper">
     <div class="data-container">
+
       <h2 class="page-title">Search Results</h2>
+
       <p class="found"><span class="total-found">0</span> <span class="items-found">books</span> found</p>
       <div class="pure-g">
           <div id="a" class="pure-u-1 library-items"></div>
       </div>
     </div>
   </div>
+
   <ul class="pure-paginator"></ul>    
+ 
   <div class="pure-g container more-books">
     <div class="pure-u-1">
       <a href="#" class="pure-button loading">More books</a>
     </div>
   </div>
-   {{> footer }}
-  <script src="{{appUrl}}/js/search.js"></script>
+ 
+   <%> footer %>
+
+  <%={{ }}=%><script>{{{js}}}</script>
 </body>
 </html>

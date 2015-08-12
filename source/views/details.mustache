@@ -1,21 +1,66 @@
+{{=<% %>=}}
+<?php 
+$service = "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&fl=*&fq=id:";
+$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$id = preg_replace( '%^(.+)/%', '', $url );
+$json = file_get_contents( $service . $id );
+$data = json_decode( $json, true );
+$bookData = $data["response"]["docs"][0];
+?>
 <!doctype html>
-<html>
+<html itemscope itemtype="http://schema.org/Book">
 <head>
-  <title>{{appName}}: {{title}}</title>
-  {{> head }}
+  <title>NYU Press: <?php echo $bookData["title"] ?></title>
+  <%> head %>
+  <script id="list-template" type="text/x-handlebars-template">
+    {{#items}}
+    <div itemscope itemtype="http://schema.org/Book" class="detail-item">
+        <div class="img-hold">
+         <img id="book-image" itemprop="image" class="img-responsive" src="<% readiumUrl %>/{{thumbHref}}" alt="{{title}}" title="{{title}}"/>
+        </div>
+        <div class="book-info">
+         <h4 id="book-title" itemprop="name" class="book-title">{{title}}</h4>
+            <div><span class="infolabel">Author: </span><span id="author" itemprop="author">{{author}}</span></div>
+            <div><span class="infolabel">Publisher: </span><span itemprop="publisher">{{publisher}}</span></div>          
+            <div><span class="infolabel">Publication Date: </span><span itemprop="datePublished">{{date}}</span></div>
+            <div><span class="infolabel">Subject: </span><span itemprop="about">{{subject}}</span></div>      
+            <div><span class="infolabel">ISBN: </span><span itemprop="isbn">{{identifier}}</span></div>      
+            <div><span class="infolabel">Permanent Link: </span><span itemprop="sameAs">{{handle}}</span></div>            
+            <div><span class="infolabel">Number of pages: </span><span itemprop="numberOfPages">{{format}}</span></div>
+            <div id="description"><p id="book-description" itemprop="description">{{description}}</p></div>
+            <div class="buttons">
+              <a class="btn btn-default" href="http://nyupress.org/books/{{identifier}}" target="_blank">Buy the book</a>
+              <a class="btn btn-default" href="<% appUrl %>/book/{{identifier}}">Read</a>
+            </div>
+            <div class="social">
+              <span class='st_facebook_large' displayText='Facebook'></span>
+              <span class='st_twitter_large' st_via="" displayText='Tweet'></span>
+              <span class='st_linkedin_large' displayText='LinkedIn'></span>
+              <span class='st_googleplus_large' displayText='Google+ Share'></span>
+            </div>
+            <div class="rights-info"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img width="80" height="15" alt="Creative Commons License" style="border-width:0" src="<% appUrl %>/images/creativecommonsbadge.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></div>
+        </div>
+      </div>
+    {{/items}}
+  </script> 
+
+  <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">stLight.options({publisher: "9f7e1ebf-93de-45e6-b1d3-6f81661f02ba", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
-<body class="details-page page" data-app="{{appUrl}}" data-discovery="{{discovery}}" data-script='{ "hbs" : [ { "id" : "list-template" , "template" : "list-template.hbs" } ] }'>
+<body class="details-page page" data-app="<% appUrl %>" data-discovery="<% discovery %>">
 <div>
-  {{> header }}
+
+  <%> header %>
+
   <div class="breadcrumb">
-    <span class="page-title"><a href="{{appUrl}}">Home</a> &gt; Book details</span>
+      <span class="page-title"><a href="<% appUrl %>">Home</a> &gt; Book details</span>
   </div>
+  
   <div class="content-wrapper">
-    <div class="data-container"></div>
+      <div class="data-container"></div>
   </div>
 </div>
-{{> footer }}
-{{{ closure }}}
-<script src="{{appUrl}}/js/details.js"></script>
+ <%> footer %>
+<%={{ }}=%><script>{{{js}}}</script>
 </body>
 </html>
