@@ -1,74 +1,50 @@
 YUI().use(
-    'node'
-  , 'event-base'
-  , 'event'
-  , 'io'
-  , 'node-scroll-info'
-  , 'handlebars'
-  , 'json-parse'
-  , 'jsonp'
-  , 'jsonp-url'
-  , 'gallery-idletimer'
-  , function ( Y ) {
+    'node', 'event', 'io', 'node-scroll-info', 'handlebars', 'json-parse', 'jsonp', 'jsonp-url', 'gallery-idletimer', 'escape', function(Y) {
 
-    'use strict';
+        'use strict';
 
-    var body = Y.one('body') ;
-    
-    var container = Y.one('#a') ;
-    
-    var query = Y.one('.query') ;
-    
-    var loadMoreButton = Y.one('.pure-button.loading') ;
-    
-    var datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref,thumbHref' ;
-    
-    var searchString = '*:*' ;
-    
-    var transactions = [] ;
-    
-    var pager = Y.one('ul.pure-paginator') ;
-    
-    var fold = 200 ;
-    
-    var source = Y.one('#list-template').getHTML() ;
-    
-    var template = Y.Handlebars.compile(source) ;
+        var body = Y.one('body'),
+            container = Y.one('#a'),
+            query = Y.one('.query'),
+            loadMoreButton = Y.one('.pure-button.loading'),
+            datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref,thumbHref',
+            searchString = '*:*',
+            transactions = [],
+            pager = Y.one('ul.pure-paginator'),
+            fold = 200,
+            source = Y.one('#list-template').getHTML(),
+            template = Y.Handlebars.compile(source);
 
-    function onFailure() { }
+        function onFailure() {
+            Y.log('onFailure'); // leave here for now
+        }
 
-    function onTimeout() {
-      onFailure() ;
-    }
+        function onTimeout() {
+            onFailure();
+        }
 
-    function onClick ( e ) {
-      e.preventDefault() ;
-      onScroll() ;
-    }
+        function onClick(e) {
+            e.preventDefault();
+            onScroll();
+        }
 
-    var onPaginatorAvailable = function ( ) {
-      
-      var fold = 200 ;
+        function onPaginatorAvailable() {
+            if (this.get('region').top - fold < body.get('winHeight')) {
+                onScroll();
+            }
+        }
 
-      if ( Y.one('ul.pure-paginator').get('region').top - fold < Y.one('body').get('winHeight') ) {    	  
-        onScroll() ;
-      }
+        function onSubmit(e) {
 
-    }
+            e.preventDefault();
 
-    function onSubmit(e) {
+            var currentTarget = e.currentTarget,
+                value = Y.one('.pure-input');
 
-      e.preventDefault();
+            location.href = currentTarget.get('action') + '/' + value.get('value');
+        }
 
-      var currentTarget = e.currentTarget ;
-      
-      var value = Y.one('.pure-input') ;
-
-      location.href = currentTarget.get('action') + '/' + value.get('value') ;
-
-    }
-
-    function onScroll() {
+        function onScroll() {
 
             var numfound = 0,
                 start = 0,
@@ -119,33 +95,50 @@ YUI().use(
 
         }
 
-        function onSuccess ( response ) {
+        function onSuccess(response) {
 
-            try {
+            // try {
 
-                var numfound = parseInt(response.response.numFound, 10) ;
-                
-                var start = parseInt(response.response.start, 10) ;
-                
-                var docslength = parseInt(response.response.docs.length, 10) ;
+                var numfound = parseInt(response.response.numFound, 10),
+                    start = parseInt(response.response.start, 10),
+                    docslength = parseInt(response.response.docs.length, 10),
+                    docs = response.response.docs,
+                    href = Y.Node.create('<a href> ...</a>'),
+                    description,
+                    descriptionLength,
+                    node;
 
                 // store called to avoid making the request multiple times
-                transactions.push(this.url) ;
+                transactions.push(this.url);
 
-                container.setAttribute("data-numFound", numfound) ;
+                container.setAttribute("data-numFound", numfound);
 
-                container.setAttribute("data-start", start) ;
+                container.setAttribute("data-start", start);
 
-                container.setAttribute("data-docsLength", docslength) ;
-                
-                console.log ( response.response.docs ) ;
+                container.setAttribute("data-docsLength", docslength);
 
                 // render HTML and append to container
-                container.append (
-                    template( {
+                container.append(
+                    template({
                         items: response.response.docs
-                    } )
-                ) ;
+                    })
+                );
+
+                description = Y.all('.description.unprocessed');
+
+                // hide ellipse on descriptions under 300 chars and truncate + 300
+                description.each(function(i) {
+
+                    node = i._node;
+                    descriptionLength = node.innerHTML.length;
+
+                    if (descriptionLength < 300) {
+                        node.nextElementSibling.hidden = true;
+                    } else if (descriptionLength > 300) {
+                        node.innerHTML = node.innerHTML.substring(0, 299);
+                    };
+                    i.replaceClass('unprocessed', 'processed');
+                });
 
                 if (start + docslength === numfound) body.addClass('io-done');
 
@@ -153,10 +146,9 @@ YUI().use(
 
                 loadMoreButton.removeClass('pure-button-disabled');
 
-            } 
-            catch (e) {
-                Y.log('error'); // leave here for now
-            }
+            // } catch (e) {
+            //     Y.log('error'); // leave here for now
+            // }
         }
 
         Y.IdleTimer.subscribe('idle', onScroll);
@@ -187,6 +179,6 @@ YUI().use(
 
         body.delegate('submit', onSubmit, 'form');
 
-        Y.on('domready', onPaginatorAvailable ) ;
+        pager.on('available', onPaginatorAvailable);
 
-} ) ;
+    });
