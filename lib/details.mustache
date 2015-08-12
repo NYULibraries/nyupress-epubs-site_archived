@@ -1,9 +1,5 @@
 {{=<% %>=}}
 <?php 
-// set_include_path('../SolrPHPClient/');
-require_once('../SolrPHPClient/Apache/Solr/Service.php');
-$solr = new Apache_Solr_Service('http://discovery.dlib.nyu.edu', '8080', '/solr3_discovery');
-echo $solr;
 $service = "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress/select?&wt=json&fl=*&fq=id:";
 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $id = preg_replace( '%^(.+)/%', '', $url );
@@ -14,7 +10,7 @@ $bookData = $data["response"]["docs"][0];
 <!doctype html>
 <html itemscope itemtype="http://schema.org/Book">
 <head>
-  <title>NYU Press: <% title %></title>
+  <title>NYU Press: <?php echo $bookData["title"] ?></title>
   <%> head %>
   <script id="list-template" type="text/x-handlebars-template">
     {{#items}}
