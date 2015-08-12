@@ -783,6 +783,17 @@ input.searchbox:focus {
     }
 }
 
+.book-info .social {
+    float:right;
+    margin:28px 33px 0 0;
+}
+
+.book .social {
+    position: absolute;
+    top: 5%;
+    left: 45%;
+}
+
 @media screen and (max-width: 350px) {
     .home .navbar #site-title, .page .navbar #site-title, .navbar .reader #site-title, .navbar #site-title {
            /* Gotham Extra Light = 'Gotham 2r', 'Gotham A', 'Gotham B' */
