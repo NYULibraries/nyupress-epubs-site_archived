@@ -800,3 +800,8 @@ input.searchbox:focus {
         font: normal 200 14px/1.1 'Gotham 2r', 'Gotham A', 'Gotham B';
     }
 }
+
+.book iframe {
+  width:100%;
+  border: none;
+}
