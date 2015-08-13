@@ -27,3 +27,5 @@ source/json/datasources/*
 # project sub modules
 !node_modules/grunt-contrib-writeHTML
 !node_modules/grunt-contrib-cloneReadium
+!node_modules/detail_pages
+!node_modules/books
