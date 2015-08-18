@@ -175,12 +175,12 @@ footer#pagefooter li.social>span>span{
 }
 footer#pagefooter li, footer#pagefooter li a:link, footer#pagefooter li a:visited {
     font-size: 13px;
-     
-   
+    color:white;
 }
 
-footer#pagefooter li a:hover {
+footer#pagefooter li a:hover, footer#pagefooter li a:focus {
     color: white;
+    text-decoration: underline;
 }
 
 .footer-inner {
