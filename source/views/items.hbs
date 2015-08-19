@@ -9,7 +9,7 @@
     <div class="book-info">
       <h4 itemprop="name" class="book-title"><a class="item-link" href="<%appUrl%>/details/{{identifier}}">{{title}}</a></h4>
       <div class="author">by <span itemprop="author">{{author}}</span></div>
-      <div itemprop="description" class="description unprocessed">{{description}}</div>
+      <div itemprop="description">{{{truncate this 300}}}</div>
       <div class="buttons">
         <a class="btn btn-default" href="<%appUrl%>/book/{{identifier}}">Read</a>
         <a class="btn btn-default" href="<%appUrl%>/details/{{identifier}}">View Details</a>

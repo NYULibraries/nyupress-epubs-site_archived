@@ -9,11 +9,14 @@ YUI().use(
   , 'jsonp-url'
   , 'gallery-idletimer'
   , 'escape'
-  , function(Y) {
+  , function ( Y ) {
 
     'use strict';
-
+    
     var body = Y.one('body')
+      , body_data = body.getData()
+      , root = body_data.app
+      , page_path = root + '/details' 
       , container = Y.one('.library-items')
       , query = Y.one('.query')
       , loadMoreButton = Y.one('.pure-button.loading')
@@ -22,8 +25,29 @@ YUI().use(
       , transactions = []
       , pager = Y.one('ul.pure-paginator')
       , fold = 200
-      ,  source = Y.one('#list-template').getHTML()
+      , source = Y.one('#list-template').getHTML()
       , template = Y.Handlebars.compile(source);
+      
+    Y.Handlebars.registerHelper('truncate', function ( node, len ) {
+    	
+      var description = ( node.description ) ? node.description : '' ;
+      
+      var description_length = description.length ;
+      
+      if ( description_length > len && description_length > 0 ) {
+      	
+        var new_str = description + " ";
+            new_str = description.substr (0, len);
+            new_str = description.substr (0, new_str.lastIndexOf(" "));
+            new_str = (new_str.length > 0) ? new_str : description.substr (0, len);
+            
+        return new_str + ' <a href="' + page_path + '/' + node.identifier + '">...</a>' ;
+         
+      }
+      
+      return description ;
+      
+    } ) ;      
       
     function onScroll() {
 
@@ -103,35 +127,16 @@ YUI().use(
       // store called to avoid making the request multiple times
       transactions.push(this.url);
 
-      container.setAttribute("data-numFound", numfound);
+      container.setAttribute("data-numFound", numfound) ;
 
-      container.setAttribute("data-start", start);
+      container.setAttribute("data-start", start) ;
 
-      container.setAttribute("data-docsLength", docslength);
+      container.setAttribute("data-docsLength", docslength) ;
       
       // render HTML and append to container
       container.append ( template ( { items: response.response.docs } ) ) ;
     
-      description = Y.all('.description.unprocessed');
-      
-      // hide ellipse on descriptions under 300 chars and truncate + 300
-      description.each ( function ( i ) {
-        node = i._node ;
-        descriptionLength = node.innerHTML.length;
-        
-        if ( descriptionLength < 300 ) {
-          node.nextElementSibling.hidden = true;
-        } 
-        
-        else if (descriptionLength > 300) {
-          node.innerHTML = node.innerHTML.substring(0, 299);
-        };
-        
-        i.replaceClass('unprocessed', 'processed');
-
-      } ) ;
-
-      if (start + docslength === numfound) body.addClass('io-done');
+      if ( start + docslength === numfound ) body.addClass('io-done') ;
 
       body.removeClass('io-loading');
 
