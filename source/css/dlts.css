@@ -123,9 +123,7 @@ a.btn {
     font-size: 1.1em;
     margin: 35px 0 10px;
 }
-.home .data-container .intro {
 
-}
 .data-container h2.page-title a:link, .data-container h2.page-title a:visited {
     color: #888888;
 }
@@ -133,7 +131,7 @@ a.btn {
 .content-wrapper {}
 
 footer#pagefooter {
-    position: staric;
+ 
     width: 100%;
 }
 
@@ -152,21 +150,19 @@ footer#pagefooter ul {
 
 footer#pagefooter li {
     display: inline-block;
-    color:white;
     padding: 0 5px 0 0;
-    /* Gotham  Light = 'Gotham 3r', 'Gotham A', 'Gotham B' */
-    font-family: 'Gotham 3r', 'Gotham A', 'Gotham B', 'Helvetica Neue', sans-serif;
-    font-weight: normal;
-    font-weight: 300;
+    color:white;
 }
 
 footer#pagefooter li + li:before {
     content: "|";
+    color: #999;
 }
 
 footer#pagefooter li>span {
-    padding: 0 0 0 5px;
+    padding: 0 0 0 10px;
     display: inline-block;
+  
 }
 
 footer#pagefooter li.social>span>span{
@@ -174,13 +170,16 @@ footer#pagefooter li.social>span>span{
     width: 16px;
 }
 footer#pagefooter li, footer#pagefooter li a:link, footer#pagefooter li a:visited {
+    color: #efefef;
     font-size: 13px;
-    color:white;
+     /* Gotham  Light = 'Gotham 3r', 'Gotham A', 'Gotham B' */
+    font-family: 'Gotham 3r', 'Gotham A', 'Gotham B', 'Helvetica Neue', sans-serif;
+    font-weight: normal;
+    font-weight: 300;
 }
 
-footer#pagefooter li a:hover, footer#pagefooter li a:focus {
+footer#pagefooter li a:hover {
     color: white;
-    text-decoration: underline;
 }
 
 .footer-inner {
@@ -678,57 +677,54 @@ input.searchbox:focus {
     }
 }
 
-@media screen and (min-width: 600px) {
-    .navbar header > * {
-        padding: 10px 0 10px 10px;
-    }
-}
 
 .navbar header > * {
     padding: 10px 0 10px 10px;
 }
+@media screen and (max-width: 500px) {
+   
+    footer#pagefooter li#dlts-link:before {
+        content: "";
+    }
+}
+@media screen and (max-width: 600px) {
 
-@media screen and (max-width: 600px), screen and (device-aspect-ratio: 40 / 71) {
-    /* http://stackoverflow.com/questions/12539697/iphone-5-css-media-query */
     .library-items {
         margin: 1rem 0px 0px;
     }
     h2.page-title {
         margin: 0px;
     }
-    footer li a:link, footer li a:visited {
-        color: #aaa;
+    footer#pagefooter li a:link, footer#pagefooter li a:visited {
         margin-bottom: 1rem;
-        font: normal 11px/1.1 Helvetica, sans-serif;
         margin: 0px;
-        padding: 11px 10px 7px;
-        text-transform: uppercase;
+       /* padding: 11px 10px 7px;*/
     }
-    footer li a[href="http://dlib.nyu.edu/dlts/"] {
-        padding: 11px 10px 7px 0;
+    footer#pagefooter li#dlts-link a:link,  footer#pagefooter li#dlts-link a:visited {
+        padding-left: 0;
+    }
+
+    footer#pagefooter li#dlts-link>span {
+       /* padding-left: 20px;*/
     }
     .footer-inner {
         padding: 2px 0 5px;
     }
     body.page {
         /* Margin bottom by footer height */
-        margin-bottom: 59px;
+        margin-bottom: 57px;
     }
     body.page footer#pagefooter {
         position: absolute;
         bottom: 0;
         width: 100%;
         /* Set the fixed height of the footer here */
-        height: 59px;
+        height: 57px;
     }
     .navbar .reader .icon-full-screen {
         display: none;
     }
-    .navbar .reader .brand, .home .navbar  .brand {
-        /* height: 40px;
-         width: 40px;
-         margin-right: 10px;*/
-    }
+  
     .navbar .reader #logo-replace, .home .navbar #logo-replace, .navbar #logo-replace {
         height: 40px;
         width: 40px;
@@ -791,8 +787,6 @@ input.searchbox:focus {
     #search-toggle.open {
         text-indent: 0;
         background: none;
-        /*  background: transparent url("../images/close.png") no-repeat center center;
-          background-size: 35%;*/
     }
     #search-toggle:focus {
         outline: none;
@@ -801,11 +795,9 @@ input.searchbox:focus {
         border: 0;
     }
     .searchform {
-        /* background-color: red;*/
         display: none;
     }
     .searchform.open {
-        /* background-color: red;*/
         display: block;
     }
     .searchform input.searchbox {
@@ -814,6 +806,12 @@ input.searchbox:focus {
         margin-right: 0;
         /* 16px and up prevents autozoom in safari iOS */
         font-size: 16px;
+    }
+    .buttons {
+        margin: 2em 0 0 ;
+    }
+    .buttons a{
+        margin: .5em 0;
     }
 }
 
