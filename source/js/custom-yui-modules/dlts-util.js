@@ -13,12 +13,16 @@ YUI.add('dlts-util', function (Y) {
                 new_str = description.substr (0, new_str.lastIndexOf(" "));
                 new_str = (new_str.length > 0) ? new_str : description.substr (0, len);
 
-                return new_str + ' <a href="' + page_path + '/' + node.identifier + '">...</a>' ;
+                // Y.DltsUtil.truncate_page_path is set by any code that uses this
+                // module.
+                return new_str + ' <a href="' + this.truncate_page_path + '/' + node.identifier + '">...</a>' ;
 
             }
 
             return description ;
 
-        }
+        },
+
+        truncate_page_path: ''
     };
 });

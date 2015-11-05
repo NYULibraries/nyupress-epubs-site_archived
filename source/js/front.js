@@ -30,6 +30,7 @@ YUI().use(
       , template = Y.Handlebars.compile(source);
 
     Y.Handlebars.registerHelper('truncate', Y.DltsUtil.truncate);
+    Y.DltsUtil.truncate_page_path = page_path;
 
     function onScroll() {
 
