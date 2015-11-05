@@ -29,6 +29,13 @@ YUI().use(
       , template = Y.Handlebars.compile(source);
 
     Y.Handlebars.registerHelper('truncate', Y.DltsUtil.truncate);
+    if ( ! Y.DltsUtil.truncate_page_path ) {
+        var body_data = body.getData()
+            , root = body_data.app
+            , page_path = root + '/details';
+
+        Y.DltsUtil.truncate_page_path = page_path;
+    }
 
     function onSubmit(e) {
 

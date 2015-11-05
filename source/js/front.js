@@ -15,9 +15,6 @@ YUI().use(
     'use strict';
     
     var body = Y.one('body')
-      , body_data = body.getData()
-      , root = body_data.app
-      , page_path = root + '/details' 
       , container = Y.one('.library-items')
       , query = Y.one('.query')
       , loadMoreButton = Y.one('.pure-button.loading')
@@ -30,7 +27,13 @@ YUI().use(
       , template = Y.Handlebars.compile(source);
 
     Y.Handlebars.registerHelper('truncate', Y.DltsUtil.truncate);
-    Y.DltsUtil.truncate_page_path = page_path;
+    if ( ! Y.DltsUtil.truncate_page_path ) {
+      var body_data = body.getData()
+          , root = body_data.app
+          , page_path = root + '/details';
+
+      Y.DltsUtil.truncate_page_path = page_path;
+    }
 
     function onScroll() {
 
