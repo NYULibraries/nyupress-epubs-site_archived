@@ -1,4 +1,4 @@
-YUI.add('Util', function (Y) {
+YUI.add('dlts-util', function (Y) {
     Y.Util = {
         truncate: function ( node, len ) {
 

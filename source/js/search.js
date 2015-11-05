@@ -8,7 +8,7 @@ YUI().use(
   , 'jsonp'
   , 'jsonp-url'
   , 'gallery-idletimer'
-  , 'Util'
+  , 'dlts-util'
   , function ( Y ) {
 
     'use strict';
