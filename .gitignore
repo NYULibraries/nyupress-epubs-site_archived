@@ -24,6 +24,9 @@ source/json/datasources/*
 .buildpath
 .settings/*
 
+# Ignore Intellij conf files
+.idea
+
 # project sub modules
 !node_modules/grunt-contrib-writeHTML
 !node_modules/grunt-contrib-cloneReadium
