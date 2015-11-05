@@ -15,7 +15,7 @@ YUI.add('dlts-util', function (Y) {
 
                 // Y.DltsUtil.truncate_page_path is set by any code that uses this
                 // module.
-                return new_str + ' <a href="' + this.truncate_page_path + '/' + node.identifier + '">...</a>' ;
+                return new_str + ' <a href="' + Y.DltsUtil.truncate_page_path + '/' + node.identifier + '">...</a>' ;
 
             }
 
