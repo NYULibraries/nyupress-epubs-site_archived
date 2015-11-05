@@ -8,6 +8,7 @@ YUI().use(
   , 'jsonp'
   , 'jsonp-url'
   , 'gallery-idletimer'
+  , 'Util'
   , function ( Y ) {
 
     'use strict';
@@ -27,7 +28,9 @@ YUI().use(
       , source = Y.one('#list-template').getHTML()
       , template = Y.Handlebars.compile(source);
 
-    function onSubmit(e) {
+    Y.Handlebars.registerHelper('truncate', Y.Util.truncate) ;
+
+        function onSubmit(e) {
 
         e.preventDefault();
 
