@@ -1,4 +1,4 @@
-YUI.add('util', function (Y) {
+YUI.add('Util', function (Y) {
     Y.Util = {
         truncate: function ( node, len ) {
 
