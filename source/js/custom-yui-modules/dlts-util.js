@@ -1,5 +1,5 @@
 YUI.add('dlts-util', function (Y) {
-    Y.Util = {
+    Y.DltsUtil = {
         truncate: function ( node, len ) {
 
             var description = ( node.description ) ? node.description : '' ;

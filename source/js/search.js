@@ -28,7 +28,7 @@ YUI().use(
       , source = Y.one('#list-template').getHTML()
       , template = Y.Handlebars.compile(source);
 
-    Y.Handlebars.registerHelper('truncate', Y.Util.truncate) ;
+    Y.Handlebars.registerHelper('truncate', Y.DltsUtil.truncate) ;
 
         function onSubmit(e) {
 
