@@ -8,6 +8,7 @@ YUI().use(
   , 'jsonp'
   , 'jsonp-url'
   , 'gallery-idletimer'
+  , 'dlts-util'
   , function ( Y ) {
 
     'use strict';
@@ -26,6 +27,15 @@ YUI().use(
       , match = location.pathname.match(/\/search\/(.*)/)
       , source = Y.one('#list-template').getHTML()
       , template = Y.Handlebars.compile(source);
+
+    Y.Handlebars.registerHelper('truncate', Y.DltsUtil.truncate);
+    if ( ! Y.DltsUtil.truncate_page_path ) {
+        var body_data = body.getData()
+            , root = body_data.app
+            , page_path = root + '/details';
+
+        Y.DltsUtil.truncate_page_path = page_path;
+    }
 
     function onSubmit(e) {
 
