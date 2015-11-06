@@ -11,8 +11,9 @@ module.exports = function ( grunt ) {
 
   var taskConfiguration = { pkg : pkg } ;
 
+  // TODO: Need to get cloneReadium working again
   /** task to run */
-  var tasks = [ 'clean', 'copy', 'uglify', 'cloneReadium', 'writeHTML' ] ;  
+  var tasks = [ 'clean', 'copy', 'uglify', 'writeHTML' ] ;
 
   _.each ( tasks , function ( task ) {
 
