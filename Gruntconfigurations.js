@@ -108,7 +108,7 @@ function copy () {
 
 function clean () {
   return [ 
-    __dirname + '/build/*'
+    __dirname + '/build'
   ] ;
 }
 
