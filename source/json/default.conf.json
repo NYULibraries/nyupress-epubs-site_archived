@@ -4,7 +4,7 @@
   "appUrl": "http://localhost:8000/nyupress-epubs-site",
   "appRoot": "/nyupress-epubs-site",
   "discovery": "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress",
-  
+  "EnableGoogleAnalytics": true,
   "readiumCloneFromSource" : true,
   "readiumUrl" : "http://localhost:8081",
   "readiumBooksDirectory" : "/epub_content",  
