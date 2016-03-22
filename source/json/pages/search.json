@@ -1,0 +1,8 @@
+{
+  "search": {
+    "title" : "",
+    "route": "/search/index.html",
+    "template": "search.mustache",
+    "content": ""    
+  }
+}

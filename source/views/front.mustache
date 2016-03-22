@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{appName}}: {{title}}</title>
+  {{> head }}
+</head>
+<body class="home list-view" data-app="{{appUrl}}" data-discovery="{{discovery}}"
+      data-script='{ "js" : [ "dlts-util.js", "front.js" ], "hbs" : [ { "template" : "items.hbs", "id" : "list-template" } ] }'>
+  {{> header }}
+  <div class="content-wrapper">
+      <div class="data-container" role="main">
+        <div class="intro">
+        <p>NYU Press is pleased to offer these books in an open access platform for reading on desktop and mobile devices. We will continue to contribute new titles each year. <a href="{{appUrl}}/about" class="readmore">Read more about the project...</a></p>
+      </div>
+        <h2 class="page-title">Browse all titles</h2>
+        <div class="library-items"></div>
+      </div>
+      <ul class="pure-paginator"></ul>
+      <div class="pure-g container more-books">
+        <div class="pure-u-1">
+          <a href="#" class="pure-button loading">More books</a>
+        </div>
+      </div>
+      {{> footer }}
+  </div>
+  {{{closure}}}
+</body>
+</html>

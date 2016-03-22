@@ -1,0 +1,8 @@
+{
+  "about": {
+    "title" : "About",
+    "route": "/about/index.html",
+    "template": "about.mustache",
+    "content": ""    
+  }
+}

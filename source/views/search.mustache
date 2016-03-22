@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{appName}}: {{title}}</title>
+  {{> head }}
+</head>
+<body class="list-view search" data-app="{{appUrl}}" data-discovery="{{discovery}}"
+      data-script='{ "js" : [ "dlts-util.js", "search.js" ], "hbs" : [ { "template" : "items.hbs", "id" : "list-template" } ] }'>
+  {{> header }}
+  <div class="breadcrumb">
+    <span class="page-title"><a href="{{appUrl}}">Home</a> &gt; Search &gt; <span class="query"></span></span>
+  </div>
+  <div class="content-wrapper">
+    <div class="data-container">
+      <h2 class="page-title">Search Results</h2>
+      <p class="found"><span class="total-found">0</span> <span class="items-found">books</span> found</p>
+      <div class="pure-g">
+        <div class="pure-u-1 library-items"></div>
+      </div>
+    </div>
+  </div>
+  <ul class="pure-paginator"></ul>
+  <div class="pure-g container more-books">
+    <div class="pure-u-1">
+      <a href="#" class="pure-button loading">More books</a>
+    </div>
+  </div>
+  {{> footer }}
+  {{{closure}}}
+</body>
+</html>

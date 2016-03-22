@@ -1,6 +1,34 @@
-
 *.mno
 
 NYUPressOA/epub_content/*
 NYUPressOA/i18n/*
 
+.sass-cache
+.out
+.DS_Store
+
+# build files
+build/*
+node_modules/*
+
+# configuration files
+source/json/conf.json
+source/json/sass.json
+source/json/htmlminify.json
+source/json/js.json
+source/json/compass.json
+source/json/datasources/*
+
+# Ignore Eclipse conf files
+.project
+.buildpath
+.settings/*
+
+# Ignore Intellij conf files
+.idea
+
+# project sub modules
+!node_modules/grunt-contrib-writeHTML
+!node_modules/grunt-contrib-cloneReadium
+!node_modules/detail_pages
+!node_modules/books

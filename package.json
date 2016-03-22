@@ -1,0 +1,36 @@
+{
+  "name": "nyupress-epubs-site",
+  "version": "1.0.0",
+  "description": "nyupress-epubs-site",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "dateformat": "^1.0.11",
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compass": "^1.0.3",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-curl": "^2.0.3",
+    "handlebars": "^3.0.1",
+    "hogan": "^1.0.2",
+    "request": "^2.45.0",
+    "speakingurl": "^1.1.1",
+    "underscore": "^1.7.0",
+    "var": "^0.1.3",
+    "xml2js": "^0.4.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NYU Digital Library Technology Services",
+  "license": "ISC",
+  "homepage": "https://github.com/NYULibraries/nyupress-epubs-site",
+  "dependencies": {
+    "grunt-git": "^0.3.5",
+    "html-entities": "^1.1.2",
+    "html-minifier": "^0.7.2"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "rights": {
+    "title" : "Rights",
+    "route": "/rights/index.html",
+    "template": "rights.mustache",
+    "content": ""    
+  }
+}

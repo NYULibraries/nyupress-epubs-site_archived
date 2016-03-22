@@ -1,0 +1,16 @@
+{
+  "appName": "New York University Press",
+  "collectionCode": "nyupress-epubs-site",
+  "appUrl": "http://localhost:8000/nyupress-epubs-site",
+  "appRoot": "/nyupress-epubs-site",
+  "discovery": "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress",
+  "EnableGoogleAnalytics": true,
+  "readiumCloneFromSource" : true,
+  "readiumUrl" : "http://localhost:8081",
+  "readiumBooksDirectory" : "/epub_content",  
+  "readiumRepositoryURL" : "git@github.com:elgiovanno/readium-js-viewer.git",
+  "readiumDirectory" : "/www/sites",
+  "readiumDirectoryName" : "readium-js-viewer",
+  "readiumRepositoryBranch" : "master"
+
+}
