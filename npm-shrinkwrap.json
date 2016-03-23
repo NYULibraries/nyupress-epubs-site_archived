@@ -2,6 +2,9 @@
   "name": "nyupress-epubs-site",
   "version": "1.0.0",
   "dependencies": {
+    "books": {
+      "version": ""
+    },
     "dateformat": {
       "version": "1.0.11",
       "from": "dateformat@>=1.0.11 <2.0.0",
@@ -295,6 +298,9 @@
         }
       }
     },
+    "detail_pages": {
+      "version": ""
+    },
     "grunt": {
       "version": "0.4.5",
       "from": "grunt@>=0.4.5 <0.5.0",
@@ -521,6 +527,9 @@
           "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
         }
       }
+    },
+    "grunt-contrib-cloneReadium": {
+      "version": "0.1.0"
     },
     "grunt-contrib-compass": {
       "version": "1.0.4",
@@ -1435,6 +1444,9 @@
           }
         }
       }
+    },
+    "grunt-contrib-writeHTML": {
+      "version": "0.1.0"
     },
     "grunt-curl": {
       "version": "2.2.0",
