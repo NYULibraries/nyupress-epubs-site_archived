@@ -528,9 +528,6 @@
         }
       }
     },
-    "grunt-contrib-cloneReadium": {
-      "version": "0.1.0"
-    },
     "grunt-contrib-compass": {
       "version": "1.0.4",
       "from": "grunt-contrib-compass@>=1.0.3 <2.0.0",
@@ -1445,7 +1442,7 @@
         }
       }
     },
-    "grunt-contrib-writeHTML": {
+    "grunt-contrib-writehtml": {
       "version": "0.1.0"
     },
     "grunt-curl": {
