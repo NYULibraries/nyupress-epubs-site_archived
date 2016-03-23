@@ -28,7 +28,7 @@ source/json/datasources/*
 .idea
 
 # project sub modules
-!node_modules/grunt-contrib-writeHTML
+!node_modules/grunt-contrib-writehtml
 !node_modules/grunt-contrib-cloneReadium
 !node_modules/detail_pages
 !node_modules/books
