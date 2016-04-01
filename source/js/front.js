@@ -18,7 +18,25 @@ YUI().use(
       , container = Y.one('.library-items')
       , query = Y.one('.query')
       , loadMoreButton = Y.one('.pure-button.loading')
-      , datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref,thumbHref'
+      , datasourceURL = body.getAttribute('data-discovery')                          +
+                        '/select?'                                                   +
+
+                        'qt=dismax'                                                  +
+                        '&'                                                          +
+                        'qf=collection_code'                                         +
+                        '&'                                                          +
+                        'q=oa-books'                                                 +
+
+                        '&'                                                          +
+                        'wt=json'                                                    +
+                        '&'                                                          +
+                        'json.wrf=callback={callback}'                               +
+                        '&'                                                          +
+                        'hl=true'                                                    +
+                        '&'                                                          +
+                        'hl.fl=title,description,text'                               +
+                        '&'                                                          +
+                        'fl=title,description,author,identifier,coverHref,thumbHref'
       , searchString = '*:*'
       , transactions = []
       , pager = Y.one('ul.pure-paginator')
