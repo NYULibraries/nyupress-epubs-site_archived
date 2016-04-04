@@ -19,7 +19,22 @@ YUI().use(
       , loadMoreButton = Y.one('.pure-button.loading')
       , totalFound = Y.one('.total-found')
       , itemsFoundText = Y.one('.items-found')
-      , datasourceURL = body.getAttribute('data-discovery') + '/select?&wt=json&json.wrf=callback={callback}&hl=true&hl.fl=title,description,text&fl=title,description,author,identifier,coverHref,thumbHref&q='
+      , datasourceURL = body.getAttribute('data-discovery')                          +
+                        '/select?'                                                   +
+
+                        '&'                                                          +
+                        'wt=json'                                                    +
+                        '&'                                                          +
+                        'json.wrf=callback={callback}'                               +
+                        '&'                                                          +
+                        'hl=true'                                                    +
+                        '&'                                                          +
+                        'hl.fl=title,description,text'                               +
+                        '&'                                                          +
+                        'fl=title,description,author,identifier,coverHref,thumbHref' +
+
+                        '&'                                                          +
+                        'q='
       , searchString = '*:*'
       , transactions = []
       , href, pager = Y.one('ul.pure-paginator')
