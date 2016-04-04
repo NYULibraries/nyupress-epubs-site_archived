@@ -1,16 +1,20 @@
 {
   "appName": "New York University Press",
-  "collectionCode": "nyupress-epubs-site",
-  "appUrl": "http://localhost:8000/nyupress-epubs-site",
-  "appRoot": "/nyupress-epubs-site",
-  "discovery": "http://discovery.dlib.nyu.edu:8080/solr3_discovery/nyupress",
-  "EnableGoogleAnalytics": true,
-  "readiumCloneFromSource" : true,
-  "readiumUrl" : "http://localhost:8081",
-  "readiumBooksDirectory" : "/epub_content",  
-  "readiumRepositoryURL" : "git@github.com:elgiovanno/readium-js-viewer.git",
-  "readiumDirectory" : "/www/sites",
-  "readiumDirectoryName" : "readium-js-viewer",
-  "readiumRepositoryBranch" : "master"
+  "collectionCode": "oa-books",
+  "appUrl": "http://openaccessbooks-local",
+  "appRoot": "",
+  "discovery": "http://localhost:8080/solr",
+  "environment": "development",
 
+  "readiumCloneFromSource" : true,
+  "readiumUrl" : "http://readium/readium-js-viewer/dist",
+  "readiumBooksDirectory" : "/Applications/MAMP/htdocs/epub_content",
+  "readiumRepositoryURL" : "[NOT USED]",
+  "readiumDirectory" : "/Applications/MAMP/htdocs/readium-js-viewer",
+  "readiumDirectoryName" : "readium-js-viewer",
+  "readiumRepositoryBranch" : "master",
+
+  "EnableGoogleAnalytics": false,
+  "GoogleAnalyticsUA" : "[DISABLED]",
+  "GoogleAnalyticsDomain" : "[DISABLED]"
 }
