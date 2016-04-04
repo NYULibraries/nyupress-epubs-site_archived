@@ -19,8 +19,12 @@ YUI().use(
       , loadMoreButton = Y.one('.pure-button.loading')
       , totalFound = Y.one('.total-found')
       , itemsFoundText = Y.one('.items-found')
+      , collectionCode = body.getAttribute('data-collection-code')
       , datasourceURL = body.getAttribute('data-discovery')                          +
                         '/select?'                                                   +
+
+                        '&'                                                          +
+                        'fq=collection_code%3A' + collectionCode                     +
 
                         '&'                                                          +
                         'wt=json'                                                    +
