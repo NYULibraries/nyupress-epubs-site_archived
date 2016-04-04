@@ -23,7 +23,6 @@ YUI().use(
       , datasourceURL = body.getAttribute('data-discovery')                          +
                         '/select?'                                                   +
 
-                        '&'                                                          +
                         'fq=collection_code%3A' + collectionCode                     +
 
                         '&'                                                          +
