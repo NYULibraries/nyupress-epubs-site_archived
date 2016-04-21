@@ -44,6 +44,16 @@ YUI().use(
                             'thumbHref'                                              +
 
                         '&'                                                          +
+                        'qt=dismax'                                                  +
+                        '&'                                                          +
+                        'qf='                                                        +
+                            'title^2'                                                +
+                            '+'                                                      +
+                            'author^2'                                               +
+                            '+'                                                      +
+                            'content'                                                +
+
+                        '&'                                                          +
                         'q='
       , searchString = '*:*'
       , transactions = []
