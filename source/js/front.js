@@ -38,6 +38,7 @@ YUI().use(
                         '&'                                                          +
                         'fl='                                                        +
                             'title,'                                                 +
+                            'subtitle,'                                              +
                             'description,'                                           +
                             'author,'                                                +
                             'identifier,'                                            +
