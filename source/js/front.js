@@ -36,7 +36,14 @@ YUI().use(
                         '&'                                                          +
                         'hl.fl=title,description,text'                               +
                         '&'                                                          +
-                        'fl=title,description,author,identifier,coverHref,thumbHref' +
+                        'fl='                                                        +
+                            'title,'                                                 +
+                            'description,'                                           +
+                            'author,'                                                +
+                            'identifier,'                                            +
+                            'coverHref,'                                             +
+                            'thumbHref'                                              +
+
                         '&'                                                          +
                         'sort=author_sort+asc,title_sort+asc'
       , searchString = '*:*'
