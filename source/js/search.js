@@ -51,7 +51,7 @@ YUI().use(
                             '+'                                                      +
                             'author^2'                                               +
                             '+'                                                      +
-                            'content'                                                +
+                            'text'                                                   +
 
                         '&'                                                          +
                         'q='
