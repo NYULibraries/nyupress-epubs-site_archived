@@ -18,34 +18,34 @@ YUI().use(
       , container = Y.one('.library-items')
       , query = Y.one('.query')
       , loadMoreButton = Y.one('.pure-button.loading')
-      , datasourceURL = body.getAttribute('data-discovery')                          +
-                        '/select?'                                                   +
+      , datasourceURL = body.getAttribute('data-discovery') +
+                        '/select?'                          +
 
-                        'qt=dismax'                                                  +
-                        '&'                                                          +
-                        'qf=collection_code'                                         +
-                        '&'                                                          +
-                        'q=oa-books'                                                 +
+                        'qt=dismax'                         +
+                        '&'                                 +
+                        'qf=collection_code'                +
+                        '&'                                 +
+                        'q=oa-books'                        +
 
-                        '&'                                                          +
-                        'wt=json'                                                    +
-                        '&'                                                          +
-                        'json.wrf=callback={callback}'                               +
-                        '&'                                                          +
-                        'hl=true'                                                    +
-                        '&'                                                          +
-                        'hl.fl=title,description,text'                               +
-                        '&'                                                          +
-                        'fl='                                                        +
-                            'title,'                                                 +
-                            'subtitle,'                                              +
-                            'description,'                                           +
-                            'author,'                                                +
-                            'identifier,'                                            +
-                            'coverHref,'                                             +
-                            'thumbHref'                                              +
+                        '&'                                 +
+                        'wt=json'                           +
+                        '&'                                 +
+                        'json.wrf=callback={callback}'      +
+                        '&'                                 +
+                        'hl=true'                           +
+                        '&'                                 +
+                        'hl.fl=title,description,text'      +
+                        '&'                                 +
+                        'fl='                               +
+                            'title,'                        +
+                            'subtitle,'                     +
+                            'description,'                  +
+                            'author,'                       +
+                            'identifier,'                   +
+                            'coverHref,'                    +
+                            'thumbHref'                     +
 
-                        '&'                                                          +
+                        '&'                                 +
                         'sort=author_sort+asc,title_sort+asc'
       , searchString = '*:*'
       , transactions = []
