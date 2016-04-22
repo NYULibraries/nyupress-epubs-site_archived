@@ -3,14 +3,12 @@
   <div itemscope itemtype="http://schema.org/Book" class="library-item">
     <div class="img_hold">
       <a class="item-link" href="<%appUrl%>/details/{{identifier}}">
-        <img itemprop="image" class="img-responsive" src="<%readiumUrl%>/{{thumbHref}}" title="{{title}}" alt="" />
+        <img itemprop="image" class="img-responsive" src="<%readiumUrl%>/{{thumbHref}}" title="{{title}}{{#if subtitle}}: {{subtitle}}{{/if}}" alt="{{title}}{{#if subtitle}}: {{subtitle}}{{/if}}" />
       </a>
     </div>
     <div class="book-info">
-      <h4 itemprop="name" class="book-title"><a class="item-link" href="<%appUrl%>/details/{{identifier}}">{{title}}</a></h4>
-      {{#if subtitle}}
-          <h4 itemprop="name" class="book-subtitle"><a class="item-link" href="<%appUrl%>/details/{{identifier}}">{{subtitle}}</a></h4>
-      {{/if}}
+      <h4 itemprop="name" class="book-title"><a class="item-link" href="<%appUrl%>/details/{{identifier}}">{{title}} {{#if subtitle}}<span itemprop="name" class="book-subtitle">{{subtitle}}</span>{{/if}}</a></h4>
+      
 
       <div class="author">by <span itemprop="author">{{author}}</span></div>
       <div itemprop="description">{{{truncate this 300}}}</div>
