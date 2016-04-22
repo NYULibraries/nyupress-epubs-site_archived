@@ -20,40 +20,40 @@ YUI().use(
       , totalFound = Y.one('.total-found')
       , itemsFoundText = Y.one('.items-found')
       , collectionCode = body.getAttribute('data-collection-code')
-      , datasourceURL = body.getAttribute('data-discovery')                          +
-                        '/select?'                                                   +
+      , datasourceURL = body.getAttribute('data-discovery')      +
+                        '/select?'                               +
 
-                        'fq=collection_code%3A' + collectionCode                     +
+                        'fq=collection_code%3A' + collectionCode +
 
-                        '&'                                                          +
-                        'wt=json'                                                    +
-                        '&'                                                          +
-                        'json.wrf=callback={callback}'                               +
-                        '&'                                                          +
-                        'hl=true'                                                    +
-                        '&'                                                          +
-                        'hl.fl=title,description,text'                               +
-                        '&'                                                          +
-                        'fl='                                                        +
-                            'title,'                                                 +
-                            'subtitle,'                                              +
-                            'description,'                                           +
-                            'author,'                                                +
-                            'identifier,'                                            +
-                            'coverHref,'                                             +
-                            'thumbHref'                                              +
+                        '&'                                      +
+                        'wt=json'                                +
+                        '&'                                      +
+                        'json.wrf=callback={callback}'           +
+                        '&'                                      +
+                        'hl=true'                                +
+                        '&'                                      +
+                        'hl.fl=title,description,text'           +
+                        '&'                                      +
+                        'fl='                                    +
+                            'title,'                             +
+                            'subtitle,'                          +
+                            'description,'                       +
+                            'author,'                            +
+                            'identifier,'                        +
+                            'coverHref,'                         +
+                            'thumbHref'                          +
 
-                        '&'                                                          +
-                        'qt=dismax'                                                  +
-                        '&'                                                          +
-                        'qf='                                                        +
-                            'title^2'                                                +
-                            '+'                                                      +
-                            'author^2'                                               +
-                            '+'                                                      +
-                            'content'                                                +
+                        '&'                                      +
+                        'qt=dismax'                              +
+                        '&'                                      +
+                        'qf='                                    +
+                            'title^2'                            +
+                            '+'                                  +
+                            'author^2'                           +
+                            '+'                                  +
+                            'text'                               +
 
-                        '&'                                                          +
+                        '&'                                      +
                         'q='
       , searchString = '*:*'
       , transactions = []
