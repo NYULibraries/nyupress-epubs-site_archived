@@ -18,6 +18,7 @@ YUI().use(
       , container = Y.one('.library-items')
       , query = Y.one('.query')
       , loadMoreButton = Y.one('.pure-button.loading')
+      , collectionCode = body.getAttribute('data-collection-code')
       , datasourceURL = body.getAttribute('data-discovery') +
                         '/select?'                          +
 
@@ -25,7 +26,7 @@ YUI().use(
                         '&'                                 +
                         'qf=collection_code'                +
                         '&'                                 +
-                        'q=oa-books'                        +
+                        'q=' + collectionCode               +
 
                         '&'                                 +
                         'wt=json'                           +
