@@ -34,7 +34,22 @@ module.exports = function ( grunt ) {
   /** init Grunt */
   grunt.initConfig ( taskConfiguration ) ;
 
+  // DISABLED
+  // This repo is retired!
+  // See:
+  //     https://jira.nyu.edu/browse/NYUP-144
+  //     "Set up new oa-books repo to take over gruntTaskToBuild branch of nyupress-epubs-site and archive nyupress-epubs-site"
   /** register Grunt tasks */
-  grunt.registerTask( 'default' , tasks) ;
+  // grunt.registerTask( 'default' , tasks) ;
+
+  function disabled() {
+    console.error(
+        'This repo has been retired and replaced by '               +
+        'https://github.com/NYULibraries/dlts-open-access-books.\n' +
+        'See README.md for details.'
+    );
+  }
+
+  grunt.registerTask( 'default' , disabled) ;
 
 } ;
